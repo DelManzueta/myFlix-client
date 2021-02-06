@@ -3,11 +3,12 @@ import { MovieView } from '../MovieView/movieView';
 
 
 
-export class MovieCard extends MovieView {
+export class MovieCard extends React.Component {
     render() {
+        const { movie } = this.props
         return (
             <div className="movie-card">
-                <MovieView />
+                {movie.Title}
             </div>
         );
     }
