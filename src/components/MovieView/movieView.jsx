@@ -9,39 +9,29 @@ export class MovieView extends React.Component {
     }
 
     render() {
-        const { movie } = this.props;
-
-        if (!movie) return null;
-
         return (
-            <div className="movieView">
-                <span><img src={movie.ImagePath} /></span>
-                <section className="movieTitle">
-                    <h2>Title: </h2>
-                    <h4>{movie.title}</h4>
+            <div className="movieView-container">
+                <section className="movie-title">
+                    <span><img src={movie.ImagePath} /></span>
+                    <span className="label">Title: </span>
+                    <span className="value">{movie.Title}</span>
                 </section>
-
-                <section className="movieDesc">
-                    <h3>Description: </h3>
-                    <p>{movie.description}</p>
+                <section className="movie-description">
+                    <span className="label">Description: </span>
+                    <span className="value">{movie.Description}</span>
                 </section>
-
-                <section className="movieGenre">
-                    <h4>Genre: </h4>
-                    <p>{movie.genre.name}</p>
+                <section className="movie-genre">
+                    <span className="label">Genre: </span>
+                    <span className="value">{movie.Genre.Name}</span>
                 </section>
-
-                <section className="directors">
-                    <h4>Directed by: </h4>
-                    <p>{movie.directors.name}</p>
+                <section className="movie-director">
+                    <span className="label">Director: </span>
+                    <span className="value">{movie.Director.Name}</span>
                 </section>
-
-                <button>See Movies</button>
-            </div>
+                <section className="movie-button"><button>Click Here</button></section>
+            </div >
         )
     }
 }
-
-
 
 export default MovieView

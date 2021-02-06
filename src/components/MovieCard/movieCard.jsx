@@ -1,13 +1,16 @@
 import React from 'react';
-import MovieView from '../MovieView/movieView';
+import { MovieView } from '../MovieView/movieView';
 
 
-export class MovieCard extends React.Component {
+
+export class MovieCard extends MovieView {
     render() {
-        const { movie, click } = this.props;
-
         return (
-            <div onClick={() => onClick(movie)} className="movieCard">{movie.title}</div>
-        )
+            <div className="movie-card">
+                <MovieView />
+            </div>
+        );
     }
 }
+
+export default MovieCard
