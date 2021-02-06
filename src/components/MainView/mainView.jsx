@@ -12,7 +12,7 @@ export class MainView extends React.Component {
         };
     }
     componentDidMount() {
-        axios.get('https://').then(res => {
+        axios.get('https://myflixdbs-z.herokuapp.com/movies').then(res => {
             this.setState({ movies: res.data })
         }).catch(function (err) {
             console.log(err);
@@ -24,20 +24,33 @@ export class MainView extends React.Component {
         });
     }
 
+    onButtonClick() {
+        axios.get('https://myflixdbs-z.herokuapp.com/movies').then(response => {
+            this.setState({
+                movies: response.data
+            });
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     render() {
-        const {
-            movies,
-            selectedMovie
-        } = this.state;
+        const { movies } = this.state;
         if (!movies) return <div className="mainView" />
         return (
-            <div className="main-container">
+            <div className="main-view">
                 {selectedMovie
-                    ? <MovieView movie={selectedMovie} /> : movies.map(movie => (
+                    ? <MovieView movie={selectedMovie} />
+                    : movies.map(movie => (
                         <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                            ? <MovieView BackButton={Button} />
+                            : <Return onClick={Button => this.onButtonClick()} />
                     ))
                 }
             </div>
         )
     }
 }
+
+export default MainView
