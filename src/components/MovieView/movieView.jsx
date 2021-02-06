@@ -11,6 +11,7 @@ export class MovieView extends React.Component {
     render() {
         const { movie } = this.props;
         if (!movie) return null;
+
         return (
             <div className="movieView-container">
                 <section className="movie-title">
@@ -30,7 +31,9 @@ export class MovieView extends React.Component {
                     <span className="label">Director: </span>
                     <span className="value">{movie.Director.Name}</span>
                 </section>
-                <section className="movie-button"><button>Click Here</button></section>
+                <section className="movie-button">
+                    <button>Click Here</button>
+                </section>
             </div >
         )
     }

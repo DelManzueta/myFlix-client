@@ -1,11 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import { MovieCard } from '../MovieCard/movieCard';
 import { MovieView } from '../MovieView/movieView';
-import axios from 'axios';
 
 export class MainView extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             movies: null,
             selectedMovie: null
@@ -25,7 +25,7 @@ export class MainView extends React.Component {
     }
 
     onButtonClick() {
-        axios.get('https://myflixdbs-z.herokuapp.com/movies').then(response => {
+        axios.get('https://myflixdbs-z.herokuapp.com/movies/').then(response => {
             this.setState({
                 movies: response.data
             });
@@ -36,7 +36,7 @@ export class MainView extends React.Component {
     }
 
     render() {
-        const { movies } = this.state;
+        const { movies, selectedMovie } = this.state;
         if (!movies) return <div className="mainView" />
         return (
             <div className="main-view">

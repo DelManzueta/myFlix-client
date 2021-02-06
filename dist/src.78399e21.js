@@ -31572,7 +31572,73 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js","./helpers/isAxiosError":"../node_modules/axios/lib/helpers/isAxiosError.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"components/MovieView/movieView.jsx":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"components/MovieCard/movieCard.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.MovieCard = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var MovieCard = /*#__PURE__*/function (_React$Component) {
+  _inherits(MovieCard, _React$Component);
+
+  var _super = _createSuper(MovieCard);
+
+  function MovieCard() {
+    _classCallCheck(this, MovieCard);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(MovieCard, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          _onClick = _this$props.onClick;
+      return _react.default.createElement("div", {
+        onClick: function onClick() {
+          return _onClick(movie);
+        },
+        className: "movie-card"
+      }, movie.Title);
+    }
+  }]);
+
+  return MovieCard;
+}(_react.default.Component);
+
+exports.MovieCard = MovieCard;
+var _default = MovieCard;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/MovieView/movieView.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31668,84 +31734,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 exports.MovieView = MovieView;
 var _default = MovieView;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"components/MovieCard/movieCard.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.MovieCard = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _movieView = require("../MovieView/movieView");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var MovieCard = /*#__PURE__*/function (_React$Component) {
-  _inherits(MovieCard, _React$Component);
-
-  var _super = _createSuper(MovieCard);
-
-  function MovieCard() {
-    _classCallCheck(this, MovieCard);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(MovieCard, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          _onclick = _this$props.onclick;
-      return _react.default.createElement("div", null, _react.default.createElement(Card, {
-        style: {
-          width: '22rem'
-        },
-        classname: "movie-card"
-      }, _react.default.createElement(Card.Img, {
-        variant: "top",
-        src: movie.ImagePath
-      }), _react.default.createElement(Card.Body, null, _react.default.createElement(Card.Title, null, movie.Title + ' - ' + movie.Released), _react.default.createElement(Card.Text, null, movie.Description), _react.default.createElement(Button, {
-        onclick: function onclick() {
-          return _onclick(movie);
-        },
-        variant: "link",
-        classname: "expand-movie"
-      }, "Details"))));
-    }
-  }]);
-
-  return MovieCard;
-}(_react.default.Component);
-
-exports.MovieCard = MovieCard;
-var _default = MovieCard;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../MovieView/movieView":"components/MovieView/movieView.jsx"}],"components/MainView/mainView.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"components/MainView/mainView.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31755,11 +31744,11 @@ exports.default = exports.MainView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _movieCard = require("../MovieCard/movieCard");
 
 var _movieView = require("../MovieView/movieView");
-
-var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31790,12 +31779,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(MainView);
 
-  function MainView(props) {
+  function MainView() {
     var _this;
 
     _classCallCheck(this, MainView);
 
-    _this = _super.call(this, props);
+    _this = _super.call(this);
     _this.state = {
       movies: null,
       selectedMovie: null
@@ -31828,7 +31817,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onButtonClick() {
       var _this3 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies').then(function (response) {
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies/').then(function (response) {
         _this3.setState({
           movies: response.data
         });
@@ -31841,7 +31830,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      var movies = this.state.movies;
+      var _this$state = this.state,
+          movies = _this$state.movies,
+          selectedMovie = _this$state.selectedMovie;
       if (!movies) return _react.default.createElement("div", {
         className: "mainView"
       });
@@ -31873,7 +31864,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 exports.MainView = MainView;
 var _default = MainView;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../MovieCard/movieCard":"components/MovieCard/movieCard.jsx","../MovieView/movieView":"components/MovieView/movieView.jsx","axios":"../node_modules/axios/index.js"}],"../../../../home/zueta/.nvm/versions/node/v14.15.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","../MovieCard/movieCard":"components/MovieCard/movieCard.jsx","../MovieView/movieView":"components/MovieView/movieView.jsx"}],"../../../../home/zueta/.nvm/versions/node/v14.15.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -31980,32 +31971,34 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-// Main component 
-var MyFlixApp = /*#__PURE__*/function (_React$Component) {
-  _inherits(MyFlixApp, _React$Component);
+// Main component (will eventually use all the others)
+var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
+  _inherits(MyFlixApplication, _React$Component);
 
-  var _super = _createSuper(MyFlixApp);
+  var _super = _createSuper(MyFlixApplication);
 
-  function MyFlixApp() {
-    _classCallCheck(this, MyFlixApp);
+  function MyFlixApplication() {
+    _classCallCheck(this, MyFlixApplication);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(MyFlixApp, [{
+  _createClass(MyFlixApplication, [{
     key: "render",
     value: function render() {
       return _react.default.createElement(_mainView.MainView, null);
     }
   }]);
 
-  return MyFlixApp;
-}(_react.default.Component); // Finds the root of your app
+  return MyFlixApplication;
+}(_react.default.Component); // Find the root of our app
 
 
-var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the root DOM element
+var container = document.getElementsByClassName('app-container')[0]; // Tell React to render our app in the root DOM element
 
-_reactDom.default.render(_react.default.createElement(MyFlixApp), container);
+_reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
+
+T;
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/MainView/mainView":"components/MainView/mainView.jsx","./index.scss":"index.scss"}],"../../../../home/zueta/.nvm/versions/node/v14.15.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
