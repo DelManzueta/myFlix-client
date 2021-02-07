@@ -14,8 +14,8 @@ export class MainView extends React.Component {
     componentDidMount() {
         axios.get('https://myflixdbs-z.herokuapp.com/movies').then(res => {
             this.setState({ movies: res.data })
-        }).catch(function (err) {
-            console.log(err);
+        }).catch(function (error) {
+            console.log(error);
         });
     }
     onMovieClick(movie) {
