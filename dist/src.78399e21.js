@@ -31797,7 +31797,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (res) {
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies').then(function (res) {
         _this2.setState({
           movies: res.data
         });
@@ -31971,7 +31971,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-// Main component (will eventually use all the others)
 var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _inherits(MyFlixApplication, _React$Component);
 
@@ -31986,15 +31985,16 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _createClass(MyFlixApplication, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_mainView.MainView, null);
+      return _react.default.createElement("div", {
+        className: "indexContainer"
+      }, _react.default.createElement(_mainView.MainView, null));
     }
   }]);
 
   return MyFlixApplication;
-}(_react.default.Component); // Find the root of our app
+}(_react.default.Component);
 
-
-var container = document.getElementsByClassName('app-container')[0]; // Tell React to render our app in the root DOM element
+var container = document.getElementsByClassName('app-container')[0];
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/MainView/mainView":"components/MainView/mainView.jsx","./index.scss":"index.scss"}],"../../../../home/zueta/.nvm/versions/node/v14.15.3/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -32025,7 +32025,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51361" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53654" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
