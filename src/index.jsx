@@ -8,11 +8,12 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
     render() {
         return (
-            <MainView />
+            <div className="my-flix">
+                <MainView />
+            </div>
         )
     }
 }
 
 const container = document.getElementsByClassName('app-container')[0];
-
 ReactDOM.render(React.createElement(MyFlixApplication), container);

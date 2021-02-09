@@ -4,8 +4,8 @@ import { MovieCard } from '../MovieCard/movieCard';
 import { MovieView } from '../MovieView/movieView';
 
 export class MainView extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             movies: null,
             selectedMovie: null
@@ -19,17 +19,9 @@ export class MainView extends React.Component {
                 console.log(err);
             });
     }
-    onMovieClick(movie) {
-        this.setState({
-            selectedMovie: movie
-        });
-    }
-
     onButtonClick() {
-        axios.get('https://myflixdbs-z.herokuapp.com/').then(response => {
-            this.setState({
-                movies: response.data
-            });
+        axios.get('https://myflixdbs-z.herokuapp.com/').then(res => {
+            this.setState({ movies: res.data });
         })
             .catch(function (error) {
                 console.log(error);
