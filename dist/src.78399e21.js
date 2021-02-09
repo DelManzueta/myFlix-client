@@ -31797,12 +31797,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies').then(function (res) {
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (res) {
         _this2.setState({
           movies: res.data
         });
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function (err) {
+        console.log(err);
       });
     }
   }, {
@@ -31817,19 +31817,19 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onButtonClick() {
       var _this3 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies/').then(function (response) {
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (response) {
         _this3.setState({
           movies: response.data
         });
       }).catch(function (error) {
         console.log(error);
       });
+
+      3;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie;
@@ -31837,23 +31837,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "mainView"
       });
       return _react.default.createElement("div", {
-        className: "main-view"
-      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
-      }) : movies.map(function (movie) {
-        return _react.default.createElement(_movieCard.MovieCard, {
-          key: movie._id,
-          movie: movie,
-          onClick: function onClick(movie) {
-            return _this4.onMovieClick(movie);
-          }
-        }) ? _react.default.createElement(_movieView.MovieView, {
-          BackButton: Button
-        }) : _react.default.createElement(Return, {
-          onClick: function onClick(Button) {
-            return _this4.onButtonClick();
-          }
-        });
+        className: "mainView"
+      }, movies.map(function (movie) {
+        return _react.default.createElement("div", {
+          className: "movie-card",
+          key: movie._id
+        }, movie.Title);
       }));
     }
   }]);
@@ -32025,7 +32014,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53654" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56901" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MovieView } from 'react';
 
 export class MovieCard extends React.Component {
     render() {
@@ -6,7 +7,7 @@ export class MovieCard extends React.Component {
 
         return (
             <div onClick={() => onClick(movie)} className="movie-card">
-                {movie.Title}
+                <MovieView />
             </div>
         );
     }
