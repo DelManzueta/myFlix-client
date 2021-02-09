@@ -8,9 +8,7 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
     render() {
         return (
-            <div className="indexContainer">
-                <MainView />
-            </div>
+            <MainView />
         )
     }
 }
