@@ -1,47 +1,57 @@
 import React from 'react';
 import axios from 'axios';
-import { MovieCard } from '../MovieCard/movieCard';
-import { MovieView } from '../MovieView/movieView';
+
+import { MovieCard } from '../movie-card/movie-card';
+import { MovieView } from '../movie-view/movie-view';
 
 export class MainView extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+
+        // Initialize the state to an empty object so we can destructrue it later
         this.state = {
             movies: null,
             selectedMovie: null
         };
     }
+
     componentDidMount() {
-        axios.get('https://myflixdbs-z.herokuapp.com/').then(res => {
-            this.setState({ movies: res.data });
-        })
-            .catch(function (err) {
-                console.error(err);
-            });
-    }
-    onButtonClick() {
-        axios.get('https://myflixdbs-z.herokuapp.com/').then(res => {
-            this.setState({ movies: res.data });
-        })
+        axios.get('https://myflixdbs-z.herokuapp.com/')
+            .then(response => {
+                // Assign the result to the state
+                this.setState({
+                    movies: response.data
+                });
+            })
             .catch(function (error) {
                 console.log(error);
             });
-        3
     }
 
+    onMovieClick(movie) {
+        this.setState({
+            selectedMovie: movie
+        });
+    }
+
+    // this overrides the render() method of the superclass
     render() {
+
+        // Before data is initially loaded
         const { movies, selectedMovie } = this.state;
-        if (!movies) return <div className="mainView" />
+
+        // Before movies have been loaded
+        if (!movies) return <div className="main-view" />;
+
         return (
-            <div className="mainView">
-                { movies.map(movie => (
-                    <div className="movie-card" key={movie._id}>
-                        {movie.Title}
-                    </div>
-                ))}
+            <div className="main-view">
+                {selectedMovie
+                    ? <MovieView movie={selectedMovie} />
+                    : movies.map(movie => (
+                        <MovieCard key={movie.id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                    ))
+                }
             </div>
         );
     }
 }
-
-export default MainView
