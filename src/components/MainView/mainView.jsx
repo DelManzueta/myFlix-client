@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import { MovieCard } from '../MovieCard/movieCard';
+import { MovieView } from '../MovieView/movieView';
 
 export class MainView extends React.Component {
     constructor() {
@@ -51,3 +51,5 @@ export class MainView extends React.Component {
         );
     }
 }
+
+export default MainView
