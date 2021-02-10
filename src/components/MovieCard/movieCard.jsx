@@ -1,20 +1,21 @@
 import React from 'react';
-import { MovieView } from '../MovieView/movieView';
 
 export class MovieCard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { movie, onClick } = this.props;
 
         return (
-            <div className="movie-card-container">
-                <span>
-                    <button onClick={() => onClick(movie)} className="movie-card-button" />
-                </span>
-            </div>
+            <Card style={{ width: '22rem' }} className="movie-card">
+                <Card.Img variant="top" src={movie.ImagePath} />
+                <Card.Body>
+                    <Card.Title>{movie.Title + ' - ' + movie.Released}</Card.Title>
+                    <Card.Text>{movie.Description}</Card.Text>
+
+                    <Button onClick={() => onClick(movie)} variant="link" className="expand-movie">
+                        Details
+                    </Button>
+                </Card.Body>
+            </Card>
         );
     }
 }

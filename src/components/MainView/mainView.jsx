@@ -34,13 +34,9 @@ export class MainView extends React.Component {
         });
     }
 
-    // this overrides the render() method of the superclass
     render() {
-
-        // Before data is initially loaded
         const { movies, selectedMovie } = this.state;
 
-        // Before movies have been loaded
         if (!movies) return <div className="main-view" />;
 
         return (
