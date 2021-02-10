@@ -16,7 +16,7 @@ export class MainView extends React.Component {
             this.setState({ movies: res.data });
         })
             .catch(function (err) {
-                console.log(err);
+                console.error(err);
             });
     }
     onButtonClick() {
