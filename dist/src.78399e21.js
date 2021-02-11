@@ -31972,7 +31972,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   function MyFlixApplication() {
     _classCallCheck(this, MyFlixApplication);
 
-    return _super.apply(this, arguments);
+    return _super.call(this); // code executed right when the component is created in the memory
   }
 
   _createClass(MyFlixApplication, [{
@@ -31981,6 +31981,18 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement("div", {
         className: "my-flix"
       }, _react.default.createElement(_mainView.MainView, null));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {// code executed right after the component is added to the DOM.
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {// code executed right after the component's state or props are changed.
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {// code executed just before the moment the component gets removed from the DOM.
     }
   }]);
 
@@ -32019,7 +32031,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53480" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53722" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

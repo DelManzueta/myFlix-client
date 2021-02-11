@@ -7,12 +7,28 @@ import './index.scss';
 
 // Main component (will eventrually use all the others)
 class MyFlixApplication extends React.Component {
+    constructor() {
+        super();
+        // code executed right when the component is created in the memory
+    }
     render() {
         return (
             <div className="my-flix">
                 <MainView />
             </div>
         );
+    }
+
+    componentDidMount() {
+        // code executed right after the component is added to the DOM.
+    }
+
+    componentDidUpdate() {
+        // code executed right after the component's state or props are changed.
+    }
+
+    componentWillUnmount() {
+        // code executed just before the moment the component gets removed from the DOM.
     }
 }
 
