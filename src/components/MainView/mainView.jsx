@@ -16,11 +16,11 @@ export class MainView extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://myflixdbs-z.herokuapp.com/')
-            .then(response => {
+        axios.get('https://myflixdbs-z.herokuapp.com/',)
+            .then(res => {
                 // Assign the result to the state
                 this.setState({
-                    movies: response.data
+                    movies: res.data
                 });
             })
             .catch(function (error) {
