@@ -31808,7 +31808,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (res) {
-        // Assign the result to the state
+        console.log(res);
+
         _this2.setState({
           movies: res.data
         });
@@ -32031,7 +32032,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54425" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51114" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
