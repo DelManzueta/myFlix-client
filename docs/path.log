@@ -34,3 +34,5 @@ index.jsx is displayed in index.html
 
 mongoimport --uri mongodb+srv://del:gniwled@myflixdb.qjwyf.mongodb.net/myFlixDB --collection Movies --type json --file Movies.json --JsonArray
 mongoimport --uri mongodb+srv://del:gniwled@myflixdb.qjwyf.mongodb.net/myFlixDB --collection Users --type json --file Users.json
+
+mongodb+srv://del:gniwled@myflixdb.qjwyf.mongodb.net/myFlixDB?retryWrites=true&w=majority

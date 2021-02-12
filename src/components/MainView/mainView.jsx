@@ -15,6 +15,7 @@ export class MainView extends React.Component {
         };
     }
 
+    /* 
     componentDidMount() {
         axios.get('https://myflixdbs-z.herokuapp.com/')
             .then(res => {
@@ -25,7 +26,7 @@ export class MainView extends React.Component {
                 console.log(error);
             });
     }
-
+*/
     onMovieClick(movie) {
         this.setState({
             selectedMovie: movie
@@ -39,6 +40,7 @@ export class MainView extends React.Component {
 
         return (
             <div className="main-view">
+                <MovieView />
                 {selectedMovie
                     ? <MovieView movie={selectedMovie} />
                     : movies.map(movie => (

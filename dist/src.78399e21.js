@@ -31694,46 +31694,58 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, MovieView);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    state = [];
     return _this;
   }
 
   _createClass(MovieView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _axios.default.get("https://myflixdbs-z.herokuapp.com").then(function (res) {
+        console.log(res);
+
+        _this2.setState({
+          movies: res.data
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
-      if (!movie) return null;
-      return _react.default.createElement("div", {
-        className: "movieView-container"
-      }, _react.default.createElement("section", {
-        className: "movie-title"
-      }, _react.default.createElement("span", null, _react.default.createElement("img", {
-        src: movie.ImagePath
-      })), _react.default.createElement("span", {
-        className: "label"
-      }, "Title: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Title)), _react.default.createElement("section", {
-        className: "movie-description"
-      }, _react.default.createElement("span", {
-        className: "label"
-      }, "Description: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Description)), _react.default.createElement("section", {
-        className: "movie-genre"
-      }, _react.default.createElement("span", {
-        className: "label"
-      }, "Genre: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Genre.Name)), _react.default.createElement("section", {
-        className: "movie-director"
-      }, _react.default.createElement("span", {
-        className: "label"
-      }, "Director: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Director.Name)), _react.default.createElement("section", {
-        className: "movie-button"
-      }, _react.default.createElement("button", null, "Click Here")));
+      // const { movie } = this.props;
+      // if (!movie) return null;
+      return _react.default.createElement("ul", null, this.state.movies.map(function (movie) {
+        return _react.default.createElement("li", {
+          key: movie._id
+        }, movie.Title);
+      }))
+      /*
+      <div className="movieView-container">
+          <section className="movie-title">
+              <span><img src={movie.ImagePath} /></span>
+              <span className="label">Title: </span>
+              <span className="value">{movie.Title}</span>
+          </section>
+          <section className="movie-description">
+              <span className="label">Description: </span>
+              <span className="value">{movie.Description}</span>
+          </section>
+          <section className="movie-genre">
+              <span className="label">Genre: </span>
+              <span className="value">{movie.Genre.Name}</span>
+          </section>
+          <section className="movie-director">
+              <span className="label">Director: </span>
+              <span className="value">{movie.Director.Name}</span>
+          </section>
+          <section className="movie-button">
+              <button>Click Here</button>
+          </section>
+      </div >
+      */
+      ;
     }
   }]);
 
@@ -31801,23 +31813,21 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     };
     return _this;
   }
+  /* 
+  componentDidMount() {
+      axios.get('https://myflixdbs-z.herokuapp.com/')
+          .then(res => {
+              console.log(res);
+              this.setState({ movies: res.data });
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+  }
+  */
+
 
   _createClass(MainView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (res) {
-        console.log(res);
-
-        _this2.setState({
-          movies: res.data
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
     key: "onMovieClick",
     value: function onMovieClick(movie) {
       this.setState({
@@ -31827,7 +31837,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -31837,14 +31847,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       return _react.default.createElement("div", {
         className: "main-view"
-      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
+      }, _react.default.createElement(_movieView.MovieView, null), selectedMovie ? _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie
       }) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie.id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this3.onMovieClick(movie);
+            return _this2.onMovieClick(movie);
           }
         });
       }));

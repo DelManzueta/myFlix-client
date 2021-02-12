@@ -5,14 +5,28 @@ import axios from 'axios';
 export class MovieView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        state = [];
+    }
+
+    componentDidMount() {
+        axios.get(`https://myflixdbs-z.herokuapp.com`).then(res => {
+            console.log(res);
+            this.setState({ movies: res.data });
+        })
     }
 
     render() {
-        const { movie } = this.props;
-        if (!movie) return null;
+        // const { movie } = this.props;
+        // if (!movie) return null;
 
         return (
+            <ul>
+                {
+                    this.state.movies.map
+                        (movie => <li key={movie._id}>{movie.Title}</li>)
+                }
+            </ul>
+            /*
             <div className="movieView-container">
                 <section className="movie-title">
                     <span><img src={movie.ImagePath} /></span>
@@ -35,6 +49,7 @@ export class MovieView extends React.Component {
                     <button>Click Here</button>
                 </section>
             </div >
+            */
         )
     }
 }
