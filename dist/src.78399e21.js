@@ -30813,7 +30813,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"../node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js"}],"../../../../home/zueta/.nvm/versions/node/v14.15.3/lib/node_modules/parcel/node_modules/process/browser.js":[function(require,module,exports) {
+},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"../node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js"}],"../../../../home/zueta/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -31123,7 +31123,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","process":"../../../../home/zueta/.nvm/versions/node/v14.15.3/lib/node_modules/parcel/node_modules/process/browser.js"}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
+},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","process":"../../../../home/zueta/node_modules/process/browser.js"}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
 'use strict';
 
 var utils = require('./../utils');
@@ -31620,24 +31620,10 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          _onClick = _this$props.onClick;
-      return _react.default.createElement(Card, {
-        style: {
-          width: '22rem'
-        },
+      var movies = this.props.movies;
+      return _react.default.createElement("div", {
         className: "movie-card"
-      }, _react.default.createElement(Card.Img, {
-        variant: "top",
-        src: movie.ImagePath
-      }), _react.default.createElement(Card.Body, null, _react.default.createElement(Card.Title, null, movie.Title + ' - ' + movie.Released), _react.default.createElement(Card.Text, null, movie.Description), _react.default.createElement(Button, {
-        onClick: function onClick() {
-          return _onClick(movie);
-        },
-        variant: "link",
-        className: "expand-movie"
-      }, "Details")));
+      }, movie.Title);
     }
   }]);
 
@@ -31812,22 +31798,23 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       selectedMovie: null
     };
     return _this;
-  }
-  /* 
-  componentDidMount() {
-      axios.get('https://myflixdbs-z.herokuapp.com/')
-          .then(res => {
-              console.log(res);
-              this.setState({ movies: res.data });
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
-  }
-  */
+  } // react component hook
 
 
   _createClass(MainView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/Movies').then(function (res) {
+        _this2.setState({
+          movies: res.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "onMovieClick",
     value: function onMovieClick(movie) {
       this.setState({
@@ -31837,26 +31824,17 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var _this$state = this.state,
-          movies = _this$state.movies,
-          selectedMovie = _this$state.selectedMovie;
+      var movies = this.state.movies;
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
       return _react.default.createElement("div", {
         className: "main-view"
-      }, _react.default.createElement(_movieView.MovieView, null), selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
-      }) : movies.map(function (movie) {
-        return _react.default.createElement(_movieCard.MovieCard, {
-          key: movie.id,
-          movie: movie,
-          onClick: function onClick(movie) {
-            return _this2.onMovieClick(movie);
-          }
-        });
+      }, movies.map(function (movie) {
+        return _react.default.createElement("section", {
+          className: "movie-card",
+          key: movie.__id
+        }, movie.Title);
       }));
     }
   }]);
@@ -31974,7 +31952,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-// Main component (will eventrually use all the others)
 var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _inherits(MyFlixApplication, _React$Component);
 
@@ -31983,27 +31960,13 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   function MyFlixApplication() {
     _classCallCheck(this, MyFlixApplication);
 
-    return _super.call(this); // code executed right when the component is created in the memory
+    return _super.apply(this, arguments);
   }
 
   _createClass(MyFlixApplication, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
-        className: "my-flix"
-      }, _react.default.createElement(_mainView.MainView, null));
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {// code executed right after the component is added to the DOM.
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {// code executed right after the component's state or props are changed.
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {// code executed just before the moment the component gets removed from the DOM.
+      return _react.default.createElement(_mainView.MainView, null);
     }
   }]);
 
@@ -32042,7 +32005,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51114" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51916" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -6,14 +6,14 @@
     "scripts": {
         "proxy": "http://localhost:1234",
         "start": "npm index",
-        "dev": "nodemon index.jsx"
+        "dev": "nodemon index"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/DelManzueta/myFlix-client.git"
     },
     "author": "Del Manzueta",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/DelManzueta/myFlix-client/issues"
     },
@@ -23,6 +23,7 @@
         "components": "^0.1.0",
         "cors": "^2.8.5",
         "parcel": "^1.12.4",
+        "parcel-bundler": "^1.12.4",
         "react": "^17.0.1",
         "react-dom": "^17.0.1"
     },
@@ -32,6 +33,6 @@
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
         "nodemon": "^2.0.7",
-        "sass": "^1.32.5"
+        "sass": "^1.32.7"
     }
 }

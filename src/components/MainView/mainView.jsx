@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { MovieCard } from '../MovieCard/movieCard';
 import { MovieView } from '../MovieView/movieView';
