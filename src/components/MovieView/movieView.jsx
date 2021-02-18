@@ -1,57 +1,41 @@
-import React from 'react';
-import axios from 'axios';
-
+import React from "react";
+import { MainView } from "../MainView/mainView";
 
 export class MovieView extends React.Component {
-    constructor(props) {
-        super(props);
-        state = [];
+
+    constructor() {
+        super();
+
+        this.state = {};
     }
 
-    componentDidMount() {
-        axios.get(`https://myflixdbs-z.herokuapp.com`).then(res => {
-            console.log(res);
-            this.setState({ movies: res.data });
-        })
-    }
 
     render() {
-        // const { movie } = this.props;
-        // if (!movie) return null;
+        const { movie } = this.props;
+
+        if (!movie) return null;
 
         return (
-            <ul>
-                {
-                    this.state.movies.map
-                        (movie => <li key={movie._id}>{movie.Title}</li>)
-                }
-            </ul>
-            /*
-            <div className="movieView-container">
-                <section className="movie-title">
-                    <span><img src={movie.ImagePath} /></span>
+            <div className="movie-view">
+                <img className="movie-poster" src={movie.ImagePath} />
+                <div className="movie-title">
                     <span className="label">Title: </span>
                     <span className="value">{movie.Title}</span>
-                </section>
-                <section className="movie-description">
+                </div>
+                <div className="movie-description">
                     <span className="label">Description: </span>
-                    <span className="value">{movie.Description}</span>
-                </section>
-                <section className="movie-genre">
-                    <span className="label">Genre: </span>
+                    <span className="value"> {movie.Description}</span>
+                </div>
+
+                <div className="movie-genre">
+                    <span className="label"> Genre: </span>
                     <span className="value">{movie.Genre.Name}</span>
-                </section>
-                <section className="movie-director">
+                </div>
+                <div className="movie-director">
                     <span className="label">Director: </span>
                     <span className="value">{movie.Director.Name}</span>
-                </section>
-                <section className="movie-button">
-                    <button>Click Here</button>
-                </section>
-            </div >
-            */
-        )
+                </div>
+            </div>
+        );
     }
 }
-
-export default MovieView

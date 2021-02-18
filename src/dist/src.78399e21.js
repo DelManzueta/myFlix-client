@@ -31578,7 +31578,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.MovieCard = void 0;
+exports.MovieCard = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -31620,8 +31620,13 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
-      var movies = this.props.movies;
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          _onClick = _this$props.onClick;
       return _react.default.createElement("div", {
+        onClick: function onClick() {
+          return _onClick(movie);
+        },
         className: "movie-card"
       }, movie.Title);
     }
@@ -31631,19 +31636,17 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieCard = MovieCard;
-var _default = MovieCard;
-exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"components/MovieView/movieView.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.MovieView = void 0;
+exports.MovieView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _axios = _interopRequireDefault(require("axios"));
+var _mainView = require("../MainView/mainView");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31674,64 +31677,51 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(MovieView);
 
-  function MovieView(props) {
+  function MovieView() {
     var _this;
 
     _classCallCheck(this, MovieView);
 
-    _this = _super.call(this, props);
-    state = [];
+    _this = _super.call(this);
+    _this.state = {};
     return _this;
   }
 
   _createClass(MovieView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      _axios.default.get("https://myflixdbs-z.herokuapp.com").then(function (res) {
-        console.log(res);
-
-        _this2.setState({
-          movies: res.data
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      // const { movie } = this.props;
-      // if (!movie) return null;
-      return _react.default.createElement("ul", null, this.state.movies.map(function (movie) {
-        return _react.default.createElement("li", {
-          key: movie._id
-        }, movie.Title);
-      }))
-      /*
-      <div className="movieView-container">
-          <section className="movie-title">
-              <span><img src={movie.ImagePath} /></span>
-              <span className="label">Title: </span>
-              <span className="value">{movie.Title}</span>
-          </section>
-          <section className="movie-description">
-              <span className="label">Description: </span>
-              <span className="value">{movie.Description}</span>
-          </section>
-          <section className="movie-genre">
-              <span className="label">Genre: </span>
-              <span className="value">{movie.Genre.Name}</span>
-          </section>
-          <section className="movie-director">
-              <span className="label">Director: </span>
-              <span className="value">{movie.Director.Name}</span>
-          </section>
-          <section className="movie-button">
-              <button>Click Here</button>
-          </section>
-      </div >
-      */
-      ;
+      var movie = this.props.movie;
+      if (!movie) return null;
+      return _react.default.createElement("div", {
+        className: "movie-view"
+      }, _react.default.createElement("img", {
+        className: "movie-poster",
+        src: movie.ImagePath
+      }), _react.default.createElement("div", {
+        className: "movie-title"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Title: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Title)), _react.default.createElement("div", {
+        className: "movie-description"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Description: "), _react.default.createElement("span", {
+        className: "value"
+      }, " ", movie.Description)), _react.default.createElement("div", {
+        className: "movie-genre"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, " Genre: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Genre.Name)), _react.default.createElement("div", {
+        className: "movie-director"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Director: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Director.Name)));
     }
   }]);
 
@@ -31739,9 +31729,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
-var _default = MovieView;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"components/MainView/mainView.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../MainView/mainView":"components/MainView/mainView.jsx"}],"components/MainView/mainView.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31798,32 +31786,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       selectedMovie: null
     };
     return _this;
-  } // react component hook
-
+  }
 
   _createClass(MainView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (res) {
-        _this2.setState({
-          movies: res.data
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
-    key: "onMovieClick",
-    value: function onMovieClick(movie) {
-      this.setState({
-        selectedMovie: movie
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie;
@@ -31832,11 +31801,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       return _react.default.createElement("div", {
         className: "main-view"
-      }, movies.map(function (movie) {
-        return _react.default.createElement("section", {
-          className: "movie-card",
-          key: movie.__id
-        }, movie.Title);
+      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
+        movie: selectedMovie
+      }) : movies.map(function (movie) {
+        return _react.default.createElement(_movieCard.MovieCard, {
+          key: movie._id,
+          movie: movie,
+          onClick: function onClick(movie) {
+            return _this2.onMovieClick(movie);
+          }
+        });
       }));
     }
   }]);
@@ -32007,7 +31981,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51460" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52874" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

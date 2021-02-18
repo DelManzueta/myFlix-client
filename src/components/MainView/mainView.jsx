@@ -15,31 +15,19 @@ export class MainView extends React.Component {
         };
     }
 
-    // react component hook
-    componentDidMount() {
-        axios.get('https://myflixdbs-z.herokuapp.com/').then(res => {
-            this.setState({ movies: res.data });
-        }).catch(function (error) { console.log(error) })
-    }
-
-    onMovieClick(movie) {
-        this.setState({
-            selectedMovie: movie
-        });
-    }
 
     render() {
+
         const { movies, selectedMovie } = this.state;
 
         if (!movies) return <div className="main-view" />;
 
         return (
             <div className="main-view">
-                {
-                    movies.map(movie => (
-                        <section className="movie-card" key={movie.__id}>
-                            {movie.Title}
-                        </section>
+                {selectedMovie
+                    ? <MovieView movie={selectedMovie} />
+                    : movies.map(movie => (
+                        <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
                     ))
                 }
             </div>
