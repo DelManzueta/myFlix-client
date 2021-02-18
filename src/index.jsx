@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 
 import { MainView } from './components/MainView/mainView';
-
 import './index.scss';
+
 class MyFlixApplication extends React.Component {
     render() {
         return <MainView />;

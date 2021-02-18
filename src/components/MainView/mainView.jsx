@@ -17,7 +17,7 @@ export class MainView extends React.Component {
 
     // react component hook
     componentDidMount() {
-        axios.get('https://myflixdbs-z.herokuapp.com/Movies').then(res => {
+        axios.get('https://myflixdbs-z.herokuapp.com/').then(res => {
             this.setState({ movies: res.data });
         }).catch(function (error) { console.log(error) })
     }
@@ -29,7 +29,7 @@ export class MainView extends React.Component {
     }
 
     render() {
-        const { movies } = this.state;
+        const { movies, selectedMovie } = this.state;
 
         if (!movies) return <div className="main-view" />;
 
