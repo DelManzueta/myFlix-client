@@ -29894,7 +29894,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "my-flix"
-      }, _react.default.createElement("div", null, "Good morning"));
+      }, _react.default.createElement("h2", null, "Good morning"));
     }
   }]);
 
@@ -29933,7 +29933,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51921" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56292" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

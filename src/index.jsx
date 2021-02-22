@@ -9,7 +9,7 @@ class MyFlixApplication extends React.Component {
     render() {
         return (
             <div className="my-flix">
-                <div>Good morning</div>
+                <h2>Good morning</h2> 
             </div>
         );
     }
