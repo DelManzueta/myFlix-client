@@ -29894,7 +29894,19 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "my-flix"
-      }, _react.default.createElement("h2", null, "Good morning"));
+      }, "Hello World");
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {// code executed right after the component is added to the DOM.
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {// code executed right after the component's state or props are changed.
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {// code executed just before the moment the component gets removed from the DOM.
     }
   }]);
 
@@ -29933,7 +29945,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56292" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58998" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
