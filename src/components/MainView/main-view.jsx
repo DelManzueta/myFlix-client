@@ -13,11 +13,8 @@ class MainView extends React.Component {
     componentDidMount() {
     axios.get('<https://myflixdbs-z.herokuapp.com/Movies>')
       .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
+        this.setState({ movies: response.data});
+    }).catch(function (error) {
         console.log(error);
       });
   }
@@ -31,7 +28,7 @@ class MainView extends React.Component {
     return (
       <div className="main-view">
         {movies.map(movie => (
-          <div className="movie-card" key={movie._id}>{movie.Title}</div>
+          <section className="movie-card" key={movie._id}>{movie.Title}</section>
         ))}
       </div>
     );
