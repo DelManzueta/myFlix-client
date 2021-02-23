@@ -2,37 +2,45 @@ import React from 'react';
 import axios from 'axios';
 
 import {MovieCard} from '../MovieCard/movie-card';
+import{MovieView} from '../MovieView/movie-view';
 
-class MainView extends React.Component {
+export class MainView extends React.Component {
     constructor(props){
         super(props);
 
-        this.state = {};
+        this.state = {
+          movies: null,
+          selectedMovie: null,
+        };
 
         
     }
 
     componentDidMount() {
-    axios.get('<https://myflixdbs-z.herokuapp.com/Movies>')
-      .then(response => {
-        this.setState({ movies: response.data});
-    }).catch(function (error) {
-        console.log(error);
-      });
-  }
+      axios.get('https://myflixdbs-z.herokuapp.com/Movies')
+        .then(response => {this.setState({ movies: response.data})})
+        .catch(function (error) {console.log(error)})
+    };
+      onMovieClick(movie) {this.setState({selectedMovie: movie})};
+      
+
 
  render() {
 
-    const { movies } = this.state;
+    const { movies, selectedMovie } = this.state;
 
     if (!movies) return <div className="main-view" />;
 
-    return (
+    return ( 
+
       <div className="main-view">
-        {movies.map(movie => (
-          <section className="movie-card" key={movie._id}>{movie.Title}</section>
-        ))}
-      </div>
+        {selectedMovie ?
+          <MovieView movie={selectedMovie}/> : movies.map(movie => (
+            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
+          ))
+        }
+     </div>
+
     );
   }
 }
