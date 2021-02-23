@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import {MovieCard} from '../MovieCard/movie-card';
+
 class MainView extends React.Component {
     constructor(props){
         super(props);

@@ -6,7 +6,7 @@ import { MainView } from './components/MainView/main-view';
 
 import "./index.scss";
 
-class FaveFlixApplication extends React.Component {
+class Index extends React.Component {
   render() {
     return <MainView />;
 
@@ -15,4 +15,4 @@ class FaveFlixApplication extends React.Component {
 
 const container = document.getElementsByClassName("app-container")[0];
 
-ReactDOM.render(React.createElement(FaveFlixApplication), container);
+ReactDOM.render(React.createElement(Index), container);
