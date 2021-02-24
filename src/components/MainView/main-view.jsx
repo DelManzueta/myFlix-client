@@ -16,11 +16,22 @@ export class MainView extends React.Component {
         
     }
 
-    componentDidMount() {
-      axios.get('https://myflixdbs-z.herokuapp.com/Movies')
-        .then(response => {this.setState({ movies: response.data})})
-        .catch(function (error) {console.log(error)})
-    };
+// axios.get('https://myflixdbs-z.herokuapp.com/Movies')
+
+     componentDidMount(){
+       axios.get()
+       .then(response => {
+         this.setState({
+           movies: response.data
+         });
+       })
+       .catch(function(error){
+         console.log(error);
+       })
+     }
+
+
+
       onMovieClick(movie) {this.setState({selectedMovie: movie})};
       
 
