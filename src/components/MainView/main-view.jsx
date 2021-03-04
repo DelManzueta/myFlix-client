@@ -17,15 +17,15 @@ export class MainView extends React.Component {
 
 
   componentDidMount() {
-    axios.get('https://myflixdb-z.herokuapp.com/Movies')
+    axios.get('https://myflixdbs-z.herokuapp.com')
       .then((response) => {
         // Assign the result to the state
         this.setState({
           movies: response.data,
         });
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (err) {
+        console.log(err);
       });
   }
 
@@ -35,29 +35,25 @@ export class MainView extends React.Component {
     });
   }
 
-  setInititalState() {
+  returnHome() {
     this.setState({
-      selectedMovie: null,
+      selectedMovie: null
     });
   }
 
-  // this overrides the render() method of the superclass
-  render() {
 
-    // Before data is initially loaded
+  render() {
     const { movies, selectedMovie } = this.state;
 
-    // Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
-      <div className='main-view'>
-        {selectedMovie ? (
-          <MovieView movie={selectedMovie} onClick={() => this.setInititalState()} />
-        ) : (movies.map((movie) => (
-          <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
-        ))
-          )}
+      <div className="main-view">
+        {selectedMovie
+          ? <MovieView movie={selectedMovie} onClick={() => this.returnHome()} />
+          : movies.map(movie => (
+            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+          ))}
       </div>
     );
   }

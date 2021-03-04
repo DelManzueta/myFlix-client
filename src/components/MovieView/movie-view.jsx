@@ -1,44 +1,41 @@
 import React from 'react';
-import { MainView } from '../MainView/main-view';
-
 
 export class MovieView extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {};
     }
 
+
+
     render() {
-        const { movie, onClick, button } = this.props;
+        let { movie, onClick } = this.props;
 
         if (!movie) return null;
 
         return (
             <div className="movie-view">
-                <img src="{movie.ImagePath" className="movie-poster" />
-
-                <section className="movie-title">
+                <img className="movie-poster" src={movie.ImageURL} />
+                <div className="movie-title">
                     <span className="label">Title: </span>
-                    <span className="value">{movie.Title}</span>
-                </section>
-
-                <section className="movie-description">
-                    <span className="label"></span>
-                    <span className="value"></span>
-                </section>
-
-                <section className="movie-genre">
+                    <span className="value">{movie.Title} </span>
+                </div>
+                <div className="movie-description">
+                    <span className="label">Description: </span>
+                    <span className="value">{movie.Description} </span>
+                </div>
+                <div className="movie-genre">
                     <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre.Name}</span>
-                </section>
-
-                <section className="movie-director">
+                    <span className="value">{movie.Genre.Name} </span>
+                </div>
+                <div className="movie-director">
                     <span className="label">Director: </span>
-                    <span className="value">{movie.Director.Name}</span>
-                </section>
-                <button onClick={() => this.setState(<MainView />)}>Go Back</button>
+                    <span className="value">{movie.Director.Name} </span>
+                </div>
+                <button className="back-button" onClick={() => onClick()}> Back to Main Menu </button>
             </div>
+
         )
     }
 }
