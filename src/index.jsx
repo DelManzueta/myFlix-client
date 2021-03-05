@@ -8,7 +8,13 @@ import { MainView } from './components/MainView/main-view';
 // Main compontent. This will eventually use all of the other components.
 class MyFlixApplication extends React.Component {
   render() {
-    return <MainView />;
+    return (
+      <div className="main-vew">
+
+        <span><h1>Index.jsx</h1></span>
+        <MainView />
+      </div>
+    )
   }
 }
 

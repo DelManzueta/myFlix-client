@@ -1,8 +1,8 @@
 import React from 'react';
 
 export class MovieView extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {};
     }
@@ -10,7 +10,7 @@ export class MovieView extends React.Component {
 
 
     render() {
-        let { movie, onClick } = this.props;
+        const { movie, onClick } = this.props;
 
         if (!movie) return null;
 
