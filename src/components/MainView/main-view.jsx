@@ -1,23 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import { MovieCard } from '../MovieCard/movie-card';
+import { MovieView } from '../MovieView/movie-view';
+
 export class MainView extends React.Component {
   constructor() {
     super();
 
+    // Initialize the state to an empty object so we can destructrue it later
     this.state = {
       movies: null,
       selectedMovie: null
     };
   }
 
+
   componentDidMount() {
-    axios.get('https://myflixdbs-z.herokuapp.com')
-      .then(response => {
+    axios.get('https://myflixdbs-z.herokuapp.com/movies')
+      .then((response) => {
+        // Assign the result to the state
         this.setState({
-          movies: response.data
+          movies: response.data,
         });
       })
       .catch(function (error) {
@@ -31,20 +35,34 @@ export class MainView extends React.Component {
     });
   }
 
-  render() {
-    const { movies, selectedMovie } = this.state;
+  setInititalState() {
+    this.setState({
+      selectedMovie: null,
+    });
+  }
 
-    if (!movies) return <div className="main-view"/>;
+  // this overrides the render() method of the superclass
+  render() {
+
+    // Before data is initially loaded
+    const { movies, selectedMovie } = this.state;
+    console.log(movies);
+
+    // Before movies have been loaded
+    if (!movies) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
-      { selectedMovie
-        ? <MovieView movie={selectedMovie}/>
-        : movies.map(movie => (
-          <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
+
+       
+    <div className='main-view'>
+        {selectedMovie ? (
+          <MovieView movie={selectedMovie} onClick={() => this.setInititalState()} />
+        ) : (movies.map((movie) => (
+          <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
         ))
-      }
+          )}
       </div>
+  
     );
   }
-} 
+}

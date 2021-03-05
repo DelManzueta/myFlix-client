@@ -31870,13 +31870,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (response) {
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies').then(function (response) {
         // Assign the result to the state
         _this2.setState({
           movies: response.data
         });
-      }).catch(function (err) {
-        console.log(err);
+      }).catch(function (error) {
+        console.log(error);
       });
     }
   }, {
@@ -31887,39 +31887,40 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "returnHome",
-    value: function returnHome() {
+    key: "setInititalState",
+    value: function setInititalState() {
       this.setState({
         selectedMovie: null
       });
-    }
+    } // this overrides the render() method of the superclass
+
   }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
+      // Before data is initially loaded
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie;
+      console.log(movies); // Before movies have been loaded
+
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
       return _react.default.createElement("div", {
         className: "main-view"
       }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
-      }) : this.map(function (movie) {
+        movie: selectedMovie,
+        onClick: function onClick() {
+          return _this3.setInititalState();
+        }
+      }) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
             return _this3.onMovieClick(movie);
-          }
-        }) ? _react.default.createElement(_movieView.MovieView, {
-          BackButton: Button
-        }) : _react.default.createElement(Return, {
-          onClick: function onClick(Button) {
-            return _this3.onButtonClick();
           }
         });
       }));
@@ -32021,7 +32022,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53534" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55340" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
