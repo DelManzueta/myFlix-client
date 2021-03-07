@@ -31789,19 +31789,19 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (response) {
+      _axios.default.get("https://myflixdbs-z.herokuapp.com").then(res = res.json().then(function (movies) {
+        console.log(movies);
+
         _this2.setState({
-          movies: response.data
+          movies: movies.data
         });
-      }).catch(function (error) {
-        console.log(error);
-      });
+      }));
     }
   }, {
     key: "onMovieClick",
     value: function onMovieClick(movie) {
       this.setState({
-        selectedMovie: movie
+        selectedMovie: movies
       });
     }
   }, {
@@ -31815,7 +31815,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      console.log('This is my error message');
+      console.log('RENDER BEFORE RETURN');
       return _react.default.createElement("div", {
         className: "main-view"
       }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
