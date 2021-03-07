@@ -41,3 +41,10 @@ ALL IMPORTANT issues have been resolved
 mongoimport --uri mongodb+srv://del:gniwled@myflixdb.qjwyf.mongodb.net/myFlixDB --collection movies --type json --file Movies.json --jsonArray
 mongoimport --uri mongodb+srv://del:gniwled@myflixdb.qjwyf.mongodb.net/myFlixDB --collection users --type json --file Users.json --jsonArray
 mongodb+srv://del:gniwled@myflixdb.qjwyf.mongodb.net/myFlixDB?retryWrites=true&w=majority
+
+
+
+
+axios.get()
+      .then((response) => { 
+        this.setState({

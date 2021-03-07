@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import {MainView} from './components/MainView/main-view'
 //Import statement to indicade that you need to bundle '.index.scss'
 import './index.scss';
-import { MainView } from './components/MainView/main-view';
+
 
 // Main compontent. This will eventually use all of the other components.
 class MyFlixApplication extends React.Component {
@@ -11,8 +11,8 @@ class MyFlixApplication extends React.Component {
     return (
       <div className="main-vew">
 
-        <span><h1>Index.jsx</h1></span>
         <MainView />
+        <span><h1>Index.jsx</h1></span>
       </div>
     )
   }

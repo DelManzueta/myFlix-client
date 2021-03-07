@@ -12,65 +12,41 @@ export class MainView extends React.Component {
     this.state = {}
   }
 
-/*
+ 
+
+  
   componentDidMount() {
-    axios.get(`https://myflixdbs-z.herokuapp.com/`)
-      .then((response) => { 
+    axios.get('https://myflixdbs-z.herokuapp.com/')
+      .then(response => {
         this.setState({
-          movies: response.data,
+          movies: response.data
         });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-*/
-  componentDidMount() {
-    axios.get(`https://myflixdbs-z.herokuapp.com`)
-      .then((res) =>{
-        const movies = res.data;
-        this.setState({movies});
-      })
-      
-  }
 
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
 
- /*  setInititalState() {
-    this.setState({
-      selectedMovie: null,
-    });
-  }
 
-*/
 
-  // this overrides the render() method of the superclass
+
   render() {
 
-    // Before data is initially loaded
-    const { movies, selectedMovie } = this.state
+    const { movies } = this.state;
 
-    // Before movies have been loaded
-    if (!movies) return <div className="main-view" />;
+    if (!movies) {
+      return (
+        <div className="main-view">
+          No Movies
+        </div>
+      );
+    }
 
     return (
-
-       <section>
-         <MovieCard />
-       </section>
-    /* <div className='main-view'>
-        {selectedMovie ? (
-          <MovieView movie={selectedMovie} onClick={() => this.setInititalState()} />
-        ) : (movies.map((movie) => (
-          <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
-        ))
-          )}
+      <div className="main-view">
+        <MovieCard/>
       </div>
-  */
     );
   }
-}
+} 
