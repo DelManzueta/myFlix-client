@@ -31774,13 +31774,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(MainView);
 
-  function MainView(props) {
+  function MainView() {
     var _this;
 
     _classCallCheck(this, MainView);
 
-    _this = _super.call(this, props); // Initialize the state to an empty object so we can destructrue it later
-
+    _this = _super.call(this);
     _this.state = {};
     return _this;
   }
@@ -31791,6 +31790,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       _axios.default.get('https://myflixdbs-z.herokuapp.com/').then(function (response) {
+        // Assign the result to the state
         _this2.setState({
           movies: response.data
         });
@@ -31799,19 +31799,37 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onMovieClick",
+    value: function onMovieClick(movie) {
+      this.setState({
+        selectedMovie: movie
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var movies = this.state.movies;
+      var _this3 = this;
 
-      if (!movies) {
-        return _react.default.createElement("div", {
-          className: "main-view"
-        }, "No Movies");
-      }
-
+      var _this$state = this.state,
+          movies = _this$state.movies,
+          selectedMovie = _this$state.selectedMovie;
+      if (!movies) return _react.default.createElement("div", {
+        className: "main-view"
+      });
+      console.log('This is my error message');
       return _react.default.createElement("div", {
         className: "main-view"
-      }, _react.default.createElement(_movieCard.MovieCard, null));
+      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
+        movie: selectedMovie
+      }) : movies.map(function (movie) {
+        return _react.default.createElement(_movieCard.MovieCard, {
+          key: movie.id,
+          movie: movie,
+          onClick: function onClick(movie) {
+            return _this3.onMovieClick(movie);
+          }
+        });
+      }));
     }
   }]);
 
@@ -31926,7 +31944,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-// Main compontent. This will eventually use all of the other components.
+// Main component (will eventrually use all the others)
 var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _inherits(MyFlixApplication, _React$Component);
 
@@ -31941,17 +31959,15 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _createClass(MyFlixApplication, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
-        className: "main-vew"
-      }, _react.default.createElement(_mainView.MainView, null), _react.default.createElement("span", null, _react.default.createElement("h1", null, "Index.jsx")));
+      return _react.default.createElement(_mainView.MainView, null);
     }
   }]);
 
   return MyFlixApplication;
-}(_react.default.Component); // Finds the root of the app
+}(_react.default.Component); // Finds the root of your app
 
 
-var container = document.getElementsByClassName('app-container')[0]; // Tells React to render the app in the root DOM element
+var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the rood DOM element
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/MainView/main-view":"components/MainView/main-view.jsx","./index.scss":"index.scss"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

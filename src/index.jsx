@@ -1,25 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {MainView} from './components/MainView/main-view'
-//Import statement to indicade that you need to bundle '.index.scss'
+import { MainView } from './components/MainView/main-view';
+
+// Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
-
-// Main compontent. This will eventually use all of the other components.
+// Main component (will eventrually use all the others)
 class MyFlixApplication extends React.Component {
   render() {
-    return (
-      <div className="main-vew">
-
-        <MainView />
-        <span><h1>Index.jsx</h1></span>
-      </div>
-    )
+    return <MainView />;
   }
 }
 
-// Finds the root of the app
+// Finds the root of your app
 const container = document.getElementsByClassName('app-container')[0];
 
-// Tells React to render the app in the root DOM element
+// Tells React to render your app in the rood DOM element
 ReactDOM.render(React.createElement(MyFlixApplication), container);
