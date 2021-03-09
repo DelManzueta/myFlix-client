@@ -1,13 +1,15 @@
 import React from 'react';
 
+import {MainVew} from '../MainView/main-view';
+import {MovieCard} from '../MovieCard/movie-card'
+
+
 export class MovieView extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {};
     }
-
-
 
     render() {
         const { movie, onClick } = this.props;

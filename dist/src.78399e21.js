@@ -31620,8 +31620,13 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          _onClick = _this$props.onClick;
       return _react.default.createElement("div", {
+        onClick: function onClick() {
+          return _onClick(movie);
+        },
         className: "movie-card"
       }, movie.Title);
     }
@@ -31640,6 +31645,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.MovieView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+var _mainView = require("../MainView/main-view");
+
+var _movieCard = require("../MovieCard/movie-card");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31729,7 +31738,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
-},{"react":"../node_modules/react/index.js"}],"components/MainView/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../MainView/main-view":"components/MainView/main-view.jsx","../MovieCard/movie-card":"components/MovieCard/movie-card.jsx"}],"components/MainView/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31779,8 +31788,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, MainView);
 
-    _this = _super.call(this);
-    _this.state = {};
+    _this = _super.call(this); // Initialize the state to an empty object so we can destructure it later
+
+    _this.state = {
+      movies: null,
+      selectedMovie: null
+    };
     return _this;
   }
 
@@ -31789,45 +31802,31 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get("https://myflixdbs-z.herokuapp.com").then(res = res.json().then(function (movies) {
-        console.log(movies);
-
+      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies').then(function (res) {
         _this2.setState({
-          movies: movies.data
+          movies: res.data
         });
-      }));
-    }
-  }, {
-    key: "onMovieClick",
-    value: function onMovieClick(movie) {
-      this.setState({
-        selectedMovie: movies
+      }).catch(function (err) {
+        console.log(err);
       });
+
+      console.log('Did component mount?');
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
-      var _this$state = this.state,
-          movies = _this$state.movies,
-          selectedMovie = _this$state.selectedMovie;
+      var movies = this.state.movies;
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
       console.log('RENDER BEFORE RETURN');
       return _react.default.createElement("div", {
         className: "main-view"
-      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
-      }) : movies.map(function (movie) {
-        return _react.default.createElement(_movieCard.MovieCard, {
-          key: movie.id,
-          movie: movie,
-          onClick: function onClick(movie) {
-            return _this3.onMovieClick(movie);
-          }
-        });
+      }, movies.map(function (movie) {
+        return _react.default.createElement("div", {
+          className: "movie-card",
+          key: movie._id
+        }, movie.Title);
       }));
     }
   }]);
@@ -31943,7 +31942,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-// Main component (will eventrually use all the others)
 var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _inherits(MyFlixApplication, _React$Component);
 
@@ -31963,10 +31961,9 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return MyFlixApplication;
-}(_react.default.Component); // Finds the root of your app
+}(_react.default.Component);
 
-
-var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the rood DOM element
+var container = document.getElementsByClassName('app-container')[0];
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/MainView/main-view":"components/MainView/main-view.jsx","./index.scss":"index.scss"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -31997,7 +31994,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56045" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
