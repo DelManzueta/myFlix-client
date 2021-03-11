@@ -1,7 +1,9 @@
-  
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap');
+$ff-primary:'Poppins', sans-serif;
+$ff-secondary: 'Raleway', sans-serif;
 $color: steelblue;
 
 body {
   background-color: #fff;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }

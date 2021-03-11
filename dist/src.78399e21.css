@@ -1,15 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap");
+a {
+  color: #92badd;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 40px 8px 10px 8px;
+  color: #cccccc;
+}
+
 .login-container {
   background-color: #FFFFFF;
-  width: 400px;
-  height: 400px;
-  margin: 7em auto;
+  width: 750px;
+  height: 500px;
   border-radius: 1.5em;
-  box-shadow: 39px 39px 100px #bebebe, -39px -39px 100px #ffffff;
+  box-shadow: 5px 5px 100px #d6d6d6;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 
 .register-button, .submit-login {
   color: #000;
-  background-color: #e93d04;
   border: 2px solid #000;
   border-radius: 5px;
   padding: 5px;
@@ -37,37 +56,40 @@ Button:hover {
   font-weight: bold;
   font-size: 23px;
 }
+
+.formFields {
+  border-color: rgba(156, 156, 156, 0.5);
+  display: inline-block;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+  padding: 35px 0;
+  margin: 25px 0;
+  letter-spacing: 1px;
+}
 .registration-container {
   background-color: #b5b5b5;
   border-radius: 5px;
 }
 .card-container {
   width: 100vw;
-  background-color: #000;
-  margin: 0 auto;
 }
 
 .movie-card {
-  background-color: #b5b5b5;
-  text-align: center;
-  border: 5px groove #e93d04;
-  border-radius: 15px;
-  padding: 2%;
-  color: #000;
-  font-weight: bold;
-  width: 33vw;
-  margin: 0 auto;
+  margin: auto;
+  padding: auto;
 }
 
 .movie-poster {
-  border: 7px outset #cecece;
-  border-radius: 15px;
+  background-color: #cecece;
+  width: 125px;
+  height: 50px;
 }
 
 .movie-title {
-  text-decoration: underline;
-  font-size: 180%;
-  color: #e93d04;
+  text-decoration: none;
+  text-align: left;
 }
 
 .open-button {
@@ -76,8 +98,6 @@ Button:hover {
 .movie-view {
   text-align: center;
   margin: 5vh auto;
-  background-color: #b5b5b5;
-  border: 8px groove #e93d04;
   padding: 5%;
 }
 
@@ -110,9 +130,10 @@ Button:hover {
   font-size: 120%;
   color: #e93d04;
 }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap");
 body {
   background-color: #fff;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

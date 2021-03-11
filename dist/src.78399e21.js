@@ -34282,15 +34282,17 @@ function LoginView(props) {
   }, "Welcome Back"), _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+    className: "formFields",
     type: "text",
-    placeholder: "Enter Username",
+    placeholder: "Login",
     value: username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+    className: "formFields",
     type: "password",
     placeholder: "Password",
     value: password,
@@ -34298,16 +34300,16 @@ function LoginView(props) {
       return setPassword(e.target.value);
     }
   })), _react.default.createElement(_Button.default, {
-    className: "submit-login",
+    className: "btn-active",
     variant: "button",
     type: "submit",
     onClick: handleSubmit
   }, "Login"), _react.default.createElement(_Button.default, {
+    className: "btn-inactive",
     onClick: function onClick() {
       return window.open("RegistrationView", "_self");
     },
     variant: "button",
-    className: "register-button",
     type: "submit"
   }, "Register")));
 }
