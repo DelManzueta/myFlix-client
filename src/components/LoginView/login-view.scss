@@ -4,8 +4,11 @@ $font-stack: sans-serif;
 
 .login-container {
   background-color: $primaryColor;
-  border: 5px groove $secondaryColor;
-  border-radius: 5px;
+  border: 5px solid $secondaryColor;
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow:  39px 39px 100px #bebebe,
+             -39px -39px 100px #ffffff;
   margin: 33vh auto;
   font-family: sans-serif;
   width: 40vw;
@@ -27,4 +30,11 @@ Button:hover {
   background-color: #00b7ff;
   font-weight: bold;
   text-decoration: none;
+}
+
+.contain{
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow:  39px 39px 100px #bebebe,
+             -39px -39px 100px #ffffff;
 }

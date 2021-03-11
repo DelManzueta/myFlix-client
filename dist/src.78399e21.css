@@ -1,7 +1,9 @@
 .login-container {
   background-color: #b5b5b5;
-  border: 5px groove #e93d04;
-  border-radius: 5px;
+  border: 5px solid #e93d04;
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow: 39px 39px 100px #bebebe, -39px -39px 100px #ffffff;
   margin: 33vh auto;
   font-family: sans-serif;
   width: 40vw;
@@ -23,6 +25,12 @@ Button:hover {
   background-color: #00b7ff;
   font-weight: bold;
   text-decoration: none;
+}
+
+.contain {
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow: 39px 39px 100px #bebebe, -39px -39px 100px #ffffff;
 }
 .registration-container {
   background-color: #b5b5b5;
@@ -98,7 +106,8 @@ Button:hover {
   color: #e93d04;
 }
 body {
-  background-color: #2e2e2e;
+  background-color: #F3EBF6;
+  font-family: "Ubuntu", sans-serif;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */
