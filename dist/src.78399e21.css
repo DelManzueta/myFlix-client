@@ -1,13 +1,10 @@
 .login-container {
-  background-color: #b5b5b5;
-  border: 5px solid #e93d04;
-  border-radius: 30px;
-  background: #e0e0e0;
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
   box-shadow: 39px 39px 100px #bebebe, -39px -39px 100px #ffffff;
-  margin: 33vh auto;
-  font-family: sans-serif;
-  width: 40vw;
-  padding: 3%;
 }
 
 .register-button, .submit-login {
@@ -31,6 +28,14 @@ Button:hover {
   border-radius: 30px;
   background: #e0e0e0;
   box-shadow: 39px 39px 100px #bebebe, -39px -39px 100px #ffffff;
+}
+
+.sign {
+  padding-top: 40px;
+  color: #b5b5b5;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 23px;
 }
 .registration-container {
   background-color: #b5b5b5;
@@ -106,7 +111,7 @@ Button:hover {
   color: #e93d04;
 }
 body {
-  background-color: #F3EBF6;
+  background-color: #fff;
   font-family: "Ubuntu", sans-serif;
 }
 

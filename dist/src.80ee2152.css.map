@@ -1,1 +1,1 @@
-{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAGA;EACE;EACA","file":"src.80ee2152.css","sourceRoot":"../src","sourcesContent":["  \r\n$color: steelblue;\r\n\r\nbody {\r\n  background-color: #F3EBF6;\r\n  font-family: 'Ubuntu', sans-serif;\r\n}"]}
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAGA;EACE;EACA","file":"src.80ee2152.css","sourceRoot":"../src","sourcesContent":["  \r\n$color: steelblue;\r\n\r\nbody {\r\n  background-color: #fff;\r\n  font-family: 'Ubuntu', sans-serif;\r\n}"]}

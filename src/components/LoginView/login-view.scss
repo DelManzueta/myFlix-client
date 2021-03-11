@@ -3,16 +3,13 @@ $secondaryColor: #e93d04;
 $font-stack: sans-serif;
 
 .login-container {
-  background-color: $primaryColor;
-  border: 5px solid $secondaryColor;
-  border-radius: 30px;
-  background: #e0e0e0;
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
   box-shadow:  39px 39px 100px #bebebe,
              -39px -39px 100px #ffffff;
-  margin: 33vh auto;
-  font-family: sans-serif;
-  width: 40vw;
-  padding: 3%;
 }
 
 .register-button, .submit-login {
@@ -37,4 +34,12 @@ Button:hover {
   background: #e0e0e0;
   box-shadow:  39px 39px 100px #bebebe,
              -39px -39px 100px #ffffff;
+}
+
+.sign {
+  padding-top: 40px;
+  color: $primaryColor;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
 }

@@ -34276,7 +34276,10 @@ function LoginView(props) {
 
   return _react.default.createElement(_Container.default, {
     className: "login-container"
-  }, _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
+  }, _react.default.createElement("p", {
+    "class": "sign",
+    align: "center"
+  }, "Welcome Back"), _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
     type: "text",

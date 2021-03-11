@@ -19,6 +19,7 @@ export function LoginView(props) {
 
   return (
     <Container className="login-container">
+      <p class="sign" align="center">Welcome Back</p>
       <Form>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username:</Form.Label>
