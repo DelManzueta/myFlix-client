@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAGA;EACE","file":"src.80ee2152.css","sourceRoot":"../src","sourcesContent":["  \r\n$color: steelblue;\r\n\r\nbody {\r\n  background-color: #2e2e2e;\r\n}"]}

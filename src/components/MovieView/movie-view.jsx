@@ -1,37 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
-// The movie info that is accessed via the click
+import { MainView } from '../MainView/main-view';
+
+import './movie-view.scss';
+
 export class MovieView extends React.Component {
 
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      mainView: null
+    };
   }
 
   render() {
-    const { movie } = this.props;
-  
+    const { movie, onClick, button } = this.props;
+    const { mainView } = this.state;
+
     if (!movie) return null;
 
     return (
-      <Row className="main-view justify-content-md-center">
-        {selectedMovie
-          ? (
-            <Col md={8}>
-              <MovieView movie={selectedMovie} onBackClick={movie => this.onMovieClick(null)} />
-            </Col>
-          )
-          : movies.map(movie => (
-            <Col md={3}>
-              <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
-            </Col>
-          ))
-        }
-      </Row>
+      <Container className="movie-view">
+        <img className="movieView-poster" src={movie.ImagePath} />
+        <div className="movie-title">
+          <span className="value">{movie.Title}</span>
+        </div>
+        <div className="movie-description">
+          <span className="label">Description: </span>
+          <span className="value">{movie.Description}</span>
+        </div>
+        <div className="movie-genre">
+          <span className="label">Genre: </span>
+          <span className="value">{movie.Genre.Name}</span>
+        </div>
+        <div className="movie-director">
+          <span className="label">Director: </span>
+          <span className="value">{movie.Director.Name}</span>
+        </div>
+        <div className="back-button">
+          <Button onClick={() => window.open(mainView, "_self")} className="back-button" variant="outline-primary" size="lg">Back</Button>
+        </div>
+      </Container>
     );
-
   }
 }
