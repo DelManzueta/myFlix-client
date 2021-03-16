@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import axios from 'axios';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './login-view.scss';
 
 export function LoginView(props) {
@@ -17,23 +19,24 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
+  
   return (
     <Container className="login-container">
-      <p class="sign" align="center">Welcome Back</p>
+      <p className="sign" align="center">Welcome Back</p>
       <Form>
         <Form.Group controlId="formBasicUsername">
         <Form.Label>Username:</Form.Label>
           <Form.Control
             className="formFields"
             type="text"
-            placeholder="Login"
+            placeholder="Username or Email"
             value={username}
             onChange={(e) => setUsername(e.target.value)} />
             
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-        <Form.Label>Username:</Form.Label>
+        <Form.Label>Password:</Form.Label>
           <Form.Control
             className="formFields"
             type="password"

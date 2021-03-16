@@ -1,9 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+$white: #ffe2d1;
+$black: #141414; 
+$secondary: #480048;
+$accent: #a2faa3;
+$error: #e28413;
 $ff-primary:'Poppins', sans-serif;
 $ff-secondary: 'Raleway', sans-serif;
-$color: steelblue;
 
-body {
-  background-color: #fff;
+body { 
   font-family: 'Poppins', sans-serif;
+}
+
+.box {
+  margin: 0 auto;
+  max-width: 50vw; 
+  height: 10vh;
+  border: 2px solid $black;
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+
 }
