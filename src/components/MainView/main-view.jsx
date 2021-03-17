@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { LoginView } from '../LoginView/login-view';
 import { RegistrationView } from '../RegistrationView/regis-view';
 import { MovieCard } from '../MovieCard/movie-card';
-import { MovieView } from '../MovieView/movie-view';
+import { MovieView } from '../MovieView/movie-view'
 
 export class MainView extends React.Component {
   constructor() {
@@ -15,14 +15,15 @@ export class MainView extends React.Component {
 
     // Initialize the state to an empty object so we can destructrue it later
     this.state = {
-      movies: null,
-      selectedMovie: null,
+      movies: [],
       user: null
     };
   }
 
-  componentDidMount() {
-    axios.get('https://myflixdbs-z.herokuapp.com/movies')
+  getMovies(token) {
+    axios.get('https://myflixdbs-z.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then(response => {
         // Assign the result to the state
         this.setState({
@@ -34,38 +35,63 @@ export class MainView extends React.Component {
       });
   }
 
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
     });
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
   }
 
   // this overrides the render() method of the superclass
   render() {
 
     // Before data is initially loaded
-    const { movies, selectedMovie, user } = this.state;
-
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    const { movies, user } = this.state;
 
     // Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
-      <Container className="main-view">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} />
-          : movies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-          ))
-        }
-      </Container>
+      <Router>
+        <Container className="main-view">
+
+          <Route exact path="/" render={() => {
+            if (!user)
+              return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            return movies.map(m => <MovieCard key={m._id} movie={m} />);
+          }} />
+
+          <Route path="/register" render={() => <RegistrationView />} />
+
+          <Route exact path="/movies/:movieId" render={({ match }) =>
+            <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+
+          <Route exact path="/genres/:name" render={({ match }) => {
+            if (!movies) return <Container className="main-view" />;
+            return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+          }} />
+          
+          <Route exact path="/directors/:name" render={({ match }) => {
+            if (!movies) return <Container className="main-view" />;
+            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+          }} />
+
+        </Container>
+      </Router>
     );
   }
 }

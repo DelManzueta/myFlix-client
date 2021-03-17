@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import axios from 'axios';
 import './login-view.scss';
+import { Link } from 'react-router-dom';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -14,42 +13,48 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     // Send request to server for auth
-    props.onLoggedIn(username);
+    axios.post('https://myflixdbs-z.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+      .then(response => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch(e => {
+        console.log('no such user')
+      });
   };
 
-  
   return (
     <Container className="login-container">
-      <p className="sign" align="center">Welcome Back</p>
       <Form>
         <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username:</Form.Label>
+          <Form.Label>Username:</Form.Label>
           <Form.Control
-            className="formFields"
             type="text"
-            placeholder="Username or Email"
+            placeholder="Enter Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)} />
-            
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password:</Form.Label>
+          <Form.Label>Password:</Form.Label>
           <Form.Control
-            className="formFields"
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
-        <Button className="btn-active" variant="button" type="submit" onClick={handleSubmit}>
+        <Button className="submit-login" variant="button" type="submit" onClick={handleSubmit}>
           Login
         </Button>
-        <Button className="btn-inactive" onClick={() => window.open("RegistrationView", "_self")} variant="button" type="submit">
-          Register
+        <Link to={`/register`}>
+          <Button variant="link" className="register-button" type="submit">
+            Register
           </Button>
+        </Link>
       </Form>
     </Container>
   );
