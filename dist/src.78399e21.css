@@ -1,3 +1,10 @@
+.main-view {
+  background-color: #000;
+}
+.registration-container {
+  background-color: #b5b5b5;
+  border-radius: 5px;
+}
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap");
 /*!
@@ -9992,10 +9999,6 @@ button:hover {
   border-color: rgba(156, 156, 156, 0.5);
   display: inline-block;
   justify-content: space-around;
-}
-.registration-container {
-  background-color: #b5b5b5;
-  border-radius: 5px;
 }
 .card-container {
   width: 100vw;
