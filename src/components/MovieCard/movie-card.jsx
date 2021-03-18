@@ -1,49 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-
-
 import { Link } from 'react-router-dom';
+
+import {
+  Container,
+  Card,
+  Button,
+  Col,
+  Row
+} from 'react-bootstrap'; 
 
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    const { 
-      movie,
-      onClick
-    } = this.props;
+    const {movie} = this.props;
 
     return (
-
-      <Container className="movie-card-container">
-        <Row>
-          <Col>
-            <Card className="card">
-              <Card.Img variant="top" src={movie.ImagePath} />
-              <Card.Body>
-                <Card.Title className="card-Title">{movie.Title}</Card.Title>
-                <Card.Text className="card-Text">{movie.Description}</Card.Text>
-                <Link to={`/movies/${movie._id}`}>
-                  <Button className="button-open">Open</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container >
+      <div className="card-div">
+        <Container className="card-container">
+          <Card className="movie-card">
+            <Card.Img className="movie-poster" variant="top" src={movie.ImagePath} />
+            <Card.Body>
+              <Card.Title className="movie-title">{movie.Title}</Card.Title>
+              <Card.Text className="movie-description">{movie.Description}</Card.Text>
+              <Link to={`/movies/${movie._id}`}>
+                <Button variant="link" size="lg" block className="open-button">Open</Button>
+              </Link>
+            </Card.Body>
+          </Card>
+        </Container >
+      </div>
     );
   }
 }
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
+    Description: PropTypes.string.isRequired
   }).isRequired,
 };

@@ -1,9 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'; 
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button'; 
 
 import { Link } from 'react-router-dom';
 
@@ -11,12 +8,27 @@ import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {};
   }
 
+  handleAddFavorite(e, movie) {
+    e.preventDefault();
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    axios({
+      method: 'post',
+      url: `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie._id}`,
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => {
+        console.log(`${movie.Title} was add to Favorites`);
+      }).catch(function (err) {
+        console.log(err)
+      })
+  }
 
   render() {
     const { movie } = this.props;
@@ -24,53 +36,40 @@ export class MovieView extends React.Component {
     if (!movie) return null;
 
     return (
-      <Container className="movie-view-container">
-        <Row>
-          <Col>
-            <div className="movie-view">
-              <img className="movie-poster" src={movie.ImagePath} />
-              <div className="movie-title">
-                <span className="label">Title: </span>
-                <span className="value">{movie.Title}</span>
-              </div>
-              <div className="movie-description">
-                <span className="label">Description: </span>
-                <span className="value"> {movie.Description}</span>
-              </div>
-
-              <div className="movie-genre">
-                <span className="label"> Genre: </span>
-                <span className="value">{movie.Genre.Name}</span>
-              </div>
-              <div className="movie-director">
-                <span className="label">Director: </span>
-                <span className="value">{movie.Director.Name}</span>
-              </div>
-              <Link to={`/`}>
-                <Button className=" button-goBack">Back</Button>
-              </Link>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <Container className="movie-view">
+        <img className="movieView-poster" src={movie.ImagePath} />
+        <div className="movie-title">
+          <span className="value">{movie.Title}</span>
+        </div>
+        <div className="movie-description">
+          <span className="label">Description: </span>
+          <span className="value">{movie.Description}</span>
+        </div>
+        <div className="movie-genre">
+          <span className="label">Genre: </span>
+          <span className="value">{movie.Genre.Name}</span>
+        </div>
+        <div className="movie-director">
+          <span className="label">Director: </span>
+          <span className="value">{movie.Director.Name}</span>
+        </div>
+        <br></br>
+        <Container className="button-container">
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button className="director-button" size="lg">Director Info</Button>
+          </Link>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button className="genre-button" size="lg">Genre Info</Button>
+          </Link>
+          <br></br>
+          <br></br>
+          <Button size="lg" block className="favorite-button" value={movie._id}
+            onClick={(e) => this.handleAddFavorite(e, movie)} > Add to Favorites</Button>
+          <Link to={`/`}>
+            <Button className="movies-button" size="lg" block>Back</Button>
+          </Link>
+        </Container >
+      </Container >
     );
   }
-}
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.date,
-      Death: PropTypes.date
-    }),
-    ImagePath: PropTypes.string.isRequired
-  }).isRequired
 }

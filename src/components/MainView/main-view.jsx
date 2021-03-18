@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import {
+  Nav,
+  Navbar,
+  Button
+} from 'react-bootstrap';
 
-import './main-view.scss';
 
 import {LoginView} from '../LoginView/login-view';
 import {RegistrationView} from '../RegistrationView/regis-view';
@@ -16,34 +17,23 @@ import {MovieCard} from '../MovieCard/movie-card';
 import {MovieView} from '../MovieView/movie-view';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
- 
+
+import './main-view.scss';
 
 export class MainView extends React.Component {
+  constructor(props) {
+    super(props);
 
-  constructor() {
-    super();
-
+    // Initialize the state to an empty object so we can destructrue it later
     this.state = {
-      movies: null,
-      selectedMovie: null,
-      user: null,
-      newUser: null
+      movies: [],
+      user: null
     };
-  }
-
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
   }
 
   getMovies(token) {
     axios.get('https://myflixdbs-z.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then(response => {
         // Assign the result to the state
@@ -56,12 +46,15 @@ export class MainView extends React.Component {
       });
   }
 
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user'),
+      });
+      this.getMovies(accessToken);
+    }
   }
-
 
   onLoggedIn(authData) {
     console.log(authData);
@@ -69,92 +62,67 @@ export class MainView extends React.Component {
       user: authData.user.Username
     });
 
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.Username);
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
   }
 
-  registerUser() {
-    this.setState({
-      newUser: true,
-    })
-  }
-
-  userRegistered() {
-    this.setState({
-      newUser: null,
-    })
-  }
-
-  logOutHandler() {
+  onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.setState({
+      user: null,
+    });
+    window.open('/', '_self');
   }
-
-
 
   render() {
 
-    const { 
-      movies,
-      selectedMovie,
-      user,
-      newUser
-    } = this.state;
+    // Before data is initially loaded
+    const { user, movies } = this.state;
+    const username = localStorage.getItem('user');
 
-    if (!user) {
-      if (newUser) return (
-        <RegistrationView
-          userRegistered={() => this.userRegistered()}
-          onLoggedIn={user => this.onLoggedIn(user)}
-        />
-      );
-
-      else return (
-        <LoginView
-          onLoggedIn={user => this.onLoggedIn(user)}
-          newUser={() => this.registerUser()}
-        />
-      );
-    }
-
-
+    // Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
-
       <Router>
-        <div className="main-view">
-          <Container className="main-view-container">
-            <Row>
-              <Route exact path="/" render={() => movies.map(m =>
-                <MovieCard key={m._id} movie={m} />)} />
-
-              <Route path="/movies/:movieId" render={({ match }) =>
-                <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
-
-              <Route path="/directors/:name" render={({ match }) => {
-                if (!movies) return <div className="main-view" />;
-                return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
-              }
-              } />
-            </Row>
-          </Container>
-        </div>
+        <Navbar expand="lg">
+          <Navbar.Brand as={Link} to="/">Murph's Movie API</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to={`/users/${username}`}>Profile</Nav.Link>
+              <Button size="sm" onClick={() => this.onLoggedOut()}>
+                <b>Log Out</b>
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <br></br>
+        <Container className="main-view">
+          <Route exact path="/" render={() => {
+            if (!user)
+              return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            return movies.map(m => <MovieCard key={m._id} movie={m} />);
+          }} />
+          <Route path="/register" render={() => <RegistrationView />} />
+          <Route exact path="/movies/:movieId" render={({ match }) =>
+            <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+          <Route exact path="/genres/:name" render={({ match }) => {
+            if (!movies) return <Container className="main-view" />;
+            return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+          }} />
+          <Route exact path="/directors/:name" render={({ match }) => {
+            if (!movies) return <Container className="main-view" />;
+            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+          }} />
+          <Route exact path="/users/:username" render={() => {
+            return <ProfileView movies={movies} />
+          }} />
+        </Container>
       </Router >
     );
   }
-}
-
-MainView.propTypes = {
-  movies: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  }),
-  selectedMovie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  })
 }
