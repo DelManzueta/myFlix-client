@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import "./movie-view.scss";
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 

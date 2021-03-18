@@ -1,28 +1,31 @@
-$primaryColor: #b5b5b5;
-$secondaryColor: #e93d04;
-$font-stack: sans-serif;
+$first-color: #87556f;
+$second-color: #59405c;
+$font-stack: "Poiret One",
+sans-serif;
 
-.card-container {
-  width: 100vw;  
+.movie-card-container {
+  font-family: $font-stack;
+  text-align: center;
 }
 
-.movie-card { 
-  margin: auto;
-  padding: auto;  
-
+.card {
+  width: 16rem;
+  margin-top: 10px;
 }
 
-.movie-poster {
-  background-color: #cecece;
-  width: 125px;
-  height: 50px;
+.card-title {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.movie-title {
-  text-decoration: none;
-  text-align: left;
+.button-open {
+  background-color: $first-color;
+  font-size: 15px;
+  border: none;
 }
 
-.open-button {
-  margin-top: 5vh;
+.button-open:hover,
+.button-open:focus {
+  background-color: $second-color;
+  border: none;
 }

@@ -1,17 +1,20 @@
-import React from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+import React from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
-import "./main-view.scss";
+
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+
+import './main-view.scss';
 
 import {LoginView} from '../LoginView/login-view';
 import {RegistrationView} from '../RegistrationView/regis-view';
 import {MovieCard} from '../MovieCard/movie-card';
 import {MovieView} from '../MovieView/movie-view';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
  
 

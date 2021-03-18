@@ -10000,28 +10000,31 @@ button:hover {
   display: inline-block;
   justify-content: space-around;
 }
-.card-container {
-  width: 100vw;
+.movie-card-container {
+  font-family: "Poiret One", sans-serif;
+  text-align: center;
 }
 
-.movie-card {
-  margin: auto;
-  padding: auto;
+.card {
+  width: 16rem;
+  margin-top: 10px;
 }
 
-.movie-poster {
-  background-color: #cecece;
-  width: 125px;
-  height: 50px;
+.card-title {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.movie-title {
-  text-decoration: none;
-  text-align: left;
+.button-open {
+  background-color: #87556f;
+  font-size: 15px;
+  border: none;
 }
 
-.open-button {
-  margin-top: 5vh;
+.button-open:hover,
+.button-open:focus {
+  background-color: #59405c;
+  border: none;
 }
 .movie-view {
   text-align: center;
