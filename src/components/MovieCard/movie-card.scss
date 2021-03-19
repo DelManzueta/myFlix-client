@@ -1,31 +1,65 @@
-$first-color: #87556f;
-$second-color: #59405c;
-$font-stack: "Poiret One",
-sans-serif;
+$primaryColor: #b5b5b5;
+$secondaryColor: #e93d04;
+$font-stack: sans-serif;
 
-.movie-card-container {
-  font-family: $font-stack;
+.card-div {
+  //margin-top: 15%;
+}
+
+.card-container {
+  width: 100vw;
+  background-color: #000;
+  margin: 0 auto;
+  //margin-left: 15%;
+}
+
+.movie-card {
+  background-color: $primaryColor;
   text-align: center;
-}
-
-.Card {
-  width: 16rem;
-  margin-top: 10px;
-}
-
-.Card-Title {
+  border: 5px groove $secondaryColor;
+  border-radius: 15px;
+  padding: 2%;
+  color: #000;
   font-weight: bold;
+  width: 45vw;
+  margin: 0 auto;
+}
+
+.movie-poster {
+  border: 7px outset #cecece;
+  border-radius: 15px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.movie-title {
   text-decoration: underline;
+  font-size: 180%;
+  color: $secondaryColor;
 }
 
-.button-open {
-  background-color: $first-color;
-  font-size: 15px;
-  border: none;
+.button-container {
+  padding: 5%;
 }
 
-.button-open:hover,
-.button-open:focus {
-  background-color: $second-color;
-  border: none;
+.open-button {
+  color: #000;
+  background-color: $secondaryColor;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  margin: 5% auto;
+  font-weight: bold;  
+}
+
+.favorite-button {
+  color: #000;
+  background-color: $secondaryColor;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  margin: 5% auto;
+  font-weight: bold;
 }

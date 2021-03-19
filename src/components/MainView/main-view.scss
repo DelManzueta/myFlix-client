@@ -1,7 +1,16 @@
-$font-stack: "Poiret One",
-sans-serif;
+$primaryColor: #b5b5b5;
+$secondaryColor: #e93d04;
+$font-stack: sans-serif;
 
-.main-view-container {
-  font-family: $font-stack;
-  display: flex;
+.main-view {
+  background-color: #000;
+}
+
+.navbar {
+  background-color: $primaryColor;
+  position: static;
+  border: 1px solid $secondaryColor;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  display: inline-block;
 }

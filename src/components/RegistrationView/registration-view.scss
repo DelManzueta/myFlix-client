@@ -1,19 +1,23 @@
-$first-color: #87556f;
-$second-color: #59405c;
-$font-stack: "Poiret One",
-sans-serif;
+$primaryColor: #b5b5b5;
+$secondaryColor: #e93d04;
+$font-stack: sans-serif;
 
-
-.registration-view-container {
-  font-family: $font-stack;
+.registration-container {
+  background-color: $primaryColor;
+  border: 5px groove $secondaryColor;
+  border-radius: 5px;
+  margin: 10vh auto;
+  font-family: sans-serif;
+  padding: 3%;
 }
 
-.button-register {
-  background-color: $first-color;
-  border: none;
-}
-
-.button-register:hover {
-  background-color: $second-color;
-  border: none;
-}
+.submit-user {
+  color: #000;
+  background-color: $secondaryColor;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  margin: 5px;
+  font-weight: bold;
+} 

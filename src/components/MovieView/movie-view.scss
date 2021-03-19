@@ -1,57 +1,64 @@
-$first-color: #87556f;
-$second-color: #59405c;
-$font-stack: "Poiret One",
-sans-serif;
+$primaryColor: #b5b5b5;
+$secondaryColor: #e93d04;
+$font-stack: sans-serif;
 
-@mixin for-tablet-landscape-up {
-  @media (min-width: 768px) {
-    @content;
-  }
+.movie-view {
+  text-align: center;
+  width: 40vw;
+  margin: 0 auto;
+  background-color: $primaryColor;
+  border: 8px groove $secondaryColor;
+  border-radius: 10px;
+  padding: 5%;
 }
 
 .movie-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 32px;
-  text-decoration: underline;
-}
-
-.movie-description,
-.movie-genre,
-.movie-director {
-  font-size: 20px;
+  margin: 3vh auto;
 }
 
 .movie-description {
-  margin-right: 20px;
-  margin-left: 20px;
+  color: #000;
 }
 
-.movie-view-container {
-  font-family: $font-stack;
+.movieView-poster {
+    border: 7px outset #cecece;
+    border-radius: 15px;
+    width: 25vw;
+}
+
+.movie-genre {
+  margin: 3vh auto;
+}
+
+.director-button, .genre-button {
+  color: #000;
+  background-color: $secondaryColor;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
   text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 10px 0 0;
 }
 
-.movie-poster {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  margin-bottom: 10px;
-
-  @include for-tablet-landscape-up {
-    margin: auto;
-  }
+.movies-button, .favorite-button {
+  color: #000;
+  background-color: $secondaryColor;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  margin: 3% auto;
+  font-weight: bold;  
 }
 
-.button-goBack {
-  background-color: $first-color;
-  margin: 20px auto 20px auto;
-  border: none;
+.button-container {
+  margin: 5% auto;
 }
 
-.button-goBack:hover,
-.button-goBack:focus {
-  background-color: $second-color;
-  border: none;
+.label {
+  font-weight: bold;
+  font-size: 120%;
+  color: $secondaryColor;
 }
