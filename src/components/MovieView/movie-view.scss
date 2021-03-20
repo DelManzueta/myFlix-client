@@ -4,11 +4,7 @@ $font-stack: sans-serif;
 
 .movie-view {
   text-align: center;
-  width: 40vw;
-  margin: 0 auto;
-  background-color: $primaryColor;
-  border: 8px groove $secondaryColor;
-  border-radius: 10px;
+  margin: 5vh auto; 
   padding: 5%;
 }
 
@@ -30,31 +26,10 @@ $font-stack: sans-serif;
   margin: 3vh auto;
 }
 
-.director-button, .genre-button {
-  color: #000;
-  background-color: $secondaryColor;
-  border: 2px solid #000;
+.back-button {
+  margin: 5vh auto;
   border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  font-weight: bold;
-  display: inline-block;
-  margin: 0 10px 0 0;
-}
-
-.movies-button, .favorite-button {
-  color: #000;
-  background-color: $secondaryColor;
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  margin: 3% auto;
-  font-weight: bold;  
-}
-
-.button-container {
-  margin: 5% auto;
+  color: $secondaryColor;
 }
 
 .label {

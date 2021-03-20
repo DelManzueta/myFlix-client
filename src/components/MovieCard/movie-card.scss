@@ -2,64 +2,27 @@ $primaryColor: #b5b5b5;
 $secondaryColor: #e93d04;
 $font-stack: sans-serif;
 
-.card-div {
-  //margin-top: 15%;
-}
-
 .card-container {
-  width: 100vw;
-  background-color: #000;
-  margin: 0 auto;
-  //margin-left: 15%;
+  width: 100vw;  
 }
 
-.movie-card {
-  background-color: $primaryColor;
-  text-align: center;
-  border: 5px groove $secondaryColor;
-  border-radius: 15px;
-  padding: 2%;
-  color: #000;
-  font-weight: bold;
-  width: 45vw;
-  margin: 0 auto;
+.movie-card { 
+  margin: auto;
+  padding: auto;  
+
 }
 
 .movie-poster {
-  border: 7px outset #cecece;
-  border-radius: 15px;
-  width: 60%;
-  margin: 0 auto;
+  background-color: #cecece;
+  width: 125px;
+  height: 50px;
 }
 
 .movie-title {
-  text-decoration: underline;
-  font-size: 180%;
-  color: $secondaryColor;
-}
-
-.button-container {
-  padding: 5%;
+  text-decoration: none;
+  text-align: left;
 }
 
 .open-button {
-  color: #000;
-  background-color: $secondaryColor;
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  margin: 5% auto;
-  font-weight: bold;  
-}
-
-.favorite-button {
-  color: #000;
-  background-color: $secondaryColor;
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  margin: 5% auto;
-  font-weight: bold;
+  margin-top: 5vh;
 }

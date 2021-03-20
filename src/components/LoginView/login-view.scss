@@ -1,20 +1,40 @@
 $primaryColor: #b5b5b5;
 $secondaryColor: #e93d04;
-$font-stack: sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap');
+$ff-primary:'Poppins', sans-serif;
+$ff-secondary: 'Raleway', sans-serif;
+
+ 
+a {
+  color: #92badd;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 40px 8px 10px 8px; 
+  color: #cccccc;
+}
 
 .login-container {
-  background-color: $primaryColor;
-  border: 5px groove $secondaryColor;
-  border-radius: 5px;
-  margin: 33vh auto;
-  font-family: sans-serif;
-  width: 40vw;
-  padding: 3%;
+  background-color: #FFFFFF;
+  width: 750px;
+  height: 500px; 
+  border-radius: 1.5em;
+  box-shadow:  05px 05px 100px #d6d6d6;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 
 .register-button, .submit-login {
-  color: #000;
-  background-color: $secondaryColor;
+  color: #000; 
   border: 2px solid #000;
   border-radius: 5px;
   padding: 5px;
@@ -27,4 +47,31 @@ Button:hover {
   background-color: #00b7ff;
   font-weight: bold;
   text-decoration: none;
+}
+
+.contain{
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow:  39px 39px 100px #bebebe,
+             -39px -39px 100px #ffffff;
+}
+
+.sign {
+  padding-top: 40px;
+  color: $primaryColor;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.formFields {
+  border-color: rgb(156, 156, 156,0.5);
+  display: inline-block;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+  padding: 35px 0;
+  margin: 25px 0;
+  letter-spacing: 1px;
 }

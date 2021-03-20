@@ -1,38 +1,25 @@
 import React from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-import { Link } from 'react-router-dom';
+import { MainView } from '../MainView/main-view';
 
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    this.state = {};
-  }
-
-  handleAddFavorite(e, movie) {
-    e.preventDefault();
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    axios({
-      method: 'post',
-      url: `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie._id}`,
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(res => {
-        console.log(`${movie.Title} was add to Favorites`);
-      }).catch(function (err) {
-        console.log(err)
-      })
+    this.state = {
+      mainView: null
+    };
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, onClick, button } = this.props;
+    const { mainView } = this.state;
 
     if (!movie) return null;
 
@@ -54,23 +41,10 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
-        <br></br>
-        <Container className="button-container">
-          <Link to={`/directors/${movie.Director.Name}`}>
-            <Button className="director-button" size="lg">Director Info</Button>
-          </Link>
-          <Link to={`/genres/${movie.Genre.Name}`}>
-            <Button className="genre-button" size="lg">Genre Info</Button>
-          </Link>
-          <br></br>
-          <br></br>
-          <Button size="lg" block className="favorite-button" value={movie._id}
-            onClick={(e) => this.handleAddFavorite(e, movie)} > Add to Favorites</Button>
-          <Link to={`/`}>
-            <Button className="movies-button" size="lg" block>Back</Button>
-          </Link>
-        </Container >
-      </Container >
+        <div className="back-button">
+          <Button onClick={() => window.open(mainView, "_self")} className="back-button" variant="outline-primary" size="lg">Back</Button>
+        </div>
+      </Container>
     );
   }
 }
