@@ -1,4 +1,4 @@
-
+  
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MainView } from './components/MainView/main-view'
@@ -9,15 +9,7 @@ import './index.scss';
 // Main component (will eventrually use all the others)
 class MyFlixApplication extends React.Component {
   render() {
-    return(
-
-      <div className="main-view">
-
-        <MainView/>
-
-      </div>
-
-    )
+    return <MainView />;
   }
 }
 

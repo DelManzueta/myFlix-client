@@ -24,38 +24,6 @@ Button:hover {
   font-weight: bold;
   text-decoration: none;
 }
-.card-container {
-  width: 100vw;
-  background-color: #000;
-  margin: 0 auto;
-}
-
-.movie-card {
-  background-color: #b5b5b5;
-  text-align: center;
-  border: 5px groove #e93d04;
-  border-radius: 15px;
-  padding: 2%;
-  color: #000;
-  font-weight: bold;
-  width: 33vw;
-  margin: 0 auto;
-}
-
-.movie-poster {
-  border: 7px outset #cecece;
-  border-radius: 15px;
-}
-
-.movie-title {
-  text-decoration: underline;
-  font-size: 180%;
-  color: #e93d04;
-}
-
-.open-button {
-  margin-top: 5vh;
-}
 .movie-view {
   text-align: center;
   margin: 5vh auto;
