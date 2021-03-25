@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 import './login-view.scss';
-import { Link } from 'react-router-dom';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -13,18 +12,9 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(username, password);
     // Send request to server for auth
-    axios.post('https://myflixdbs-z.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
-      .then(response => {
-        const data = response.data;
-        props.onLoggedIn(data);
-      })
-      .catch(e => {
-        console.log('no such user')
-      });
+    props.onLoggedIn(username);
   };
 
   return (
@@ -43,18 +33,16 @@ export function LoginView(props) {
           <Form.Label>Password:</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Enter Password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
         <Button className="submit-login" variant="button" type="submit" onClick={handleSubmit}>
           Login
         </Button>
-        <Link to={`/register`}>
-          <Button variant="link" className="register-button" type="submit">
-            Register
+        <Button onClick={() => window.open("RegistrationView", "_self")} variant="button" className="register-button" type="submit">
+          Register
           </Button>
-        </Link>
       </Form>
     </Container>
   );

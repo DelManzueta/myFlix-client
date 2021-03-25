@@ -1,30 +1,30 @@
-$primaryColor: #b5b5b5;
-$secondaryColor: #e93d04;
-$font-stack: sans-serif;
+// $primaryColor: #b5b5b5;
+// $secondaryColor: #e93d04;
+// $font-stack: sans-serif;
 
-.login-container {
-  background-color: $primaryColor;
-  border: 5px groove $secondaryColor;
-  border-radius: 5px;
-  margin: 33vh auto;
-  font-family: sans-serif;
-  width: 40vw;
-  padding: 3%;
-}
+// .login-container {
+//   background-color: $primaryColor;
+//   border: 5px groove $secondaryColor;
+//   border-radius: 5px;
+//   margin: 33vh auto;
+//   font-family: sans-serif;
+//   width: 40vw;
+//   padding: 3%;
+// }
 
-.register-button, .submit-login {
-  color: #000;
-  background-color: $secondaryColor;
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  margin: 5px;
-  font-weight: bold;
-}
+// .register-button, .submit-login {
+//   color: #000;
+//   background-color: $secondaryColor;
+//   border: 2px solid #000;
+//   border-radius: 5px;
+//   padding: 5px;
+//   text-align: center;
+//   margin: 5px;
+//   font-weight: bold;
+// }
 
-Button:hover {
-  background-color: #00b7ff;
-  font-weight: bold;
-  text-decoration: none;
-}
+// Button:hover {
+//   background-color: #00b7ff;
+//   font-weight: bold;
+//   text-decoration: none;
+// }
