@@ -31027,7 +31027,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"../node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
+},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"../node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js"}],"../node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -31337,7 +31337,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","process":"../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
+},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","process":"../node_modules/process/browser.js"}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
 'use strict';
 
 var utils = require('./../utils');
@@ -34182,7 +34182,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Submit"));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -34214,7 +34214,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -34249,12 +34249,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/RegistrationView/registration.scss":[function(require,module,exports) {
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/RegistrationView/registration.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/RegistrationView/registration.jsx":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/RegistrationView/registration.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34574,7 +34574,12 @@ Card.Footer = CardFooter;
 Card.ImgOverlay = CardImgOverlay;
 var _default = Card;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./createWithBsPrefix":"../node_modules/react-bootstrap/esm/createWithBsPrefix.js","./divWithClassName":"../node_modules/react-bootstrap/esm/divWithClassName.js","./CardContext":"../node_modules/react-bootstrap/esm/CardContext.js","./CardImg":"../node_modules/react-bootstrap/esm/CardImg.js"}],"components/MovieCard/movie-card.jsx":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./createWithBsPrefix":"../node_modules/react-bootstrap/esm/createWithBsPrefix.js","./divWithClassName":"../node_modules/react-bootstrap/esm/divWithClassName.js","./CardContext":"../node_modules/react-bootstrap/esm/CardContext.js","./CardImg":"../node_modules/react-bootstrap/esm/CardImg.js"}],"components/MovieCard/movie-card.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MovieCard/movie-card.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34584,11 +34589,11 @@ exports.MovieCard = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
+require("./movie-card.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34631,15 +34636,32 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           movie = _this$props.movie,
           _onClick = _this$props.onClick;
-      return _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
+      return _react.default.createElement(_Card.default, {
+        className: "movie-card"
+      }, _react.default.createElement(_Card.default.Header, {
+        className: "card-header"
+      }, movie.Title), _react.default.createElement(_Card.default.Img, {
         variant: "top",
-        src: movie.ImagePath
-      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_Button.default, {
+        src: "https://dummyimage.com/720x250/CA3C25"
+      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Description), _react.default.createElement(_Button.default, {
+        className: "sub-links",
         onClick: function onClick() {
           return _onClick(movie);
         },
         variant: "link"
-      }, "Open")));
+      }, "Genre"), _react.default.createElement(_Button.default, {
+        className: "sub-links",
+        onClick: function onClick() {
+          return _onClick(movie);
+        },
+        variant: "link"
+      }, "Director"), _react.default.createElement(_Button.default, {
+        className: "sub-links",
+        onClick: function onClick() {
+          return _onClick(movie);
+        },
+        variant: "link"
+      }, "Back to Your Profile")));
     }
   }]);
 
@@ -34647,12 +34669,12 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieCard = MovieCard;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js"}],"components/MovieView/movie-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./movie-card.scss":"components/MovieCard/movie-card.scss"}],"components/MovieView/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MovieView/movie-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MovieView/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37392,6 +37414,8 @@ exports.CarouselView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
 var _Carousel = _interopRequireDefault(require("react-bootstrap/Carousel"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -37435,16 +37459,16 @@ var CarouselView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Carousel.default, {
         fade: true
       }, _react.default.createElement(_Carousel.default.Item, null, _react.default.createElement("img", {
-        className: "d-block",
-        src: "https://dummyimage.com/720x250/7D1D3F",
+        className: "well-lock",
+        src: "https://randomwordgenerator.com/img/picture-generator/luggage-1650171_640.jpg",
         alt: "First slide"
       }), _react.default.createElement(_Carousel.default.Caption, null, _react.default.createElement("h3", null, "First slide label"), _react.default.createElement("p", null, "Nulla vitae elit libero, a pharetra augue mollis interdum."))), _react.default.createElement(_Carousel.default.Item, null, _react.default.createElement("img", {
-        className: "d-block",
-        src: "https://dummyimage.com/720x250/CA3C25",
+        className: "well-lock",
+        src: "https://dummyimage.com/2160x350/CA3C25",
         alt: "Second slide"
       }), _react.default.createElement(_Carousel.default.Caption, null, _react.default.createElement("h3", null, "Second slide label"), _react.default.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."))), _react.default.createElement(_Carousel.default.Item, null, _react.default.createElement("img", {
-        className: "d-block",
-        src: "https://dummyimage.com/720x250/7FB069",
+        className: "well-lock",
+        src: "https://dummyimage.com/2160x350/7FB069",
         alt: "Third slide"
       }), _react.default.createElement(_Carousel.default.Caption, null, _react.default.createElement("h3", null, "Third slide label"), _react.default.createElement("p", null, "Praesent commodo cursus magna, vel scelerisque nisl consectetur."))));
     }
@@ -37454,7 +37478,12 @@ var CarouselView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.CarouselView = CarouselView;
-},{"react":"../node_modules/react/index.js","react-bootstrap/Carousel":"../node_modules/react-bootstrap/esm/Carousel.js"}],"components/MainView/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Carousel":"../node_modules/react-bootstrap/esm/Carousel.js"}],"components/MainView/main-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MainView/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37479,6 +37508,8 @@ var _movieCard = require("../MovieCard/movie-card");
 var _movieView = require("../MovieView/movie-view");
 
 var _carousel = require("../Carousel/carousel");
+
+require("./main-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37562,7 +37593,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
-          user = _this$state.user; //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          user = _this$state.user; // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
       // Before movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
@@ -37570,10 +37601,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       return _react.default.createElement(_Container.default, {
         className: "main-view"
-      }, _react.default.createElement("div", {
-        className: "carousel"
-      }, _react.default.createElement(_carousel.CarouselView, null)), _react.default.createElement("div", {
-        className: "movie-card-div"
+      }, _react.default.createElement(_carousel.CarouselView, null), _react.default.createElement("div", {
+        className: "main-view-card"
       }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie
       }) : movies.map(function (movie) {
@@ -37592,12 +37621,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MainView = MainView;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","../LoginView/login-view":"components/LoginView/login-view.jsx","../RegistrationView/registration":"components/RegistrationView/registration.jsx","../MovieCard/movie-card":"components/MovieCard/movie-card.jsx","../MovieView/movie-view":"components/MovieView/movie-view.jsx","../Carousel/carousel":"components/Carousel/carousel.jsx"}],"index.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","../LoginView/login-view":"components/LoginView/login-view.jsx","../RegistrationView/registration":"components/RegistrationView/registration.jsx","../MovieCard/movie-card":"components/MovieCard/movie-card.jsx","../MovieView/movie-view":"components/MovieView/movie-view.jsx","../Carousel/carousel":"components/Carousel/carousel.jsx","./main-view.scss":"components/MainView/main-view.scss"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -37688,7 +37717,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58389" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4898" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

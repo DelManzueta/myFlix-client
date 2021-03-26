@@ -10,6 +10,8 @@ import { MovieCard } from '../MovieCard/movie-card';
 import { MovieView } from '../MovieView/movie-view';
 import { CarouselView } from '../Carousel/carousel'
 
+import './main-view.scss'
+
 export class MainView extends React.Component {
   constructor() {
     super();
@@ -53,26 +55,24 @@ export class MainView extends React.Component {
     // Before data is initially loaded
     const { movies, selectedMovie, user } = this.state;
 
-     //if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
       <Container className="main-view">
-        
-        <div className="carousel">
-          <CarouselView />
+       
+      <CarouselView></CarouselView>
+        <div className="main-view-card">
+        {selectedMovie
+          ? <MovieView movie={selectedMovie} />
+          : movies.map(movie => (
+            <MovieCard key={movie.id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+          ))
+        }
         </div>
-
-          <div className="movie-card-div">
-            {selectedMovie
-            ? <MovieView movie={selectedMovie} />
-            : movies.map(movie => (
-              <MovieCard key={movie.id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-            ))
-            }
-        </div>
+    
       </Container>
     );
   }

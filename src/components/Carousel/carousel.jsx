@@ -1,4 +1,5 @@
 import React from "react";
+import Container from  'react-bootstrap/Container';
 import Carousel from "react-bootstrap/Carousel";
 
 export class CarouselView extends React.Component {
@@ -7,8 +8,8 @@ export class CarouselView extends React.Component {
       <Carousel fade>
         <Carousel.Item>
           <img
-            className="d-block"
-            src="https://dummyimage.com/720x250/7D1D3F"
+            className="well-lock"
+            src="https://randomwordgenerator.com/img/picture-generator/luggage-1650171_640.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -18,8 +19,8 @@ export class CarouselView extends React.Component {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block"
-            src="https://dummyimage.com/720x250/CA3C25"
+            className="well-lock"
+            src="https://dummyimage.com/2160x350/CA3C25"
             alt="Second slide"
           />
 
@@ -30,8 +31,8 @@ export class CarouselView extends React.Component {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block"
-            src="https://dummyimage.com/720x250/7FB069"
+            className="well-lock"
+            src="https://dummyimage.com/2160x350/7FB069"
             alt="Third slide"
           />
 
