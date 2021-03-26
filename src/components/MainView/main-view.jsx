@@ -8,7 +8,7 @@ import { LoginView } from '../LoginView/login-view';
 import { RegistrationView } from "../RegistrationView/registration";
 import { MovieCard } from '../MovieCard/movie-card';
 import { MovieView } from '../MovieView/movie-view';
-import { Carousel } from '../Carousel/carousel'
+import { CarouselView } from '../Carousel/carousel'
 
 export class MainView extends React.Component {
   constructor() {
@@ -62,7 +62,7 @@ export class MainView extends React.Component {
       <Container className="main-view">
         
         <div className="carousel">
-          header
+          <CarouselView />
         </div>
 
           <div className="movie-card-div">
