@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Raleway&display=swap");
 a {
   color: #92badd;
@@ -128,6 +129,66 @@ Button:hover {
 }
 body {
   background-color: #000;
+=======
+.movie-card {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 1rem;
+  width: 100%;
+}
+
+.card-header {
+  display: inline-flex;
+  font-size: 2rem;
+}
+
+.btn-header {
+  font-size: 0.5em;
+  padding: 0;
+}
+
+.card-body {
+  border: 0;
+}
+
+.card-title {
+  height: 15vh;
+}
+
+.sub-links {
+  font-weight: 600;
+}
+
+.card-img {
+  height: 20vh;
+}
+
+@media only screen and (max-width: 800px) {
+  .movie-card {
+    width: 100%;
+  }
+}
+.btn-header {
+  font-size: 1.5em;
+  padding: 0;
+}
+
+.main-view-card {
+  display: block;
+}
+
+.sub-links {
+  width: auto;
+  font-size: 0.85em;
+  padding: 0;
+  margin: 0 20px;
+  align-content: right;
+}
+.my-flix {
+  color: steelblue;
+  font-size: 3rem;
+>>>>>>> 3.4
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

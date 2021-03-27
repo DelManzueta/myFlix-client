@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $primaryColor: #b5b5b5;
 $secondaryColor: #e93d04;
 $font-stack: sans-serif;
@@ -26,3 +27,45 @@ $font-stack: sans-serif;
 .open-button {
   margin-top: 5vh;
 }
+=======
+.movie-card {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left; 
+  margin: 1rem;
+  width: 100%;
+}
+
+.card-header {
+  display: inline-flex;
+  font-size: 2rem;
+}
+
+.btn-header {
+  font-size: .5em;
+  padding: 0;
+}
+
+.card-body { 
+  border: 0;
+}
+
+.card-title{
+  height: 15vh;
+}
+ 
+.sub-links { 
+  font-weight: 600;
+  
+}
+
+.card-img {
+  height: 20vh;
+}
+
+@media only screen and (max-width: 800px) {
+  .movie-card {
+    width: 100%;
+  }
+}
+>>>>>>> 3.4
