@@ -9,7 +9,7 @@ export class CarouselView extends React.Component {
         <Carousel.Item>
           <img
             className="well-lock"
-            src="https://randomwordgenerator.com/img/picture-generator/luggage-1650171_640.jpg"
+            src="https://dummyimage.com/2160x350/dd2a33"
             alt="First slide"
           />
           <Carousel.Caption>

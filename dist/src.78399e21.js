@@ -34641,6 +34641,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Card.default.Header, {
         className: "card-header"
       }, movie.Title), _react.default.createElement(_Card.default.Img, {
+        className: "card-img",
         variant: "top",
         src: "https://dummyimage.com/720x250/CA3C25"
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Description), _react.default.createElement(_Button.default, {
@@ -37460,7 +37461,7 @@ var CarouselView = /*#__PURE__*/function (_React$Component) {
         fade: true
       }, _react.default.createElement(_Carousel.default.Item, null, _react.default.createElement("img", {
         className: "well-lock",
-        src: "https://randomwordgenerator.com/img/picture-generator/luggage-1650171_640.jpg",
+        src: "https://dummyimage.com/2160x350/dd2a33",
         alt: "First slide"
       }), _react.default.createElement(_Carousel.default.Caption, null, _react.default.createElement("h3", null, "First slide label"), _react.default.createElement("p", null, "Nulla vitae elit libero, a pharetra augue mollis interdum."))), _react.default.createElement(_Carousel.default.Item, null, _react.default.createElement("img", {
         className: "well-lock",
@@ -37593,8 +37594,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
-          user = _this$state.user; // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-      // Before movies have been loaded
+          user = _this$state.user;
+      if (!user) return _react.default.createElement(_loginView.LoginView, {
+        onLoggedIn: function onLoggedIn(user) {
+          return _this3.onLoggedIn(user);
+        }
+      }); // Before movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
@@ -37717,7 +37722,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4898" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57485" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

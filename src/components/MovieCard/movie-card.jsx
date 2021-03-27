@@ -14,7 +14,7 @@ export class MovieCard extends React.Component {
           {movie.Title} 
         </Card.Header>
 
-        <Card.Img variant="top" src="https://dummyimage.com/720x250/CA3C25" />
+        <Card.Img className="card-img" variant="top" src="https://dummyimage.com/720x250/CA3C25" />
 
         <Card.Body>
           <Card.Title>{movie.Description}</Card.Title>

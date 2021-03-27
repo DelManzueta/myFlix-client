@@ -3,6 +3,7 @@
   flex-direction: column;
   text-align: left; 
   margin: 1rem;
+  width: 100%;
 }
 
 .card-header {
@@ -26,6 +27,10 @@
 .sub-links { 
   font-weight: 600;
   
+}
+
+.card-img {
+  height: 20vh;
 }
 
 @media only screen and (max-width: 800px) {
