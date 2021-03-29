@@ -4,8 +4,7 @@
     "description": "myFlix-Client",
     "main": "index.js",
     "scripts": {
-        "start": "parcel src/index.html --open",
-        "develop": "nodemon src/index.html --open"
+        "start": "parcel src/index.html --open"
     },
     "repository": {
         "type": "git",
@@ -20,11 +19,10 @@
     "dependencies": {
         "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
-        "container": "^0.0.2",
         "core-js": "^3.9.1",
         "http-auth": "^4.1.2",
         "nodemon": "^2.0.7",
-        "npm": "^7.6.3",
+        "npm": "^7.6.1",
         "parcel-bundler": "^1.12.4",
         "prop-types": "^15.7.2",
         "react": "^17.0.1",
@@ -37,7 +35,6 @@
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
-        "prettier": "2.2.1",
         "sass": "^1.32.8"
     }
 }

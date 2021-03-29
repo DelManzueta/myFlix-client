@@ -19,50 +19,32 @@ export function LoginView(props) {
 
   return (
     <Container className="login-container">
-      <p class="sign" align="center">Welcome Back</p>
       <Form>
         <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username:</Form.Label>
-<<<<<<< HEAD
+          <Form.Label>Username:</Form.Label>
           <Form.Control
-            className="formFields"
             type="text"
-            placeholder="Login"
+            placeholder="Enter Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)} />
-            
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-        <Form.Label>Username:</Form.Label>
+          <Form.Label>Password:</Form.Label>
           <Form.Control
-            className="formFields"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
-        <Button className="btn-active" variant="button" type="submit" onClick={handleSubmit}>
+        <Button className="submit-login" variant="button" type="submit" onClick={handleSubmit}>
           Login
         </Button>
-        <Button className="btn-inactive" onClick={() => window.open("RegistrationView", "_self")} variant="button" type="submit">
+        <Button onClick={() => window.open("RegistrationView", "_self")} variant="button" className="register-button" type="submit">
           Register
           </Button>
       </Form>
     </Container>
-=======
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
-
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-      </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
-      </Button>
-    </Form>
->>>>>>> 3.4
   );
 }
 

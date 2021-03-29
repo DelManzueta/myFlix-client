@@ -1,11 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-=======
-import PropTypes from 'prop-types'; 
->>>>>>> 3.4
 
 import { MainView } from '../MainView/main-view';
 
