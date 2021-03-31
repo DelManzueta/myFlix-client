@@ -1,79 +1,129 @@
-import React from 'react';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
+import React from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
+import Container from "react-bootstrap/Container";
 
-
-import { LoginView } from '../LoginView/login-view';
+import { LoginView } from "../LoginView/login-view";
 import { RegistrationView } from "../RegistrationView/registration";
-import { MovieCard } from '../MovieCard/movie-card';
-import { MovieView } from '../MovieView/movie-view';
-import { CarouselView } from '../Carousel/carousel'
+import { MovieCard } from "../MovieCard/movie-card";
+import { MovieView } from "../MovieView/movie-view";
+import { CarouselView } from "../Carousel/carousel";
 
-import './main-view.scss'
+import "./main-view.scss";
 
 export class MainView extends React.Component {
   constructor() {
     super();
 
-    // Initialize the state to an empty object so we can destructrue it later
     this.state = {
       movies: null,
       selectedMovie: null,
-      user: null
+      user: null,
+      newUser: null
     };
   }
 
-  componentDidMount() {
-    axios.get('https://myflixdbs-z.herokuapp.com/movies')
-      .then(response => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
+  getMovies(token) {
+    axios.get("https://myflixdbs-z.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        this.setState({ movies: res.data });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem("user"),
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username,
+    });
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
   onMovieClick(movie) {
     this.setState({
-      selectedMovie: movie
+      selectedMovie: movie,
     });
   }
 
   onLoggedIn(user) {
     this.setState({
-      user
+      user,
     });
   }
 
-  // this overrides the render() method of the superclass
-  render() {
+  registerUser() {
+    this.setState({
+      newUser: true,
+    })
+  }
 
-    // Before data is initially loaded
+  userRegistered() {
+    this.setState({
+      newUser: null,
+    })
+  }
+
+  logOutHandler() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
+
+  render() {
     const { movies, selectedMovie, user } = this.state;
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user)
+      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
     // Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
       <Container className="main-view">
-       
-      <CarouselView></CarouselView>
+        <CarouselView />
         <div className="main-view-card">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} />
-          : movies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-          ))
-        }
+          {selectedMovie ? (
+            <MovieView movie={selectedMovie} />
+          ) : (
+            movies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onClick={(movie) => this.onMovieClick(movie)}
+              />
+            ))
+          )}
         </div>
-    
       </Container>
     );
   }
 }
+
+MainView.propTypes = {
+  movies: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+  }),
+  selectedMovie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+  }),
+};

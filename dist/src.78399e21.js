@@ -34112,77 +34112,7 @@ Button.displayName = 'Button';
 Button.defaultProps = defaultProps;
 var _default = Button;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./SafeAnchor":"../node_modules/react-bootstrap/esm/SafeAnchor.js"}],"components/LoginView/login-view.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LoginView = LoginView;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
-
-var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function LoginView(props) {
-  var _useState = (0, _react.useState)(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
-      setUsername = _useState2[1];
-
-  var _useState3 = (0, _react.useState)(''),
-      _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
-      setPassword = _useState4[1];
-
-  var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
-    console.log(username, password); // Send a request to the server for authentication, then call props.onLoggedIn(username)
-
-    props.onLoggedIn(username);
-  };
-
-  return _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
-    controlId: "formUsername"
-  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
-    type: "text",
-    onChange: function onChange(e) {
-      return setUsername(e.target.value);
-    }
-  })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
-    type: "password",
-    onChange: function onChange(e) {
-      return setPassword(e.target.value);
-    }
-  })), _react.default.createElement(_Button.default, {
-    variant: "primary",
-    type: "submit",
-    onClick: handleSubmit
-  }, "Submit"));
-}
-},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/react-bootstrap/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./SafeAnchor":"../node_modules/react-bootstrap/esm/SafeAnchor.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -34392,7 +34322,114 @@ RegistrationView.propTypes = {
     birthday: _propTypes.default.string.isRequired
   })
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration.scss":"components/RegistrationView/registration.scss","../MainView/main-view":"components/MainView/main-view.jsx"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration.scss":"components/RegistrationView/registration.scss","../MainView/main-view":"components/MainView/main-view.jsx"}],"components/LoginView/login-view.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LoginView = LoginView;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
+var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
+
+var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
+
+var _registration = require("../RegistrationView/registration");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function LoginView(props) {
+  var _useState = (0, _react.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    console.log(username, password);
+
+    _axios.default.post("https://myflixdbs-z.herokuapp.com/login", {
+      Username: username,
+      Password: password
+    }).then(function (response) {
+      var data = response.data;
+      props.onLoggedIn(data);
+    }).catch(function (e) {
+      console.log("User does not exist");
+    });
+  };
+
+  return _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
+    controlId: "formBasicUsername"
+  }, _react.default.createElement(_Form.default.Label, {
+    className: "username-label"
+  }, "Username"), _react.default.createElement(_Form.default.Control, {
+    type: "text",
+    placeholder: "Username",
+    value: username,
+    onChange: function onChange(e) {
+      return setUserName(e.target.value);
+    }
+  })), _react.default.createElement(_Form.default.Group, {
+    controlId: "formBasicPassword"
+  }, _react.default.createElement(_Form.default.Label, {
+    className: "password-label"
+  }, "Password"), _react.default.createElement(_Form.default.Control, {
+    type: "password",
+    placeholder: "Password",
+    value: password,
+    onChange: function onChange(e) {
+      return setPassword(e.target.value);
+    }
+  })), _react.default.createElement(_Button.default, {
+    className: "button-login",
+    type: "button",
+    onClick: handleSubmit
+  }, "Login"), _react.default.createElement("p", null, "Not registered? Click", " ", _react.default.createElement("span", {
+    className: "span-login",
+    type: "text",
+    onClick: function onClick() {
+      return props.newUser();
+    }
+  }, "here"), " ", "to register"));
+}
+
+LoginView.propTypes = {
+  user: _propTypes.default.shape({
+    Username: _propTypes.default.string.isRequired,
+    Password: _propTypes.default.string.isRequired
+  })
+};
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","../RegistrationView/registration":"components/RegistrationView/registration.jsx"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34644,7 +34681,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         className: "card-img",
         variant: "top",
         src: "https://dummyimage.com/720x250/CA3C25"
-      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Description), _react.default.createElement(_Button.default, {
+      }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Description), _react.default.createElement(_Card.default.Text, {
+        className: "Card-Text"
+      }, movie.Description), _react.default.createElement(_Button.default, {
         className: "sub-links",
         onClick: function onClick() {
           return _onClick(movie);
@@ -37546,28 +37585,50 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, MainView);
 
-    _this = _super.call(this); // Initialize the state to an empty object so we can destructrue it later
-
+    _this = _super.call(this);
     _this.state = {
       movies: null,
       selectedMovie: null,
-      user: null
+      user: null,
+      newUser: null
     };
     return _this;
   }
 
   _createClass(MainView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "getMovies",
+    value: function getMovies(token) {
       var _this2 = this;
 
-      _axios.default.get('https://myflixdbs-z.herokuapp.com/movies').then(function (response) {
-        // Assign the result to the state
+      _axios.default.get("https://myflixdbs-z.herokuapp.com/movies", {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (res) {
         _this2.setState({
-          movies: response.data
+          movies: res.data
         });
       }).catch(function (error) {
         console.log(error);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var accessToken = localStorage.getItem("token");
+
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem("user")
+        });
+        this.getMovies(accessToken);
+      }
+    }
+  }, {
+    key: "onLoggedIn",
+    value: function onLoggedIn(user) {
+      this.setState({
+        user: user
       });
     }
   }, {
@@ -37578,19 +37639,30 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "onLoggedIn",
-    value: function onLoggedIn(user) {
+    key: "registerUser",
+    value: function registerUser() {
       this.setState({
-        user: user
+        newUser: true
       });
-    } // this overrides the render() method of the superclass
-
+    }
+  }, {
+    key: "userRegistered",
+    value: function userRegistered() {
+      this.setState({
+        newUser: null
+      });
+    }
+  }, {
+    key: "logOutHandler",
+    value: function logOutHandler() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+    }
   }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
-      // Before data is initially loaded
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
@@ -37626,6 +37698,18 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MainView = MainView;
+MainView.propTypes = {
+  movies: _propTypes.default.shape({
+    Title: _propTypes.default.string.isRequired,
+    Description: _propTypes.default.string.isRequired,
+    ImagePath: _propTypes.default.string.isRequired
+  }),
+  selectedMovie: _propTypes.default.shape({
+    Title: _propTypes.default.string.isRequired,
+    Description: _propTypes.default.string.isRequired,
+    ImagePath: _propTypes.default.string.isRequired
+  })
+};
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","../LoginView/login-view":"components/LoginView/login-view.jsx","../RegistrationView/registration":"components/RegistrationView/registration.jsx","../MovieCard/movie-card":"components/MovieCard/movie-card.jsx","../MovieView/movie-view":"components/MovieView/movie-view.jsx","../Carousel/carousel":"components/Carousel/carousel.jsx","./main-view.scss":"components/MainView/main-view.scss"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -37722,7 +37806,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52375" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50875" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
