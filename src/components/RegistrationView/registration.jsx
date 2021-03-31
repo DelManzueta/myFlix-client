@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './registration.scss';
-
-import { MainView } from '../MainView/main-view';
-
+ 
 export function RegistrationView(props) {
   const [username, createUsername] = useState('');
   const [password, createPassword] = useState('');
   const [email, createEmail] = useState('');
   const [birthday, createDob] = useState('');
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
 
-    axios
-      .post('https://myflixdbs-z.herokuapp.com/users', {
+    axios.post('https://myflixdbs-z.herokuapp.com/users',
+      {
         Username: username,
         Password: password,
         Email: email,
@@ -34,7 +31,7 @@ export function RegistrationView(props) {
       .catch((e) => {
         console.log('Swing and a miss! There was an error registering user');
       });
-  };
+  }
 
   return (
     <Container className="registration-container">
