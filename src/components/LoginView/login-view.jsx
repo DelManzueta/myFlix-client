@@ -5,9 +5,6 @@ import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
- 
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -21,8 +18,8 @@ export function LoginView(props) {
         Username: username,
         Password: password,
       })
-      .then((response) => {
-        const data = response.data;
+      .then((res) => {
+        const data = res.data;
         props.onLoggedIn(data);
       })
       .catch((e) => {
@@ -31,48 +28,20 @@ export function LoginView(props) {
   };
 
   return (
-    <Container className="form-container">
-      <Row>
-        <Col xs={12} sm={12} className="Col">
-          <Form>
-            <Form.Group controlId="formBasicUsername">
-              <Form.Label className="username-label">Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </Form.Group>
+    <Form>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+      </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label className="password-label">Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Button
-              className="button-login"
-              type="button"
-              onClick={handleSubmit}>
-              Login
-            </Button>
-            <p>
-              Not registered? Click{" "}
-              <span
-                className="span-login"
-                type="text"
-                onClick={() => props.newUser()}>
-                here
-              </span>{" "}to register
-            </p>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+      </Form.Group>
+      <Button variant="primary" type="submit" onClick={handleSubmit}>
+        Submit
+      </Button>
+    </Form>
   );
 }
 
