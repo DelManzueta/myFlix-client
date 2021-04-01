@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import ListGroup from 'react-bootstrap/ListGroup'
-
-import { Link } from 'react-router-dom'
-
 import './director-view.scss'
+
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
+import ListGroup from 'react-bootstrap/ListGroup'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 export class DirectorView extends React.Component {
   constructor () {

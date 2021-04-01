@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import axios               from 'axios'
-import PropTypes           from 'prop-types'
-
-import Container           from 'react-bootstrap/Container'
-import Form                from 'react-bootstrap/Form'
-import Button              from 'react-bootstrap/Button'
-import { Col, Row }        from 'react-bootstrap'
-
-import { LoginView }       from '../LoginView/login-view'
 import './registration.scss'
+
+import { Col, Row } from 'react-bootstrap'
+import React, { useState } from 'react'
+
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
+import { LoginView } from '../LoginView/login-view'
+import PropTypes from 'prop-types'
+import axios from 'axios'
 
 export function RegistrationView (props) {
   const [username, createUsername] = useState('')
@@ -79,7 +79,8 @@ export function RegistrationView (props) {
             <Button
               className='button-register'
               type='submit'
-              onClick={handleRegister}>
+              onClick={handleRegister}
+            >
               Register
             </Button>
             <p>
@@ -88,7 +89,8 @@ export function RegistrationView (props) {
               <span
                 className='span-register'
                 type='text'
-                onClick={() => props.userRegistered()}>
+                onClick={() => props.userRegistered()}
+              >
                 here
               </span>{' '}
               to login.
@@ -104,6 +106,10 @@ RegistrationView.propTypes = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired
+  })
+}
+
     Email: PropTypes.string.isRequired
   })
 };

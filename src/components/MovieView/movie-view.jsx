@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Container from 'react-bootstrap/Container'
+import './movie-view.scss'
+
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-
+import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
-
-import './movie-view.scss'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Row from 'react-bootstrap/Row'
 
 export class MovieView extends React.Component {
   constructor () {
