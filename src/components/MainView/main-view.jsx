@@ -1,18 +1,18 @@
 import './main-view.scss'
 
-import { Col, Row } from 'react-bootstrap/'
+import { Col, Row }                       from 'react-bootstrap/'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
-import Button from 'react-bootstrap/Button'
-import { CarouselView } from '../Carousel/carousel'
-import Container from 'react-bootstrap/Container'
-import { LoginView } from '../LoginView/login-view'
-import { MovieCard } from '../MovieCard/movie-card'
-import { MovieView } from '../MovieView/movie-view'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { RegistrationView } from '../RegistrationView/registration'
-import axios from 'axios'
+import Button                             from 'react-bootstrap/Button'
+import { CarouselView }                   from '../Carousel/carousel'
+import Container                          from 'react-bootstrap/Container'
+import { LoginView }                      from '../LoginView/login-view'
+import { MovieCard }                      from '../MovieCard/movie-card'
+import { MovieView }                      from '../MovieView/movie-view'
+import PropTypes                          from 'prop-types'
+import React                              from 'react'
+import { RegistrationView }               from '../RegistrationView/registration'
+import axios                              from 'axios'
 
 export class MainView extends React.Component {
   constructor () {

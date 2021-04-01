@@ -1,14 +1,14 @@
 import './registration.scss'
 
-import { Col, Row } from 'react-bootstrap'
+import { Col, Row }        from 'react-bootstrap'
 import React, { useState } from 'react'
 
-import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
-import { LoginView } from '../LoginView/login-view'
-import PropTypes from 'prop-types'
-import axios from 'axios'
+import Button              from 'react-bootstrap/Button'
+import Container           from 'react-bootstrap/Container'
+import Form                from 'react-bootstrap/Form'
+import { LoginView }       from '../LoginView/login-view'
+import PropTypes           from 'prop-types'
+import axios               from 'axios'
 
 export function RegistrationView (props) {
   const [username, createUsername] = useState('')
@@ -109,7 +109,3 @@ RegistrationView.propTypes = {
     Email: PropTypes.string.isRequired
   })
 }
-
-    Email: PropTypes.string.isRequired
-  })
-};

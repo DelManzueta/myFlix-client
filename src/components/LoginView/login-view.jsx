@@ -2,18 +2,18 @@ import './login-view.scss'
 
 import React, { useState } from 'react'
 
-import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import axios from 'axios'
+import Button              from 'react-bootstrap/Button'
+import Container           from 'react-bootstrap/Container'
+import Form                from 'react-bootstrap/Form'
+import { Link }            from 'react-router-dom'
+import PropTypes           from 'prop-types'
+import axios               from 'axios'
 
 export function LoginView (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [validated, setValidated] = useState('')
-  const [login, setLogin] = useState('')
+  const [login, setLogin] = useState('') 
 
   const handleSubmit = e => {
     const form = e.currentTarget
