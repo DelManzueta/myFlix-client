@@ -1,11 +1,11 @@
+import axios                       from 'axios'
+import PropTypes                   from 'prop-types'
+import React                       from 'react'
+import { Button, Card, Container } from 'react-bootstrap'
+import { Link }                    from 'react-router-dom'
 import './profile-view.scss'
 
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 
-import { Link }                              from 'react-router-dom'
-import PropTypes                             from 'prop-types'
-import React                                 from 'react'
-import axios                                 from 'axios'
 
 export class ProfileView extends React.Component {
   constructor () {
@@ -61,13 +61,13 @@ export class ProfileView extends React.Component {
       .delete(`https://myflixdbs-z.herokuapp.com/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      .then(res => {
+      .then(() => {
         alert('Are you sure you want to delete your account?')
       })
-      .then(res => {
+      .then(() => {
         alert('Account successfully deleted')
       })
-      .then(res => {
+      .then(() => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
 
@@ -144,7 +144,7 @@ export class ProfileView extends React.Component {
           </Card>
         </Container>
         <Container>
-          <h2 className='favorite-movies-title'>Your Favorite Movies</h2>
+          <h2 className='favorite-movies-title'>Your myFlix Favs</h2>
           {FavoriteMoviesList.map(movie => {
             return (
               <Card

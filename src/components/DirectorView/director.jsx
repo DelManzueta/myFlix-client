@@ -1,16 +1,13 @@
-import './director-view.scss'
-
-import Button    from 'react-bootstrap/Button'
-import Card      from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
-import { Link }  from 'react-router-dom'
-import ListGroup from 'react-bootstrap/ListGroup'
 import PropTypes from 'prop-types'
 import React     from 'react'
+import Button    from 'react-bootstrap/Button'
+import Card      from 'react-bootstrap/Card'
+import { Link }  from 'react-router-dom'
+import './director.scss'
 
 export class DirectorView extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {}
   }
@@ -21,35 +18,29 @@ export class DirectorView extends React.Component {
     if (!director) return null
 
     return (
-      <Container className='director-view'>
-        <Card className='director-card'>
-          <Card.Img
-            className='director-pic'
-            variant='top'
-            src={director.ImagePath}
-          />
-          <Card.Body className='director-body'>
+      <div className='director-view'>
+        <Card style={{ width: '30rem' }} className='director-card'>
+          <Card.Body>
             <Card.Title className='director-name'>{director.Name}</Card.Title>
-            <Card.Text>{director.Bio}</Card.Text>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>Born: {director.Birth}</ListGroup.Item>
-            </ListGroup>
-            <Link to={`/`}>
-              <Button className='dirback-button' variant='button' size='lg'>
-                Back
-              </Button>
-            </Link>
+            <Card.Text>Birthdate: {director.Birth}</Card.Text>
+            <Card.Text>Bio: {director.Bio}</Card.Text>
           </Card.Body>
+          <Link to={'/'}>
+            <Button variant='secondary' className='director-view-back-button'>
+              Back
+            </Button>
+          </Link>
         </Card>
-      </Container>
+      </div>
     )
   }
 }
 
 DirectorView.propTypes = {
-  director: PropTypes.shape({
-    ImagePath: PropTypes.string.isRequired,
+  Director: PropTypes.shape({
     Name: PropTypes.string.isRequired,
-    Bio: PropTypes.string.isRequired
-  }).isRequired
+    Bio: PropTypes.string.isRequired,
+    Birth: PropTypes.string.isRequired,
+    Death: PropTypes.string
+  })
 }

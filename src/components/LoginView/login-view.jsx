@@ -1,98 +1,77 @@
-import './login-view.scss'
-
-import React, { useState } from 'react'
-
-import Button              from 'react-bootstrap/Button'
-import Container           from 'react-bootstrap/Container'
-import Form                from 'react-bootstrap/Form'
-import { Link }            from 'react-router-dom'
-import PropTypes           from 'prop-types'
 import axios               from 'axios'
+import PropTypes           from 'prop-types'
+import React, { useState } from 'react'
+import { Button, Form }    from 'react-bootstrap'
+import { Link }            from 'react-router-dom'
+import './login-view.scss'
 
 export function LoginView (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [validated, setValidated] = useState('')
-  const [login, setLogin] = useState('') 
 
+  /* // Allows login with random credentials for existing user, no functionality for new users yet
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(username, password);
+		props.onLoggedIn(username);
+	} */
+
+  // Requesting server for authentication
   const handleSubmit = e => {
-    const form = e.currentTarget
-    if (form.checkValidity() === false) {
-      e.preventDefault()
-      e.stopPropagation()
-      setLogin(null)
-      setValidated(true)
-      return
-    }
     e.preventDefault()
-
     axios
       .post('https://myflixdbs-z.herokuapp.com/login', {
         Username: username,
         Password: password
       })
-      .then(res => {
-        const data = res.data
-
-        if (!res.data.user) {
-          setLogin(true)
-        } else {
-          props.onLoggedIn(data)
-        }
+      .then(response => {
+        const data = response.data
+        props.onLoggedIn(data)
+        console.log('Welcome Back!')
       })
-      .catch(e => {
-        console.log('no such user')
+      .catch(() => {
+        console.log('User does not exist, please check credentials or register a new account')
       })
-  }
-
-  const setLoginUsername = e => {
-    setUsername(e.target.value)
-    setLogin(null)
-  }
-
-  const setLoginPassword = e => {
-    setPassword(e.target.value)
-    setLogin(null)
   }
 
   return (
-    <Container className='form-container'>
-      <Form>
-        <Form.Group controlId='formBasicUsername'>
-          <Form.Label className='username-label'>Username</Form.Label>
+    <div className='login-view'>
+      <h2>Welcome to myFlix</h2> 
+      <Form className='login-form'>
+        <Form.Group controlId='formBasicUsername' className='login-form-group'>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Username'
             value={username}
-            onChange={e => setUserName(e.target.value)}
+            onChange={e => setUsername(e.target.value)}
+            placeholder='Enter Username'
           />
         </Form.Group>
 
-        <Form.Group controlId='formBasicPassword'>
-          <Form.Label className='password-label'>Password</Form.Label>
+        <Form.Group controlId='formBasicPassword' className='login-form-group'>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Password'
             value={password}
             onChange={e => setPassword(e.target.value)}
+            placeholder='Enter Password'
           />
         </Form.Group>
-        <Button className='button-login' type='button' onClick={handleSubmit}>
-          Login
+        <Button
+          variant='primary'
+          type='submit'
+          className='login-button'
+          onClick={handleSubmit}
+        >
+          Submit
         </Button>
-        <p>
-          Not registered? Click{' '}
-          <span
-            className='span-login'
-            type='text'
-            onClick={() => props.newUser()}
-          >
-            here
-          </span>{' '}
-          to register
-        </p>
+        <Link to={'/register'}>
+          <Button variant='info' className='register-button'>
+            Register
+          </Button>
+        </Link>
       </Form>
-    </Container>
+    </div>
   )
 }
 
@@ -100,5 +79,6 @@ LoginView.propTypes = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired
-  })
+  }),
+  onLoggedIn: PropTypes.func.isRequired
 }

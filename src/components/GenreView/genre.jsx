@@ -1,15 +1,13 @@
-import './genre-view.scss'
-
-import Button    from 'react-bootstrap/Button'
-import Card      from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
-import { Link }  from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React     from 'react'
+import Button    from 'react-bootstrap/Button'
+import Card      from 'react-bootstrap/Card'
+import { Link }  from 'react-router-dom'
+import './genre.scss'
 
 export class GenreView extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {}
   }
@@ -20,26 +18,26 @@ export class GenreView extends React.Component {
     if (!genre) return null
 
     return (
-      <Container className='genre-view'>
-        <Card className='genre-card'>
+      <div className='genre-view'>
+        <Card style={{ width: '30rem' }} className='genre-card'>
           <Card.Body>
-            <h1 className='genre-name'>{genre.Name}</h1>
+            <Card.Title className='genre-name'>{genre.Name}</Card.Title>
             <Card.Text>{genre.Description}</Card.Text>
-            <Link to={`/`}>
-              <Button className='genback-button' size='lg'>
-                Back
-              </Button>
-            </Link>
           </Card.Body>
+          <Link to={'/'}>
+            <Button variant='secondary' className='genre-view-back-button'>
+              Back
+            </Button>
+          </Link>
         </Card>
-      </Container>
+      </div>
     )
   }
 }
 
 GenreView.propTypes = {
-  genre: PropTypes.shape({
+  Genre: PropTypes.shape({
     Name: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired
-  }).isRequired
+  })
 }
