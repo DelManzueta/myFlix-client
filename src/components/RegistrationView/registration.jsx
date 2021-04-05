@@ -31,7 +31,7 @@ export function RegistrationView (_props) {
 
   return (
     <div className='registration-view'>
-      <h2>Join fastFlix!</h2>
+      <h2>Join myFlix!</h2>
       <Form className='registration-form'>
         <Form.Group
           controlId='formBasicUsername'

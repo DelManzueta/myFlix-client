@@ -91,7 +91,7 @@ export class MainView extends React.Component {
     // Throws on runtime before data is initially loaded/if state isn't initialized
     const { movies, user } = this.state
 
-    // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before movies have been loaded
     if (!movies) return <div className='main-view' />

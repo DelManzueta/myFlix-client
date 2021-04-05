@@ -1,84 +1,106 @@
-import axios               from 'axios'
-import PropTypes           from 'prop-types'
-import React, { useState } from 'react'
-import { Button, Form }    from 'react-bootstrap'
-import { Link }            from 'react-router-dom'
-import './login-view.scss'
+import React, { useState } from 'react';
+import Form                from 'react-bootstrap/Form';
+import Button              from 'react-bootstrap/Button';
+import Container           from 'react-bootstrap/Container';
+import axios               from 'axios';
+import './login-view.scss';
+import { Link }            from 'react-router-dom';
 
-export function LoginView (props) {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+export function LoginView(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [validated, setValidated] = useState('');
+  const [login, setLogin] = useState('');
 
-  /* // Allows login with random credentials for existing user, no functionality for new users yet
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(username, password);
-		props.onLoggedIn(username);
-	} */
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      setLogin(null);
+      setValidated(true);
+      return;
+    }
+    e.preventDefault();
 
-  // Requesting server for authentication
-  const handleSubmit = e => {
-    e.preventDefault()
-    axios
-      .post('https://myflixdbs-z.herokuapp.com/login', {
-        Username: username,
-        Password: password
-      })
+    axios.post(`https://myflixdbs-z.herokuapp.com/login`, {
+      Username: username,
+      Password: password
+    })
       .then(response => {
-        const data = response.data
-        props.onLoggedIn(data)
-        console.log('Welcome Back!')
+        const data = response.data;
+
+        if (!response.data.user) {
+          setLogin(true);
+        }
+        else {
+          props.onLoggedIn(data);
+        }
       })
-      .catch(() => {
-        console.log('User does not exist, please check credentials or register a new account')
-      })
+      .catch(e => {
+        console.log('no such user')
+      });
+  };
+
+  const setLoginUsername = (e) => {
+    setUsername(e.target.value);
+    setLogin(null);
   }
 
+  const setLoginPassword = (e) => {
+    setPassword(e.target.value);
+    setLogin(null);
+  }
+
+
+
   return (
-    <div className='login-view'>
-      <h2>Welcome to myFlix</h2> 
-      <Form className='login-form'>
-        <Form.Group controlId='formBasicUsername' className='login-form-group'>
-          <Form.Label>Username</Form.Label>
+    <Container className="login-view" fluid="true">
+      <h1 className="login-title">Murph's Movies Login</h1>
+      <Form noValidate validated={validated} onSubmit={handleSubmit} className="login-form">
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
           <Form.Control
-            type='text'
+            type="text"
+            placeholder="Enter Username"
+            pattern="[a-zA-Z0-9]{6,}"
+            required
             value={username}
-            onChange={e => setUsername(e.target.value)}
-            placeholder='Enter Username'
-          />
+            onChange={e => setLoginUsername(e)} />
+          <Form.Control.Feedback type="invalid">
+            Username must be at least 6 alphanumeric characters long.
+            </Form.Control.Feedback>
         </Form.Group>
-
-        <Form.Group controlId='formBasicPassword' className='login-form-group'>
-          <Form.Label>Password</Form.Label>
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
           <Form.Control
-            type='password'
+            type="password"
+            placeholder="Enter Password"
+            pattern="[a-zA-Z0-9]{8,}"
+            required
             value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder='Enter Password'
-          />
+            onChange={e => setLoginPassword(e)} />
+          <Form.Control.Feedback type="invalid">
+            A password of at least 8 alphanumeric characters is required.
+            </Form.Control.Feedback>
+          {!login ? null
+            :
+            <Form.Text className="invalid-text">
+              Invalid Username and/or Password
+              </Form.Text>}
         </Form.Group>
-        <Button
-          variant='primary'
-          type='submit'
-          className='login-button'
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
-        <Link to={'/register'}>
-          <Button variant='info' className='register-button'>
-            Register
+        <Button className="submit-login" type="submit" block>
+          Login
           </Button>
-        </Link>
+        <Form.Group className="registration" controlId="formRegistration">
+          <Form.Text className="text-muted">First time? Let's get you an account!</Form.Text>
+          <Link to={`/register`}>
+            <Button className="register-button" type="submit" block>
+              Register
+          </Button>
+          </Link>
+        </Form.Group>
       </Form>
-    </div>
-  )
-}
-
-LoginView.propTypes = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired
-  }),
-  onLoggedIn: PropTypes.func.isRequired
+    </Container >
+  );
 }
