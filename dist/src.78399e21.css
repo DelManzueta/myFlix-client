@@ -1,2 +1,42 @@
+.director-view-container {
+  font-family: "Poiret One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.button-director {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+}
+
+.button-director:hover,
+.button-director:focus {
+  background-color: #59405c;
+  border: none;
+}
+.genre-view-container {
+  font-family: "Poiret One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.button-genre {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+}
+
+.button-genre:hover,
+.button-genre:focus {
+  background-color: #59405c;
+  border: none;
+}
 
 /*# sourceMappingURL=/src.78399e21.css.map */
