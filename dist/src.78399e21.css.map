@@ -1,1 +1,1 @@
-{"version":3,"sources":["components/RegistrationView/registration.scss","components/MovieView/movie-view.scss","index.scss"],"names":[],"mappings":"AAAA,ACAA,ACCA;EACE,OAFM;EAGN","file":"src.78399e21.css","sourceRoot":"../src","sourcesContent":["","","$color: steelblue;\r\n.my-flix {\r\n  color: $color;\r\n  font-size: 3rem;\r\n}\r\n"]}
+{"version":3,"sources":["components/RegistrationView/registration.scss","components/MovieView/movie-view.scss","index.scss"],"names":[],"mappings":"AAAA,ACAA,ACAA","file":"src.78399e21.css","sourceRoot":"../src","sourcesContent":["","",""]}
