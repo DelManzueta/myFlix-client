@@ -1,0 +1,55 @@
+$first-color : #87556f;
+$second-color: #59405c;
+$font-stack: "Poiret One",
+sans-serif;
+
+.profile-view {
+  font-family: $font-stack;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.button-delete,
+.button-update,
+.button-remove-items {
+  background-color: $first-color;
+  border: none;
+}
+
+.button-delete:hover,
+.button-delete:focus,
+.button-update:hover,
+.button-update:focus,
+.button-remove-items:hover,
+.button-remove-items:focus {
+  background-color: $second-color;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.birthday-label {
+  font-size: 20px;
+}
+
+.text-card {
+  font-size: 20px;
+}
+
+.button-fav-movies {
+  color: black;
+  text-decoration: none;
+}
+
+.favorite-items {
+  list-style-type: none;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.button-remove-items {
+  margin-left: 5%;
+}
