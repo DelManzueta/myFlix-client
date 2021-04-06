@@ -1,18 +1,17 @@
-import React        from "react";
-import ReactDOM     from "react-dom"; 
+import React        from 'react'
+import ReactDOM     from 'react-dom'
 
+ 
+import { MainView } from './components/MainView/main-view'
 
-import { MainView } from './components/MainView/main-view';
-
-import "./index.scss";
+import './index.scss'
 
 class myFlix extends React.Component {
-  render() {
-    return <MainView />;
-
+  render () {
+    return <MainView />
   }
 }
 
-const container = document.getElementsByClassName("app-container")[0];
+const container = document.getElementsByClassName('app-container')[0]
 
-ReactDOM.render(React.createElement(myFlix), container);
+ReactDOM.render(React.createElement(myFlix), container)

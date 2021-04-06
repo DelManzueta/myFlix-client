@@ -1,22 +1,22 @@
-import axios                                    from 'axios'
-import PropTypes                                from 'prop-types'
-import React                                    from 'react'
-import Button                                   from 'react-bootstrap/Button'
-import Col                                      from 'react-bootstrap/Col'
-import Container                                from 'react-bootstrap/Container'
-import Nav                                      from 'react-bootstrap/Nav'
-import Navbar                                   from 'react-bootstrap/Navbar'
-import Row                                      from 'react-bootstrap/Row'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-import { DirectorView }                         from '../DirectorView/director-view'
-import { GenreView }                            from '../GenreView/genre-view'
-import { LoginView }                            from '../LoginView/login-view'
-import { MovieCard }                            from '../MovieCard/movie-card'
-import { MovieView }                            from '../MovieView/movie-view'
-import { ProfileView }                          from '../ProfileView/profile-view'
-import { RegistrationView }                     from '../RegistrationView/registration'
+import axios                                        from 'axios'
+import PropTypes                                    from 'prop-types'
+import React                                        from 'react'
+import Button                                       from 'react-bootstrap/Button'
+import Col                                          from 'react-bootstrap/Col'
+import Container                                    from 'react-bootstrap/Container'
+import Nav                                          from 'react-bootstrap/Nav'
+import Navbar                                       from 'react-bootstrap/Navbar'
+import Row                                          from 'react-bootstrap/Row'
+import { BrowserRouter as Router, Link, Route }     from 'react-router-dom'
+import { CarouselView }                             from '../Carousel/carousel'
+import { DirectorView }                             from '../DirectorView/director-view'
+import { GenreView }                                from '../GenreView/genre-view'
+import { LoginView }                                from '../LoginView/login-view'
+import { MovieCard }                                from '../MovieCard/movie-card'
+import { MovieView }                                from '../MovieView/movie-view'
+import { ProfileView }                              from '../ProfileView/profile-view'
+import { RegistrationView }                         from '../RegistrationView/registration'
 import './main-view.scss'
-
 
 
 export class MainView extends React.Component {
@@ -127,6 +127,7 @@ export class MainView extends React.Component {
         </Navbar>
 
         <div className='main-view'>
+          <CarouselView />
           <Container className='main-view-container'>
             <Row>
               <Route
