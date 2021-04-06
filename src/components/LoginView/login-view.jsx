@@ -9,7 +9,6 @@ import Row                 from 'react-bootstrap/Row'
 import { Link }            from 'react-router-dom'
 import './login-view.scss'
 
-
 export function LoginView (props) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')

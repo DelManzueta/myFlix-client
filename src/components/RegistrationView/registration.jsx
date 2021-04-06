@@ -9,7 +9,6 @@ import Row                 from 'react-bootstrap/Row'
 import { Link }            from 'react-router-dom'
 import './registration.scss'
 
-
 export function RegistrationView (props) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
@@ -74,7 +73,7 @@ export function RegistrationView (props) {
             </Form.Group>
 
             <Form.Group controlId='formBasicBirthday'>
-              <Form.Label className='birthday-label'>Birthdate</Form.Label>
+              <Form.Label className='birthday-label'>Birthday</Form.Label>
               <Form.Control
                 type='date'
                 placeholder='Birthday'

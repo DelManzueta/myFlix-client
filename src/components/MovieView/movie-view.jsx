@@ -1,3 +1,4 @@
+import axios     from 'axios'
 import PropTypes from 'prop-types'
 import React     from 'react'
 import Button    from 'react-bootstrap/Button'
@@ -7,15 +8,39 @@ import Row       from 'react-bootstrap/Row'
 import { Link }  from 'react-router-dom'
 import './movie-view.scss'
 
-
-
 export class MovieView extends React.Component {
   constructor () {
     super()
 
     this.state = {
-      movies: []
+      movies: [],
+      favoriteMovies: []
     }
+  }
+
+  addToFavoriteMovies (movie) {
+    const username = localStorage.getItem('user')
+    const token = localStorage.getItem('token')
+
+    axios
+      .post(
+        `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie}`,
+        {
+          FavoriteMovies: this.FavoriteMovies
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      )
+      .then(response => {
+        this.setState({
+          FavoriteMovies: response.data.FavoriteMovies
+        })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    alert('movie successfully added.')
   }
 
   render () {
@@ -55,6 +80,12 @@ export class MovieView extends React.Component {
               <Link to={`/genres/${movie.Genre.Name}`}>
                 <Button className='button-genre'>Genre</Button>
               </Link>
+              <Button
+                className='button-favorite'
+                onClick={() => this.addToFavoriteMovies(movie._id)}
+              >
+                Add to Favorites
+              </Button>
             </div>
           </Col>
         </Row>

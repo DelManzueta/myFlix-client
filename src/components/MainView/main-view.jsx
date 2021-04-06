@@ -1,22 +1,22 @@
-import axios                                        from 'axios'
-import PropTypes                                    from 'prop-types'
-import React                                        from 'react'
-import Button                                       from 'react-bootstrap/Button'
-import Col                                          from 'react-bootstrap/Col'
-import Container                                    from 'react-bootstrap/Container'
-import Nav                                          from 'react-bootstrap/Nav'
-import Navbar                                       from 'react-bootstrap/Navbar'
-import Row                                          from 'react-bootstrap/Row'
-import { BrowserRouter as Router, Link, Route }     from 'react-router-dom'
-import { CarouselView }                             from '../Carousel/carousel'
-import { DirectorView }                             from '../DirectorView/director-view'
-import { GenreView }                                from '../GenreView/genre-view'
-import { LoginView }                                from '../LoginView/login-view'
-import { MovieCard }                                from '../MovieCard/movie-card'
-import { MovieView }                                from '../MovieView/movie-view'
-import { ProfileView }                              from '../ProfileView/profile-view'
-import { RegistrationView }                         from '../RegistrationView/registration'
+import axios                                    from 'axios'
+import PropTypes                                from 'prop-types'
+import React                                    from 'react'
+import Button                                   from 'react-bootstrap/Button'
+import Col                                      from 'react-bootstrap/Col'
+import Container                                from 'react-bootstrap/Container'
+import Nav                                      from 'react-bootstrap/Nav'
+import Navbar                                   from 'react-bootstrap/Navbar'
+import Row                                      from 'react-bootstrap/Row'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { DirectorView }                         from '../DirectorView/director-view'
+import { GenreView }                            from '../GenreView/genre-view'
+import { LoginView }                            from '../LoginView/login-view'
+import { MovieCard }                            from '../MovieCard/movie-card'
+import { MovieView }                            from '../MovieView/movie-view'
+import { ProfileView }                          from '../ProfileView/profile-view'
+import { RegistrationView }                     from '../RegistrationView/registration'
 import './main-view.scss'
+
 
 
 export class MainView extends React.Component {
@@ -96,13 +96,13 @@ export class MainView extends React.Component {
   }
 
   render () {
-    const { movies, selectedMovie, user, newUser } = this.state
+    const { movies, user } = this.state
 
     if (!movies) return <div className='main-view' />
 
     return (
       <Router>
-        <Navbar className='navbar' bg='light' expand='lg'>
+        <Navbar className='nav-bar' bg='light' expand='lg'>
           <Navbar.Brand>
             <Link to='/' className='home-link'>
               myFlix Movies
@@ -113,7 +113,7 @@ export class MainView extends React.Component {
             <Nav>
               <Link to={`/users`}>
                 <Button variant='link' className='button-profile'>
-                  {user}
+                  Account
                 </Button>
               </Link>
               <Button
@@ -125,9 +125,7 @@ export class MainView extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-
         <div className='main-view'>
-          <CarouselView />
           <Container className='main-view-container'>
             <Row>
               <Route
@@ -163,10 +161,10 @@ export class MainView extends React.Component {
               if (!movies) return <div className='main-view' />
               return (
                 <DirectorView
-                  director={
-                    movies.find(m => m.Director.Name === match.params.name)
-                      .Director
-                  }
+                  director={movies.find(
+                    m => m.Director.Name === match.params.name
+                  )}
+                  movies={movies}
                 />
               )
             }}
@@ -176,9 +174,8 @@ export class MainView extends React.Component {
             path='/genres/:name'
             render={({ match }) => (
               <GenreView
-                genre={
-                  movies.find(m => m.Genre.Name === match.params.name).Genre
-                }
+                genre={movies.find(m => m.Genre.Name === match.params.name)}
+                movies={movies}
               />
             )}
           />
@@ -187,7 +184,7 @@ export class MainView extends React.Component {
 
           <Route path='/login' render={() => <LoginView />} />
 
-          <Route path='/users' render={() => <ProfileView />} />
+          <Route path='/users' render={() => <ProfileView movies={movies} />} />
         </div>
       </Router>
     )
