@@ -21,10 +21,13 @@ export class MovieView extends React.Component {
   addToFavoriteMovies (movie) {
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
-
+    const {
+      FAV_API
+    } = `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie}`
+  
     axios
       .post(
-        `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie}`,
+        FAV_API,
         {
           FavoriteMovies: this.FavoriteMovies
         },
@@ -40,7 +43,7 @@ export class MovieView extends React.Component {
       .catch(function (error) {
         console.log(error)
       })
-    alert('movie successfully added.')
+    alert( added + 'successfully added.')
   }
 
   render () {

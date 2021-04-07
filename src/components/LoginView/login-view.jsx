@@ -12,13 +12,14 @@ import './login-view.scss'
 export function LoginView (props) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
+  const API_URL = `https://myflixdbs-z.herokuapp.com/login`
 
   const handleSubmit = e => {
     e.preventDefault()
     console.log(username, password)
     /* Send a request to the server for authentication */
     axios
-      .post('https://myflixdbs-z.herokuapp.com/login', {
+      .post(API_URL, {
         Username: username,
         Password: password
       })
