@@ -192,11 +192,8 @@ export class MainView extends React.Component {
             }}
           />
 
-          <Route
-            path='/genres/:name'
-            render={({ match }) => (
-              <GenreView
-                genre={movies.find(m => m.Genre.Name === match.params.name)}
+          <Route path='/genres/:name' render={({ match }) => (
+              <GenreView genre={movies.find(m => m.Genre.Name === match.params.name)}
                 movies={movies}
               />
             )}
