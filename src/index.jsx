@@ -5,7 +5,7 @@ import { MainView }     from './components/MainView/main-view'
 
 import './index.scss'
 
-class myFlix extends React.Component {
+export default class myFlix extends React.Component {
   render () {
     return <MainView />
   }

@@ -1,12 +1,8 @@
-import axios               from 'axios'
-import PropTypes           from 'prop-types'
-import React, { useState } from 'react'
-import Button              from 'react-bootstrap/Button'
-import Col                 from 'react-bootstrap/Col'
-import Container           from 'react-bootstrap/Container'
-import Form                from 'react-bootstrap/Form'
-import Row                 from 'react-bootstrap/Row'
-import { Link }            from 'react-router-dom'
+import axios                       from 'axios'
+import PropTypes                   from 'prop-types'
+import React, { useState }         from 'react'
+import { Button, Container, Form } from 'react-bootstrap'
+import { Link }                    from 'react-router-dom'
 import './login-view.scss'
 
 export function LoginView (props) {
@@ -16,7 +12,7 @@ export function LoginView (props) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(username, password) 
+    console.log(username, password)
     axios
       .post(API_URL, {
         Username: username,
@@ -33,8 +29,6 @@ export function LoginView (props) {
 
   return (
     <Container className='form-container'>
-      <Row>
-        <Col xs={12} sm={12} className='Col'>
           <Form>
             <Form.Group controlId='formBasicUsername'>
               <Form.Label className='username-label'>Username</Form.Label>
@@ -73,8 +67,6 @@ export function LoginView (props) {
               to register
             </p>
           </Form>
-        </Col>
-      </Row>
     </Container>
   )
 }
