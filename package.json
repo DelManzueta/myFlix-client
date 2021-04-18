@@ -4,43 +4,45 @@
   "description": "myFlix-Client",
   "main": "index.js",
   "scripts": {
-  "start": "parcel src/index.html --open"
+    "start": "parcel src/index.html --open"
   },
   "repository": {
-  "type": "git",
-  "url": "git+https://github.com/DelManzueta/myFlix-client.git"
+    "type": "git",
+    "url": "git+https://github.com/DelManzueta/myFlix-client.git"
   },
   "author": "Del Manzueta",
   "license": "ISC",
   "bugs": {
-  "url": "https://github.com/DelManzueta/myFlix-client/issues"
+    "url": "https://github.com/DelManzueta/myFlix-client/issues"
   },
   "homepage": "https://github.com/DelManzueta/myFlix-client#readme",
   "dependencies": {
-  "axios": "^0.21.1",
-  "bootstrap": "^4.6.0",
-  "core-js": "^3.10.0",
-  "http-auth": "^4.1.2",
-  "nodemon": "^2.0.7",
-  "npm": "^7.6.1",
-  "parcel-bundler": "^1.12.4",
-  "prop-types": "^15.7.2",
-  "react": "^17.0.2",
-  "react-bootstrap": "^1.5.2",
-  "react-dom": "^17.0.2",
-  "react-icons": "^4.2.0",
-  "react-is": "^17.0.2",
-  "react-navigation": "^4.4.4",
-  "react-router-dom": "^5.2.0",
-  "react-scripts": "^4.0.3",
-  "styled-components": "^5.2.3"
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "core-js": "^3.10.0",
+    "http-auth": "^4.1.2",
+    "nodemon": "^2.0.7",
+    "npm": "^7.6.1",
+    "parcel-bundler": "^1.12.4",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-is": "^17.0.2",
+    "react-navigation": "^4.4.4",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
-  "@babel/core": "^7.13.14",
-  "babel-core": "^6.26.3",
-  "babel-plugin-transform-class-properties": "^6.24.1",
-  "babel-preset-env": "^1.7.0",
-  "babel-preset-react": "^6.24.1",
-  "sass": "^1.32.8"
+    "@babel/core": "^7.13.14",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "sass": "^1.32.10"
   }
-  }
+}

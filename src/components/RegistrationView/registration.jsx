@@ -1,12 +1,8 @@
-import axios               from 'axios'
-import PropTypes           from 'prop-types'
-import React, { useState } from 'react'
-import Button              from 'react-bootstrap/Button'
-import Col                 from 'react-bootstrap/Col'
-import Container           from 'react-bootstrap/Container'
-import Form                from 'react-bootstrap/Form'
-import Row                 from 'react-bootstrap/Row'
-import { Link }            from 'react-router-dom'
+import axios                                 from 'axios'
+import PropTypes                             from 'prop-types'
+import React, { useState }                   from 'react'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import { Link }                              from 'react-router-dom'
 import './registration.scss'
 
 export function RegistrationView (props) {
@@ -15,7 +11,7 @@ export function RegistrationView (props) {
   const [email, setEmail] = useState('')
   const [birthday, setBirthday] = useState('')
 
-  const handleRegister = e => {
+  function handleRegister(e) {
     e.preventDefault()
     axios
       .post('https://myflixdbs-z.herokuapp.com/users', {
@@ -24,8 +20,8 @@ export function RegistrationView (props) {
         Email: email,
         Birthday: birthday
       })
-      .then(response => {
-        const data = response.data
+      .then(res => {
+        const data = res.data
         console.log(data)
         window.open('/', '_self')
       })
@@ -83,7 +79,9 @@ export function RegistrationView (props) {
             </Form.Group>
 
             <Form.Group controlId='formBasicCheckbox'>
-              <Form.Check type='checkbox' label='Check me out' />
+              <Form.Check 
+                type='checkbox'
+                label='Click here to accept the terms &amp; conditions' />
             </Form.Group>
             <Button
               className='button-register'
@@ -114,6 +112,6 @@ RegistrationView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.date
+    Birthday: PropTypes.date
   })
 }

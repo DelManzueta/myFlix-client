@@ -1,19 +1,15 @@
-import axios               from 'axios'
-import PropTypes           from 'prop-types'
+import axios from 'axios'
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import Button              from 'react-bootstrap/Button'
-import Col                 from 'react-bootstrap/Col'
-import Container           from 'react-bootstrap/Container'
-import Form                from 'react-bootstrap/Form'
-import Row                 from 'react-bootstrap/Row'
-import { Link }            from 'react-router-dom'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './login-view.scss'
 
 export function LoginView (props) {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = e => {
+  function handleSubmit(e) {
     e.preventDefault()
     console.log(username, password)
     /* Send a request to the server for authentication */

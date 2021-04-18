@@ -1,16 +1,11 @@
-import axios     from 'axios'
-import PropTypes from 'prop-types'
-import React     from 'react'
-import Button    from 'react-bootstrap/Button'
-import Card      from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
-import Container from 'react-bootstrap/Container'
-import Form      from 'react-bootstrap/Form' 
-
+import axios                                        from 'axios'
+import PropTypes                                    from 'prop-types'
+import React                                        from 'react'
+import { Button, Card, CardGroup, Container, Form } from 'react-bootstrap' 
 
 export class ProfileView extends React.Component {
   constructor (props) {
-    super()
+    super(props)
 
     this.username = undefined
     this.password = undefined
@@ -83,7 +78,7 @@ export class ProfileView extends React.Component {
       })
   }
 
-  handleDeregistration = e => {
+  userDelete(e) {
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
 
@@ -99,7 +94,7 @@ export class ProfileView extends React.Component {
         window.open('/', '_self')
       })
       .catch(e => {
-        console.log('error deregistering user')
+        console.log('error deleting user')
       })
 
     this.setState({
@@ -130,7 +125,7 @@ export class ProfileView extends React.Component {
       .catch(function (error) {
         console.log(error)
       })
-    alert('movie successfully removed.')
+    alert('Movie has been removed.')
   }
 
   setUsername (input) {
@@ -171,7 +166,7 @@ export class ProfileView extends React.Component {
                 </Card.Text>
                 <Button
                   className='button-delete'
-                  onClick={() => this.handleDeregistration()}
+                  onClick={() => this.userDelete()}
                 >
                   Delete Account
                 </Button>
