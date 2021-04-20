@@ -1,16 +1,16 @@
-import React from "react";
-import Container from  'react-bootstrap/Container';
-import Carousel from "react-bootstrap/Carousel";
+import React from 'react'
+import { Carousel } from 'react-bootstrap'
+
 
 export class CarouselView extends React.Component {
-  render() {
+  render () {
     return (
       <Carousel fade>
         <Carousel.Item>
           <img
-            className="well-lock"
-            src="https://dummyimage.com/2160x350/dd2a33"
-            alt="First slide"
+            className='well-lock'
+            src='https://dummyimage.com/2160x350/dd2a33'
+            alt='First slide'
           />
           <Carousel.Caption>
             <h3>First slide label</h3>
@@ -19,9 +19,9 @@ export class CarouselView extends React.Component {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="well-lock"
-            src="https://dummyimage.com/2160x350/CA3C25"
-            alt="Second slide"
+            className='well-lock'
+            src='https://dummyimage.com/2160x350/CA3C25'
+            alt='Second slide'
           />
 
           <Carousel.Caption>
@@ -31,9 +31,9 @@ export class CarouselView extends React.Component {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="well-lock"
-            src="https://dummyimage.com/2160x350/7FB069"
-            alt="Third slide"
+            className='well-lock'
+            src='https://dummyimage.com/2160x350/7FB069'
+            alt='Third slide'
           />
 
           <Carousel.Caption>
@@ -44,6 +44,6 @@ export class CarouselView extends React.Component {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-    );
+    )
   }
 }

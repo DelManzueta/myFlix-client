@@ -1,8 +1,8 @@
-import axios                                 from 'axios'
-import PropTypes                             from 'prop-types'
-import React, { useState }                   from 'react'
+import axios from 'axios'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
-import { Link }                              from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './registration.scss'
 
 export function RegistrationView (props) {
@@ -11,7 +11,7 @@ export function RegistrationView (props) {
   const [email, setEmail] = useState('')
   const [birthday, setBirthday] = useState('')
 
-  function handleRegister(e) {
+  function handleRegister (e) {
     e.preventDefault()
     axios
       .post('https://myflixdbs-z.herokuapp.com/users', {
@@ -79,9 +79,10 @@ export function RegistrationView (props) {
             </Form.Group>
 
             <Form.Group controlId='formBasicCheckbox'>
-              <Form.Check 
+              <Form.Check
                 type='checkbox'
-                label='Click here to accept the terms &amp; conditions' />
+                label='Click here to accept the terms &amp; conditions'
+              />
             </Form.Group>
             <Button
               className='button-register'

@@ -1,57 +1,51 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-import { Button, Card, CardGroup, Container } from 'react-bootstrap'
+import { Button, Card, Container, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './director-view.scss'
 
 export class DirectorView extends React.Component {
-  constructor (props) {
+  constructor () {
     super()
 
     this.state = {}
   }
 
   render () {
-    const { director, movies } = this.props
+    const { director } = this.props
 
     if (!director) return null
 
     return (
-      <div className='director-view'>
-        <Container className='director-view-container'>
-          <CardGroup>
-            <Card style={{ width: '25rem' }}>
-              <Card.Body>
-                <Card.Title> {director.Director.Name} </Card.Title>
-                <Card.Text> Bio: {director.Director.Bio} </Card.Text>
-                <Card.Text> Birthday: {director.Director.Birth} </Card.Text>
-                <Card.Text> Death: {director.Director.Death} </Card.Text>
-
-                <Link to={`/`}>
-                  <Button className='button-director'>Back</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-            <Card style={{ width: '25rem' }}>
-              <Card.Body>
-                <Card.Title>Directed Movies:</Card.Title>
-                {movies.map(movie => {
-                  if (movie.Director.Name === director.Director.Name) {
-                    return (
-                      <div key={movie._id}>
-                        <Link to={`movies/${movie._id}`}>
-                          <Button variant='link' className='button-movies'>
-                            {movie.Title}
-                          </Button>
-                        </Link>
-                      </div>
-                    )
-                  }
-                })}
-              </Card.Body>
-            </Card>
-          </CardGroup>
-        </Container>
-      </div>
+      <Container className='director-view'>
+        <Card className='director-card'>
+          <Card.Img
+            className='director-pic'
+            variant='top'
+            src={director.ImagePath}
+          />
+          <Card.Body className='director-body'>
+            <Card.Title className='director-name'>{director.Name}</Card.Title>
+            <Card.Text>{director.Bio}</Card.Text>
+            <ListGroup variant='flush'>
+              <ListGroup.Item>Born: {director.Birth}</ListGroup.Item>
+            </ListGroup>
+            <Link to={`/`}>
+              <Button className='dir-button' variant='button' size='lg'>
+                Back
+              </Button>
+            </Link>
+          </Card.Body>
+        </Card>
+      </Container>
     )
   }
+}
+
+DirectorView.propTypes = {
+  director: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
+    Name: PropTypes.string.isRequired,
+    Bio: PropTypes.string.isRequired
+  }).isRequired
 }

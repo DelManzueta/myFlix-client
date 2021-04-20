@@ -1,52 +1,42 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-import { Button, Card, CardGroup, Container } from 'react-bootstrap'
+import { Button, Card, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './genre-view.scss'
 
 export class GenreView extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
+
     this.state = {}
   }
 
   render () {
-    const { genre, movies } = this.props
+    const { genre } = this.props
+
+    if (!genre) return null
 
     return (
-      <div className='genre-view'>
-        <Container className='genre-view-container'>
-          <CardGroup>
-            <Card style={{ width: '25rem' }}>
-              <Card.Body>
-                <Card.Title>{genre.Genre.Name}</Card.Title>
-                <Card.Text>{genre.Genre.Description}</Card.Text>
-
-                <Link to={`/`}>
-                  <Button className='button-genre'>Back</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-            <Card style={{ width: '25rem' }}>
-              <Card.Body>
-                <Card.Title>Movies in This Genre</Card.Title>
-                {movies.map(movie => {
-                  if (movie.Genre.Name === genre.Genre.Name) {
-                    return (
-                      <div key={movie._id}>
-                        <Link to={`movies/${movie._id}`}>
-                          <Button variant='link' className='button-movies'>
-                            {movie.Title}
-                          </Button>
-                        </Link>
-                      </div>
-                    )
-                  }
-                })}
-              </Card.Body>
-            </Card>
-          </CardGroup>
-        </Container>
-      </div>
+      <Container className='genre-view'>
+        <Card className='genre-card'>
+          <Card.Body>
+            <Card.Title className='genre-name'>{genre.Name}</Card.Title>
+            <Card.Text>Description: {genre.Description}</Card.Text>
+            <Link to={`/`}>
+              <Button className='gen-button' size='lg'>
+                Back
+              </Button>
+            </Link>
+          </Card.Body>
+        </Card>
+      </Container>
     )
   }
+}
+
+GenreView.propTypes = {
+  genre: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired
+  }).isRequired
 }

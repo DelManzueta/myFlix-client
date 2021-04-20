@@ -1,37 +1,45 @@
-import axios                                        from 'axios'
-import PropTypes                                    from 'prop-types'
-import React                                        from 'react'
-import { Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap'
-import { BrowserRouter as Router, Link, Route }     from 'react-router-dom'
-import { DirectorView }                             from '../DirectorView/director-view'
-import { GenreView }                                from '../GenreView/genre-view'
-import { LoginView }                                from '../LoginView/login-view'
-import { MovieCard }                                from '../MovieCard/movie-card'
-import { MovieView }                                from '../MovieView/movie-view'
-import { ProfileView }                              from '../ProfileView/profile-view'
+import axios from 'axios'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { setMovies, setUser } from '../../actions/actions'
+import { DirectorView } from '../DirectorView/director-view'
+import { GenreView } from '../GenreView/genre-view'
+import { LoginView } from '../LoginView/login-view'
+import MoviesList from '../MoviesList/movies-list'
+import { MovieView } from '../MovieView/movie-view'
+import { ProfileView } from '../ProfileView/profile-view'
 import { RegistrationView } from '../RegistrationView/registration'
 import './main-view.scss'
 
 export class MainView extends React.Component {
   constructor () {
     super()
-
-    this.state = {
-      movies: [],
-      selectedMovie: null,
-      user: null,
-      newUser: null
-    }
   }
 
   componentDidMount () {
     let accessToken = localStorage.getItem('token')
+    let user = localStorage.getItem('user')
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      })
+      this.props.setUser(user)
       this.getMovies(accessToken)
     }
+  }
+
+  onLoggedIn (authData) {
+    this.props.setUser(authData.user.Username)
+    localStorage.setItem('token', authData.token)
+    localStorage.setItem('user', authData.user.Username)
+    this.getMovies(authData.token)
+  }
+
+  onLoggedOut (user) {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    this.props.setUser(!user)
+    window.open('/client', '_self')
   }
 
   getMovies (token) {
@@ -40,106 +48,53 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data
-        })
+        this.props.setMovies(response.data)
       })
       .catch(function (error) {
         console.log(error)
       })
   }
 
-  onMovieClick (movie) {
-    this.setState({
-      selectedMovie: movie
-    })
-  }
-
-  onLoggedIn (authData) {
-    console.log(authData)
-    this.setState({
-      user: authData.user.Username
-    })
-
-    localStorage.setItem('token', authData.token)
-    localStorage.setItem('user', authData.user.Username)
-    this.getMovies(authData.token)
-  }
-
-  registerUser () {
-    this.setState({
-      newUser: true
-    })
-  }
-
-  userRegistered () {
-    this.setState({
-      newUser: null
-    })
-  }
-
-  logOutHandler () {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    this.setState({
-      user: null
-    })
-    window.open('/', '_self')
-  }
-
   render () {
-    const { movies, user } = this.state
-
-    if (!movies) return <div className='main-view' />
+    let { movies, user } = this.props
+    if (!movies) return <Container className='main-view' fluid='true' />
 
     return (
-      <Router>
-        <Navbar className='nav-bar' bg='light' expand='lg'>
-          <Navbar.Brand>
-            <Link to='/' className='home-link'>
-              myFlix Movies
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav>
-              <Link to={`/users`}>
-                <Button variant='link' className='button-profile'>
-                  Account
-                </Button>
-              </Link>
+      <Router basename='/client'>
+        <Container className='main__view' fluid='true'>
+          <Navbar expand='lg' className='navbar'>
+            <Navbar.Brand as={Link} to='/' className='navbar__brand'>
+              <p className='navbar__brand-text'>Welcome to myFlix</p>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls='basic__navbar-nav' />
+            <Navbar.Collapse id='basic__navbar-nav'>
+              <Nav className='nav'>
+                <Nav.Link as={Link} to={`/users/${user}`} className='nav__link'>
+                  <p className='nav__link-label'>Profile</p>
+                </Nav.Link>
+              </Nav>
               <Button
-                className='button-logout'
-                onClick={() => this.logOutHandler()}
+                className='logout__button'
+                size='sm'
+                onClick={() => this.onLoggedOut()}
               >
-                Logout
+                <b>Log Out</b>
               </Button>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <div className='main-view'>
-          <Container className='main-view-container'>
-            <Row>
-              <Route
-                exact
-                path='/'
-                render={() => {
-                  if (!user)
-                    return (
-                      <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                    )
-                  return movies.map(m => (
-                    <Col key={m._id} xs={8} sm={8} md={6} lg={4}>
-                      <MovieCard key={m._id} movie={m} />
-                    </Col>
-                  ))
-                }}
-              />
-            </Row>
-          </Container>
-
+            </Navbar.Collapse>
+          </Navbar>
+          <br></br>
           <Route
+            exact
+            path='/'
+            render={() => {
+              if (!user)
+                return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              return <MoviesList movies={movies} />
+            }}
+          />
+          <Route exact path='/register' render={() => <RegistrationView />} />
+          <Route
+            exact
             path='/movies/:movieId'
             render={({ match }) => (
               <MovieView
@@ -147,52 +102,79 @@ export class MainView extends React.Component {
               />
             )}
           />
-
           <Route
-            path='/directors/:name'
+            exact
+            path='/genres/:name'
             render={({ match }) => {
-              if (!movies) return <div className='main-view' />
+              if (movies.length === 0)
+                return <Container className='main-view' />
               return (
-                <DirectorView
-                  director={movies.find(
-                    m => m.Director.Name === match.params.name
-                  )}
-                  movies={movies}
+                <GenreView
+                  genre={
+                    movies.find(m => m.Genre.Name === match.params.name).Genre
+                  }
                 />
               )
             }}
           />
-
           <Route
-            path='/genres/:name'
-            render={({ match }) => (
-              <GenreView
-                genre={movies.find(m => m.Genre.Name === match.params.name)}
-                movies={movies}
-              />
-            )}
+            exact
+            path='/directors/:name'
+            render={({ match }) => {
+              if (movies.length === 0)
+                return <Container className='main-view' />
+              return (
+                <DirectorView
+                  director={
+                    movies.find(m => m.Director.Name === match.params.name)
+                      .Director
+                  }
+                />
+              )
+            }}
           />
-
-          <Route path='/register' render={() => <RegistrationView />} />
-
-          <Route path='/login' render={() => <LoginView />} />
-
-          <Route path='/users' render={() => <ProfileView movies={movies} />} />
-        </div>
+          <Route
+            exact
+            path='/users/:username'
+            render={() => {
+              if (!user)
+                return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              if (movies.length === 0)
+                return <Container className='main-view' />
+              return <ProfileView movies={movies} />
+            }}
+          />
+        </Container>
       </Router>
     )
   }
 }
 
+let mapStateToProps = state => {
+  return { movies: state.movies, user: state.user }
+}
+
+export default connect(mapStateToProps, { setMovies, setUser })(MainView)
+
 MainView.propTypes = {
-  movies: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  }),
-  selectedMovie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  })
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired
+      }),
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        Birth: PropTypes.string.isRequired,
+        Death: PropTypes.string.isRequired
+      }),
+      ImagePath: PropTypes.string.isRequired,
+      Featured: PropTypes.bool.isRequired
+    })
+  ),
+  user: PropTypes.string.isRequired
 }

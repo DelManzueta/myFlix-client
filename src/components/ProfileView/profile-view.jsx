@@ -1,7 +1,8 @@
-import axios                                        from 'axios'
-import PropTypes                                    from 'prop-types'
-import React                                        from 'react'
-import { Button, Card, CardGroup, Container, Form } from 'react-bootstrap' 
+import axios from 'axios'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Button, Card, CardGroup, Container, Form } from 'react-bootstrap'
+import './profile-view.scss'
 
 export class ProfileView extends React.Component {
   constructor (props) {
@@ -78,7 +79,7 @@ export class ProfileView extends React.Component {
       })
   }
 
-  userDelete(e) {
+  userDelete (e) {
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
 
