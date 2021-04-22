@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { BrowserRouter, Route } from 'react-router'
 import { Button, Container, Form } from 'react-bootstrap'
 import './registration.scss'
 
@@ -9,7 +10,7 @@ export function RegistrationView (props) {
   const [email, createEmail] = useState('')
   const [birthday, createDob] = useState('')
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     axios

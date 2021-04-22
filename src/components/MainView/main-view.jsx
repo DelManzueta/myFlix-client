@@ -1,6 +1,6 @@
 import axios from 'axios'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Component } from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
@@ -12,6 +12,7 @@ import MoviesList from '../MoviesList/movies-list'
 import { MovieView } from '../MovieView/movie-view'
 import { ProfileView } from '../ProfileView/profile-view'
 import { RegistrationView } from '../RegistrationView/registration'
+import { Navigation } from '../Navigation/navigation'
 import './main-view.scss'
 
 export class MainView extends React.Component {
@@ -60,28 +61,10 @@ export class MainView extends React.Component {
     if (!movies) return <Container className='main-view' fluid='true' />
 
     return (
-      <Router basename='/client'>
-        <Container className='main-view' fluid='true'>
-          <Navbar expand='lg'>
-            <Navbar.Brand as={Link} to='/'>
-              myFlix Movies
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls='basic-navbar-nav' />
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='mr-auto'>
-                <Nav.Link as={Link} to='/'>
-                  Home
-                </Nav.Link>
-                <Nav.Link as={Link} to={`/users/${user}`}>
-                  Profile
-                </Nav.Link>
-                <Button size='sm' onClick={() => this.onLoggedOut()}>
-                  <b>Log Out</b>
-                </Button>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-          <br></br>
+      <Router basename='/client'> 
+        <Container className='main-view' fluid='true'> 
+        <Navigation />
+          
           <Route
             exact
             path='/'
