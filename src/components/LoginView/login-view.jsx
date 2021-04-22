@@ -52,7 +52,7 @@ export function LoginView (props) {
 
   return (
     <Container className='login-view' fluid='true'>
-      <h1 className='login-title'>Murph's Movies Login</h1>
+      <h1 className='login-title'>Log into your myFlix Account</h1>
       <Form
         noValidate
         validated={validated}

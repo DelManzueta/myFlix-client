@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './movie-card.scss'
 
@@ -9,30 +9,66 @@ export class MovieCard extends React.Component {
     const { movie } = this.props
 
     return (
-      <Container className='movie-card-container'>
-        <Row>
-          <Col>
-            <Card className='Card'>
-              <Card.Img variant='top' src={movie.ImagePath} />
-              <Card.Body>
-                <Card.Title className='Card-Title'>{movie.Title}</Card.Title>
-                <Card.Text className='Card-Text'>{movie.Description}</Card.Text>
+      <Col>
+        <Card
+          className='movie-card'
+          fluid='true'
+          style={{ maxWidth: '25rem', minWidth: '25rem' }}
+        >
+          <Card.Img
+            className='movie-poster'
+            variant='top'
+            src={movie.ImagePath}
+          />
+          <Card.Body>
+            <Card.Title className='movie-title'>{movie.Title}</Card.Title>
+            <ListGroup variant='flush'>
+              <ListGroup.Item className='button-container'>
                 <Link to={`/movies/${movie._id}`}>
-                  <Button className='button-open'>Open</Button>
+                  <Button
+                    variant='link'
+                    size='lg'
+                    block
+                    className='open-button'
+                  >
+                    Details
+                  </Button>
                 </Link>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+              </ListGroup.Item>
+              <ListGroup.Item className='button-container'>
+                <Link to={`/directors/${movie.Director.Name}`}>
+                  <Button className='director-button' size='lg' block>
+                    Director
+                  </Button>
+                </Link>
+              </ListGroup.Item>
+              <ListGroup.Item className='button-container'>
+                <Link to={`/genres/${movie.Genre.Name}`}>
+                  <Button className='genre-button' size='lg' block>
+                    Genre
+                  </Button>
+                </Link>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card.Body>
+        </Card>
+      </Col>
     )
   }
 }
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
+    imageUrl: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired
   }).isRequired
 }

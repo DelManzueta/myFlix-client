@@ -15,8 +15,8 @@ import { RegistrationView } from '../RegistrationView/registration'
 import './main-view.scss'
 
 export class MainView extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
   }
 
   componentDidMount () {
@@ -61,25 +61,24 @@ export class MainView extends React.Component {
 
     return (
       <Router basename='/client'>
-        <Container className='main__view' fluid='true'>
-          <Navbar expand='lg' className='navbar'>
-            <Navbar.Brand as={Link} to='/' className='navbar__brand'>
-              <p className='navbar__brand-text'>Welcome to myFlix</p>
+        <Container className='main-view' fluid='true'>
+          <Navbar expand='lg'>
+            <Navbar.Brand as={Link} to='/'>
+              myFlix Movies
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls='basic__navbar-nav' />
-            <Navbar.Collapse id='basic__navbar-nav'>
-              <Nav className='nav'>
-                <Nav.Link as={Link} to={`/users/${user}`} className='nav__link'>
-                  <p className='nav__link-label'>Profile</p>
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav className='mr-auto'>
+                <Nav.Link as={Link} to='/'>
+                  Home
                 </Nav.Link>
+                <Nav.Link as={Link} to={`/users/${user}`}>
+                  Profile
+                </Nav.Link>
+                <Button size='sm' onClick={() => this.onLoggedOut()}>
+                  <b>Log Out</b>
+                </Button>
               </Nav>
-              <Button
-                className='logout__button'
-                size='sm'
-                onClick={() => this.onLoggedOut()}
-              >
-                <b>Log Out</b>
-              </Button>
             </Navbar.Collapse>
           </Navbar>
           <br></br>
@@ -92,9 +91,8 @@ export class MainView extends React.Component {
               return <MoviesList movies={movies} />
             }}
           />
-          <Route exact path='/register' render={() => <RegistrationView />} />
+          <Route path='/register' render={() => <RegistrationView />} />
           <Route
-            exact
             path='/movies/:movieId'
             render={({ match }) => (
               <MovieView
@@ -103,7 +101,6 @@ export class MainView extends React.Component {
             )}
           />
           <Route
-            exact
             path='/genres/:name'
             render={({ match }) => {
               if (movies.length === 0)
@@ -118,7 +115,6 @@ export class MainView extends React.Component {
             }}
           />
           <Route
-            exact
             path='/directors/:name'
             render={({ match }) => {
               if (movies.length === 0)
@@ -134,7 +130,6 @@ export class MainView extends React.Component {
             }}
           />
           <Route
-            exact
             path='/users/:username'
             render={() => {
               if (!user)

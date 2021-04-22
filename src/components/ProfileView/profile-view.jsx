@@ -1,38 +1,38 @@
 import axios from 'axios'
-import PropTypes from 'prop-types'
 import React from 'react'
-import { Button, Card, CardGroup, Container, Form } from 'react-bootstrap'
+import { Button, Card, Container, Form, Tab, Tabs } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './profile-view.scss'
+
 
 export class ProfileView extends React.Component {
   constructor (props) {
     super(props)
-
-    this.username = undefined
-    this.password = undefined
-    this.email = undefined
-    this.birthday = undefined
+    ;(this.Username = null),
+      (this.Password = null),
+      (this.Email = null),
+      (this.Birthday = null)
 
     this.state = {
-      movies: [],
-      user: null,
-      username: '',
-      password: '',
-      email: '',
-      birthday: '',
-      favoriteMovies: [],
-      FavoriteMovies: []
+      Username: null,
+      Password: null,
+      Email: null,
+      Birthday: null,
+      FavoriteMovies: [],
+      validated: null
     }
   }
 
   componentDidMount () {
-    const accessToken = localStorage.getItem('token')
-    this.getUser(accessToken)
+    let accessToken = localStorage.getItem('token')
+    console.log(accessToken)
+    if (accessToken !== null) {
+      this.getUser(accessToken)
+    }
   }
 
   getUser (token) {
-    const username = localStorage.getItem('user')
-
+    let username = localStorage.getItem('user')
     axios
       .get(`https://myflixdbs-z.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -51,189 +51,139 @@ export class ProfileView extends React.Component {
       })
   }
 
-  handleUpdate = e => {
+  handleRemoveFavorite (e, movie) {
+    e.preventDefault()
+
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
-
-    axios
-      .put(
-        `https://myflixdbs-z.herokuapp.com/users/${username}`,
-        {
-          Username: this.username,
-          Password: this.password,
-          Email: this.email,
-          Birthday: this.birthday
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      )
-      .then(response => {
-        const data = response.data
-        localStorage.setItem('user', data.Username)
-        window.open('/users', '_self')
-        alert('Update Successful.')
-      })
-      .catch(e => {
-        console.log(e)
-      })
-  }
-
-  userDelete (e) {
-    const username = localStorage.getItem('user')
-    const token = localStorage.getItem('token')
-
-    axios
-      .delete(`https://myflixdbs-z.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-
-        Username: username
-      })
-      .then(response => {
-        const data = response.data
-        console.log(data)
-        window.open('/', '_self')
-      })
-      .catch(e => {
-        console.log('error deleting user')
-      })
-
-    this.setState({
-      user: null
+    axios({
+      method: 'delete',
+      url: `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie}`,
+      headers: { Authorization: `Bearer ${token}` }
     })
-    localStorage.removeItem('user')
-    localStorage.removeItem('token')
+      .then(res => {
+        console.log(`${movie.Title} was removed from Favorites`)
+        window.open('_self')
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   }
 
-  removeItem (movie) {
+  handleUpdate (e, newUsername, newPassword, newEmail, newBirthday) {
+    this.setState({
+      validated: null
+    })
+
+    const form = e.currentTarget
+    if (form.checkValidity() === false) {
+      e.preventDefault()
+      e.stopPropagation()
+      this.setState({
+        validated: true
+      })
+      return
+    }
+    e.preventDefault()
+
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
 
-    axios
-      .delete(
-        `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-
-          FavoriteMovies: this.FavoriteMovies
-        }
-      )
+    axios({
+      method: 'put',
+      url: `https://myflixdbs-z.herokuapp.com/users/${username}`,
+      headers: { Authorization: `Bearer ${token}` },
+      data: {
+        Username: newUsername ? newUsername : this.state.Username,
+        Password: this.Password,
+        Email: newEmail ? newEmail : this.state.Email,
+        Birthday: newBirthday ? newBirthday : this.state.Birthday
+      }
+    })
       .then(response => {
+        alert('Saved Changes')
         this.setState({
-          FavoriteMovies: response.data.FavoriteMovies
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday
         })
+        localStorage.setItem('user', this.state.Username)
+        window.open(`/users/${username}`, '_self')
+        console.log(response.data)
       })
       .catch(function (error) {
         console.log(error)
       })
-    alert('Movie has been removed.')
   }
 
   setUsername (input) {
-    this.username = input
+    this.Username = input
   }
+
   setPassword (input) {
-    this.password = input
+    this.Password = input
   }
+
   setEmail (input) {
-    this.email = input
+    this.Email = input
   }
+
   setBirthday (input) {
-    this.birthday = input
+    this.Birthday = input
+  }
+
+  handleDeregister (e) {
+    e.preventDefault()
+
+    const username = localStorage.getItem('user')
+    const token = localStorage.getItem('token')
+
+    axios({
+      method: 'delete',
+      url: `https://myflixdbs-z.herokuapp.com/users/${username}`,
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+        console.log(`${username} was deleted`)
+        alert('Profile Successfully Deleted')
+        window.open('/', '_self')
+      })
+      .catch(e => {
+        console.log('Error removing account')
+      })
   }
 
   render () {
+    const { Username, Email, Birthday, FavoriteMovies, validated } = this.state
     const { movies } = this.props
 
-    const Username = this.state.Username,
-      Email = this.state.Email,
-      Birthday = this.state.Birthday,
-      FavoriteMovies = this.state.FavoriteMovies
-
     return (
-      <div className='profile-view'>
-        <Container className='profile-view-container'>
-          <CardGroup>
+      <Container className='profile-view'>
+        <Tabs
+          defaultActiveKey='profile'
+          transition={false}
+          className='profile-tabs'
+        >
+          <Tab className='tab-item' eventKey='profile' title='Profile'>
             <Card className='profile-card'>
-              <Card.Header as='h5'>Profile</Card.Header>
+              <h1 className='profile-title'>{Username}'s Profile</h1>
               <Card.Body>
-                <Card.Text className='text-card'>
-                  Username: {Username}
-                </Card.Text>
-                <Card.Text className='text-card'>Password: *******</Card.Text>
-                <Card.Text className='text-card'>Email: {Email}</Card.Text>
-                <Card.Text className='text-card'>
-                  Birthday: {Birthday}
-                </Card.Text>
-                <Button
-                  className='button-delete'
-                  onClick={() => this.userDelete()}
-                >
-                  Delete Account
-                </Button>
-              </Card.Body>
-            </Card>
-            <Card className='edit-profile-card'>
-              <Card.Header as='h5'>Edit Profile</Card.Header>
-              <Card.Body>
-                <Form.Group controlId='formBasicUsername'>
-                  <Form.Label className='username-label'>Username</Form.Label>
-                  <Form.Control
-                    type='text'
-                    placeholder='Enter username'
-                    name='username'
-                    value={this.username}
-                    onChange={e => this.setUsername(e.target.value)}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId='formBasicPassword'>
-                  <Form.Label className='password-label'>Password</Form.Label>
-                  <Form.Control
-                    type='password'
-                    placeholder='Password'
-                    name='password'
-                    value={this.password}
-                    onChange={e => this.setPassword(e.target.value)}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId='formBasicEmail'>
-                  <Form.Label className='email-label'>Email address</Form.Label>
-                  <Form.Control
-                    type='email'
-                    placeholder='Enter email'
-                    name='email'
-                    value={this.email}
-                    onChange={e => this.setEmail(e.target.value)}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId='formBasicBirthday'>
-                  <Form.Label className='birthday-label'>Birthday</Form.Label>
-                  <Form.Control
-                    type='date'
-                    placeholder='Birthday'
-                    name='birthday'
-                    value={this.birthday}
-                    onChange={e => this.setBirthday(e.target.value)}
-                  />
-                </Form.Group>
-
-                <Button
-                  className='button-update'
-                  onClick={() => this.handleUpdate()}
-                >
-                  Update
-                </Button>
-              </Card.Body>
-            </Card>
-            <Card className='favorites-card'>
-              <Card.Header as='h5'>Favorite Movies</Card.Header>
-              <Card.Body>
-                {FavoriteMovies.length === 0 && <div>No favorites</div>}
-                <div>
-                  <ul>
+                <Card.Text className='profile-item'>Username:</Card.Text>
+                {Username}
+                <Card.Text className='profile-item'>Password:</Card.Text>*****
+                <Card.Text className='profile-item'>Email:</Card.Text>
+                {Email}
+                <Card.Text className='profile-item'>Birthday:</Card.Text>
+                {Birthday}
+                <Card.Text className='profile-item'>Favorite Movies:</Card.Text>
+                {FavoriteMovies.length === 0 && (
+                  <div>You have no favorite movies.</div>
+                )}
+                <div className='favs-container'>
+                  <ul className='favs-list'>
                     {FavoriteMovies.length > 0 &&
                       movies.map(movie => {
                         if (
@@ -243,13 +193,16 @@ export class ProfileView extends React.Component {
                           )
                         ) {
                           return (
-                            <li className='favorite-items' key={movie._id}>
+                            <li className='favorites-item' key={movie._id}>
                               {movie.Title}
                               <Button
-                                className='button-remove-items'
-                                onClick={() => this.removeItem(movie._id)}
+                                size='sm'
+                                className='remove-favorite'
+                                onClick={e =>
+                                  this.handleRemoveFavorite(e, movie._id)
+                                }
                               >
-                                Unfavorite
+                                Remove
                               </Button>
                             </li>
                           )
@@ -257,21 +210,90 @@ export class ProfileView extends React.Component {
                       })}
                   </ul>
                 </div>
+                <div className='button-container'>
+                  <Link to={`/`}>
+                    <Button className='back-button' block>
+                      Back
+                    </Button>
+                  </Link>
+                  <Button
+                    className='delete-user'
+                    block
+                    onClick={e => this.handleDeregister(e)}
+                  >
+                    Delete Profile
+                  </Button>
+                </div>
               </Card.Body>
             </Card>
-          </CardGroup>
-        </Container>
-      </div>
+          </Tab>
+          <Tab className='tab-item' eventKey='update' title='Update'>
+            <Card className='update-card'>
+              <h1 className='profile-title'>Update Profile</h1>
+              <Card.Body>
+                <Form
+                  noValidate
+                  validated={validated}
+                  className='update-form'
+                  onSubmit={e =>
+                    this.handleUpdate(
+                      e,
+                      this.Username,
+                      this.Password,
+                      this.Email,
+                      this.Birthday
+                    )
+                  }
+                >
+                  <Form.Group controlId='formBasicUsername'>
+                    <Form.Label className='form-label'>Username:</Form.Label>
+                    <Form.Control
+                      type='text'
+                      placeholder='Change Username'
+                      defaultValue={Username}
+                      onChange={e => this.setUsername(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId='formBasicPassword'>
+                    <Form.Label className='form-label'>Password</Form.Label>
+                    <Form.Control
+                      type='password'
+                      placeholder='Enter Password'
+                      defaultValue=''
+                      onChange={e => this.setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group controlId='formBasicEmail'>
+                    <Form.Label className='form-label'>Email</Form.Label>
+                    <Form.Control
+                      type='email'
+                      placeholder='Change Email'
+                      defaultValue={Email}
+                      onChange={e => this.setEmail(e.target.value)}
+                    />
+                    <Form.Control.Feedback type='invalid'>
+                      A password is required
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group controlId='formBasicBirthday'>
+                    <Form.Label className='form-label'>Birthday</Form.Label>
+                    <Form.Control
+                      type='date'
+                      placeholder='Change Birthday'
+                      defaultValue={Birthday}
+                      onChange={e => this.setBirthday(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Button className='update' type='submit' size='sm'>
+                    Update
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Tab>
+        </Tabs>
+      </Container>
     )
   }
-}
-
-ProfileView.propTypes = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.date,
-    FavoriteMovies: PropTypes.array
-  })
 }

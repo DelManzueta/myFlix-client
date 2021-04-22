@@ -1,0 +1,13 @@
+.movie-card {
+    width: 100vw;
+    max-width: 1170px;
+    margin: 3rem auto;
+    display: grid;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .movie-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

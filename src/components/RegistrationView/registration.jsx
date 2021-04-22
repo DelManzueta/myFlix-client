@@ -1,18 +1,17 @@
 import axios from 'axios'
-import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import { Button, Col, Container, Form, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Button, Container, Form } from 'react-bootstrap'
 import './registration.scss'
 
 export function RegistrationView (props) {
-  const [username, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
-  const [birthday, setBirthday] = useState('')
+  const [username, createUsername] = useState('')
+  const [password, createPassword] = useState('')
+  const [email, createEmail] = useState('')
+  const [birthday, createDob] = useState('')
 
-  function handleRegister (e) {
+  const handleSubmit = e => {
     e.preventDefault()
+
     axios
       .post('https://myflixdbs-z.herokuapp.com/users', {
         Username: username,
@@ -20,99 +19,63 @@ export function RegistrationView (props) {
         Email: email,
         Birthday: birthday
       })
-      .then(res => {
-        const data = res.data
+      .then(response => {
+        const data = response.data
         console.log(data)
-        window.open('/', '_self')
+        window.open('/client', '_self')
       })
       .catch(e => {
-        console.log('error registering the user')
+        console.log('Error registering User')
       })
   }
 
   return (
-    <Container className='registration-view-container'>
-      <Row>
-        <Col xs={12} sm={12} className='Col'>
-          <Form>
-            <Form.Group controlId='formBasicUsername'>
-              <Form.Label className='username-label'>Username</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter username'
-                value={username}
-                onChange={e => setUserName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId='formBasicPassword'>
-              <Form.Label className='password-label'>Password</Form.Label>
-              <Form.Control
-                type='password'
-                placeholder='Password'
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId='formBasicEmail'>
-              <Form.Label className='email-label'>Email address</Form.Label>
-              <Form.Control
-                type='email'
-                placeholder='Enter email'
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-              <Form.Text className='text-muted'>
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId='formBasicBirthday'>
-              <Form.Label className='birthday-label'>Birthday</Form.Label>
-              <Form.Control
-                type='date'
-                placeholder='Birthday'
-                value={birthday}
-                onChange={e => setBirthday(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId='formBasicCheckbox'>
-              <Form.Check
-                type='checkbox'
-                label='Click here to accept the terms &amp; conditions'
-              />
-            </Form.Group>
-            <Button
-              className='button-register'
-              type='submit'
-              onClick={handleRegister}
-            >
-              Register
-            </Button>
-            <p>
-              {' '}
-              Already registered? Click{' '}
-              <Link to={`/login`}>
-                <span className='span-register' type='text'>
-                  here
-                </span>{' '}
-              </Link>
-              to login.
-            </p>
-          </Form>
-        </Col>
-      </Row>
+    <Container className='registration-container'>
+      <Form className='registration-form'>
+        <Form.Group controlId='formBasicUsername'>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Create Username'
+            value={username}
+            onChange={e => createUsername(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId='formBasicPassword'>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Create Password'
+            value={password}
+            onChange={e => createPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId='formBasicEmail'>
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control
+            type='email'
+            placeholder='Email Address'
+            value={email}
+            onChange={e => createEmail(e.target.value)}
+          />
+          <Form.Text className='text-muted'>
+            Your info is safe with us! We will never share with anyone, even
+            your own mother.
+          </Form.Text>
+        </Form.Group>
+        <Form.Group controlId='formBasicDob'>
+          <Form.Label>Birthday</Form.Label>
+          <Form.Control
+            type='date'
+            placeholder='mm/dd/yyyy'
+            value={birthday}
+            onChange={e => createDob(e.target.value)}
+          />
+        </Form.Group>
+        <Button className='submit-user' type='submit' onClick={handleSubmit}>
+          Register
+        </Button>
+      </Form>
     </Container>
   )
-}
-
-RegistrationView.propTypes = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.date
-  })
 }
