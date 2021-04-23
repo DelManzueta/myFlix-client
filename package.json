@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/DelManzueta/myFlix-client#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "core-js": "^3.10.0",

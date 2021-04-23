@@ -1,7 +1,6 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-import { Navbar, Nav, Button } from 'react-bootstrap'
-import { MainView } from '../MainView/main-view'
+import { Button, Nav, Navbar } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export class Navigation extends React.Component {
   constructor (props) {
@@ -9,7 +8,7 @@ export class Navigation extends React.Component {
   }
   componentDidMount () {
     let accessToken = localStorage.getItem('token')
-    let user = localStorage.getItem('user') 
+    let user = localStorage.getItem('user')
   }
 
   onLoggedIn (authData) {
@@ -21,7 +20,7 @@ export class Navigation extends React.Component {
 
   onLoggedOut (user) {
     localStorage.removeItem('token')
-    localStorage.removeItem('user') 
+    localStorage.removeItem('user')
     window.open('/client', '_self')
   }
   render () {
@@ -38,12 +37,7 @@ export class Navigation extends React.Component {
             </Nav.Link>
             <Nav.Link as={Link} to={`/users/{user}`}>
               Profile
-            </Nav.Link>
-            <Link to={`/register`}>
-              <Button className='register-button' type='submit' block>
-                Register
-              </Button>
-            </Link>
+            </Nav.Link> 
             <Button size='sm' onClick={() => this.onLoggedOut()}>
               <b>Log Out</b>
             </Button>

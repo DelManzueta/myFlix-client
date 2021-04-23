@@ -1,6 +1,9 @@
-.movie-card {
+.movie-card-container { 
     width: 100vw;
     max-width: 1170px;
+}
+
+.movie-card {
     margin: 3rem auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

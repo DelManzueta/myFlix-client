@@ -1,32 +1,43 @@
-import axios from 'axios'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { Button, Card, ListGroup } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { setMovie } from '../../actions/actions'
-import './movie-view.scss'
+import axios from "axios";
+import PropTypes from "prop-types";
+import React from "react";
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
+
+    this.state = {
+      movies: [],
+      favoriteMovies: []
+    }
   }
 
-  handleAddFavorite (e, movie) {
-    e.preventDefault()
+  addToFavoriteMovies (movie) {
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
-    axios({
-      method: 'post',
-      url: `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie._id}`,
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(res => {
-        console.log(`${movie.Title} was add to Favorites`)
+
+    axios
+      .post(
+        `https://myflixdbs-z.herokuapp.com/users/${username}/Movies/${movie}`,
+        {
+          FavoriteMovies: this.FavoriteMovies
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      )
+      .then(response => {
+        this.setState({
+          FavoriteMovies: response.data.FavoriteMovies
+        })
       })
-      .catch(function (err) {
-        console.log(err)
+      .catch(function (error) {
+        console.log(error)
       })
+    alert('movie successfully added.')
   }
 
   render () {
@@ -35,60 +46,65 @@ export class MovieView extends React.Component {
     if (!movie) return null
 
     return (
-      <Card className='movie-view'>
-        <Card.Img className='movieView-poster' src={movie.ImagePath}></Card.Img>
-        <Card.Title className='movie-title'>{movie.Title}</Card.Title>
-        <Card.Text className='movie-description'>{movie.Description}</Card.Text>
-        <br></br>
-        <ListGroup variant='flush'>
-          <ListGroup.Item className='movie-genre'>
-            <span className='genre-label'>Genre</span>
-            <br></br>
-            {movie.Genre.Name}
-          </ListGroup.Item>
-          <ListGroup.Item className='movie-director'>
-            <span className='director-label'>Director</span>
-            <br></br>
-            {movie.Director.Name}
-          </ListGroup.Item>
-        </ListGroup>
-        <br></br>
-        <Button
-          size='lg'
-          className='favorite-button'
-          value={movie._id}
-          onClick={e => this.handleAddFavorite(e, movie)}
-        >
-          {' '}
-          Add to Favorites
-        </Button>
-        <Link to={`/`}>
-          <Button className='movies-button' size='lg'>
-            Back
-          </Button>
-        </Link>
-      </Card>
+      <Container className='movie-view-container'>
+        <Row>
+          <Col>
+            <div className='movie-view'>
+              <img className='movie-poster' src={movie.ImagePath} />
+              <div className='movie-title'>
+                <span className='label'>Title: </span>
+                <span className='value'>{movie.Title}</span>
+              </div>
+              <div className='movie-description'>
+                <span className='label'>Description: </span>
+                <span className='value'> {movie.Description}</span>
+              </div>
+
+              <div className='movie-genre'>
+                <span className='label'> Genre: </span>
+                <span className='value'>{movie.Genre.Name}</span>
+              </div>
+              <div className='movie-director'>
+                <span className='label'>Director: </span>
+                <span className='value'>{movie.Director.Name}</span>
+              </div>
+              <Link to={`/Directors/${movie.Director.Name}`}>
+                <Button className='button-director'>Director</Button>
+              </Link>
+              <Link to={`/`}>
+                <Button className=' button-goBack'>Back</Button>
+              </Link>
+              <Link to={`/genres/${movie.Genre.Name}`}>
+                <Button className='button-genre'>Genre</Button>
+              </Link>
+              <Button
+                className='button-favorite'
+                onClick={() => this.addToFavoriteMovies(movie._id)}
+              >
+                Add to Favorites
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }
-
-let mapStateToProps = state => {
-  return { movie: state.movie }
-}
-
-export default connect(mapStateToProps, { setMovie })(MovieView)
 
 MovieView.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired
     }),
     Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.date,
+      Death: PropTypes.date
     }),
-    ImagePath: PropTypes.string,
-    Featured: PropTypes.bool.isRequired
+    ImagePath: PropTypes.string.isRequired
   })
 }

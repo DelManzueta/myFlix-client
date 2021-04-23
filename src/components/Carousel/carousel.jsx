@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
 
-
 export class CarouselView extends React.Component {
   render () {
+    const { movie } = this.props
+
     return (
       <Carousel fade>
         <Carousel.Item>
@@ -46,4 +48,12 @@ export class CarouselView extends React.Component {
       </Carousel>
     )
   }
+}
+
+CarouselView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired
+  }).isRequired
 }

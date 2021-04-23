@@ -1,19 +1,21 @@
 import axios from 'axios'
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import React from 'react'
+import { Container } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { setMovies, setUser } from '../../actions/actions'
 import { DirectorView } from '../DirectorView/director-view'
 import { GenreView } from '../GenreView/genre-view'
 import { LoginView } from '../LoginView/login-view'
 import MoviesList from '../MoviesList/movies-list'
 import { MovieView } from '../MovieView/movie-view'
+import { Navigation } from '../Navigation/navigation'
 import { ProfileView } from '../ProfileView/profile-view'
 import { RegistrationView } from '../RegistrationView/registration'
-import { Navigation } from '../Navigation/navigation'
 import './main-view.scss'
+
+
 
 export class MainView extends React.Component {
   constructor (props) {
@@ -57,20 +59,21 @@ export class MainView extends React.Component {
   }
 
   render () {
-    let { movies, user } = this.props
+    let { movies, user } = this.props;
     if (!movies) return <Container className='main-view' fluid='true' />
 
     return (
-      <Router basename='/client'> 
-        <Container className='main-view' fluid='true'> 
-        <Navigation />
-          
+      <Router basename='/client'>
+        <Container className='main-view' fluid='true'>
+          <Navigation />
           <Route
             exact
             path='/'
             render={() => {
               if (!user)
-                return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              return (
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              )
               return <MoviesList movies={movies} />
             }}
           />
@@ -147,12 +150,15 @@ MainView.propTypes = {
       Director: PropTypes.shape({
         Name: PropTypes.string.isRequired,
         Bio: PropTypes.string.isRequired,
-        Birth: PropTypes.string.isRequired,
-        Death: PropTypes.string.isRequired
+        Birth: PropTypes.string.isRequired 
       }),
-      ImagePath: PropTypes.string.isRequired,
-      Featured: PropTypes.bool.isRequired
+      ImagePath: PropTypes.string.isRequired 
     })
   ),
   user: PropTypes.string.isRequired
 }
+
+Image.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  source: PropTypes.any.isRequired
+};

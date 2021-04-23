@@ -4,6 +4,7 @@ import { Button, Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './login-view.scss'
 
+
 export function LoginView (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -96,14 +97,9 @@ export function LoginView (props) {
           Login
         </Button>
         <Form.Group className='registration' controlId='formRegistration'>
-          <Form.Text className='text-muted'>
-            First time? Let's get you an account!
+          <Form.Text className='text-muted'> 
+          <Link to={`/register`}>Sign Up</Link>
           </Form.Text>
-          <Link to={`/register`}>
-            <Button className='register-button' type='submit' block>
-              Register
-            </Button>
-          </Link>
         </Form.Group>
       </Form>
     </Container>
