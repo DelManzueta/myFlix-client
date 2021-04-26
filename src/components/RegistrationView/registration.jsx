@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router'
 import { Button, Container, Form } from 'react-bootstrap'
 import './registration.scss'
 
+import {Navigation} from '../Navigation/navigation'
+
 export function RegistrationView (props) {
   const [username, createUsername] = useState('')
   const [password, createPassword] = useState('')
@@ -31,7 +33,13 @@ export function RegistrationView (props) {
   }
 
   return (
+
     <Container className='registration-container'>
+      <Navigation />
+      <div className='reg-intro'>
+        <h1 className='login-title'>Register a new account</h1>
+        
+      </div>
       <Form className='registration-form'>
         <Form.Group controlId='formBasicUsername'>
           <Form.Label>Username</Form.Label>

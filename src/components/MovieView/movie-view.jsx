@@ -1,9 +1,11 @@
-import axios from "axios";
-import PropTypes from "prop-types";
-import React from "react";
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import "./movie-view.scss";
+import axios from 'axios'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Button, Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import './movie-view.scss'
+
+import {Navigation} from '../Navigation/navigation'
 
 export class MovieView extends React.Component {
   constructor () {
@@ -47,6 +49,7 @@ export class MovieView extends React.Component {
 
     return (
       <Container className='movie-view-container'>
+        <Navigation />
         <Row>
           <Col>
             <div className='movie-view'>

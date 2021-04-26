@@ -4,7 +4,6 @@ import { Button, Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './login-view.scss'
 
-
 export function LoginView (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -52,8 +51,14 @@ export function LoginView (props) {
   }
 
   return (
-    <Container className='login-view' fluid='true'>
-      <h1 className='login-title'>Log into your myFlix Account</h1>
+    <Container className='login-container' fluid='true'>
+      <div className='login-intro'>
+        <h1 className='login-title'>
+          Log into your
+          <br />
+          <span className='myflix-title'>myFlix</span>
+        </h1>
+      </div>
       <Form
         noValidate
         validated={validated}
@@ -61,10 +66,11 @@ export function LoginView (props) {
         className='login-form'
       >
         <Form.Group controlId='formUsername'>
-          <Form.Label>Username:</Form.Label>
+          {/* <Form.Label>Username:</Form.Label> */}
           <Form.Control
+            className='form-field'
             type='text'
-            placeholder='Enter Username'
+            placeholder='Username'
             pattern='[a-zA-Z0-9]{6,}'
             required
             value={username}
@@ -75,10 +81,11 @@ export function LoginView (props) {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId='formPassword'>
-          <Form.Label>Password:</Form.Label>
+          {/* <Form.Label>Password:</Form.Label> */}
           <Form.Control
+          className='form-field'
             type='password'
-            placeholder='Enter Password'
+            placeholder='Password'
             pattern='[a-zA-Z0-9]{8,}'
             required
             value={password}
@@ -96,12 +103,16 @@ export function LoginView (props) {
         <Button className='submit-login' type='submit' block>
           Login
         </Button>
-        <Form.Group className='registration' controlId='formRegistration'>
-          <Form.Text className='text-muted'> 
-          <Link to={`/register`}>Sign Up</Link>
-          </Form.Text>
-        </Form.Group>
       </Form>
+      <section className='under-form'>
+        <p>
+          <span className='new-to'>New to myFlix &#63;</span> Register your
+          account{' '}
+          <Link className='new-to' to={`/register`}>
+            Here
+          </Link>
+        </p>
+      </section>
     </Container>
   )
 }

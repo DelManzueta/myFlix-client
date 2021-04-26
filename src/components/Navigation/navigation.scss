@@ -1,0 +1,12 @@
+@import '../../css/global.css';
+
+.nav-logo {
+    font-family: var(--ff-primary);
+    font-weight: 800;
+    color: var(--white);
+    font-size: 2rem
+}
+
+.nav-logo:hover{
+    color: var(--yellow)
+}

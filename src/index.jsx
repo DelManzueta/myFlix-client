@@ -6,7 +6,6 @@ import MainView from './components/MainView/main-view'
 import './index.scss'
 import moviesApp from './reducers/reducers'
 
-
 const store = createStore(moviesApp)
 
 class MyFlixApplication extends React.Component {

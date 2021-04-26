@@ -14,12 +14,12 @@ import { Navigation } from '../Navigation/navigation'
 import { ProfileView } from '../ProfileView/profile-view'
 import { RegistrationView } from '../RegistrationView/registration'
 import './main-view.scss'
-
-
+import {CarouselView} from '../Carousel/carousel'
 
 export class MainView extends React.Component {
   constructor (props) {
     super(props)
+    this.state = {}
   }
 
   componentDidMount () {
@@ -59,22 +59,24 @@ export class MainView extends React.Component {
   }
 
   render () {
-    let { movies, user } = this.props;
+    let { movies, user } = this.props
     if (!movies) return <Container className='main-view' fluid='true' />
 
     return (
       <Router basename='/client'>
         <Container className='main-view' fluid='true'>
-          <Navigation />
           <Route
             exact
             path='/'
             render={() => {
               if (!user)
+                return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               return (
-              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                <div className='user-view'>
+                  <Navigation />
+                  <MoviesList movies={movies} />
+                </div>
               )
-              return <MoviesList movies={movies} />
             }}
           />
           <Route path='/register' render={() => <RegistrationView />} />
@@ -122,7 +124,12 @@ export class MainView extends React.Component {
                 return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               if (movies.length === 0)
                 return <Container className='main-view' />
-              return <ProfileView movies={movies} />
+              return (
+                <div className='nav-profile'>
+                  <Navigation />
+                  <ProfileView movies={movies} />
+                </div>
+              )
             }}
           />
         </Container>
@@ -150,9 +157,9 @@ MainView.propTypes = {
       Director: PropTypes.shape({
         Name: PropTypes.string.isRequired,
         Bio: PropTypes.string.isRequired,
-        Birth: PropTypes.string.isRequired 
+        Birth: PropTypes.string.isRequired
       }),
-      ImagePath: PropTypes.string.isRequired 
+      ImagePath: PropTypes.string.isRequired
     })
   ),
   user: PropTypes.string.isRequired
@@ -161,4 +168,4 @@ MainView.propTypes = {
 Image.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   source: PropTypes.any.isRequired
-};
+}

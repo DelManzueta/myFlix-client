@@ -1,1 +1,17 @@
- 
+.registration-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    width: 100vw;
+    overflow: visible;
+}
+
+
+.here-link {
+    font-family: var(--ff-secondary);
+    font-weight: 700;
+} 

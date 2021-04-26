@@ -1,9 +1,16 @@
 import axios from 'axios'
 import React from 'react'
-import { Button, Card, Container, Form, Tab, Tabs } from 'react-bootstrap'
+import {
+  Button,
+  Card,
+  Container,
+  Form,
+  Tab,
+  Tabs,
+  Jumbotron
+} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './profile-view.scss'
-
 
 export class ProfileView extends React.Component {
   constructor (props) {
@@ -161,139 +168,143 @@ export class ProfileView extends React.Component {
     const { movies } = this.props
 
     return (
-      <Container className='profile-view'>
-        <Tabs
-          defaultActiveKey='profile'
-          transition={false}
-          className='profile-tabs'
-        >
-          <Tab className='tab-item' eventKey='profile' title='Profile'>
-            <Card className='profile-card'>
-              <h1 className='profile-title'>{Username}'s Profile</h1>
-              <Card.Body>
-                <Card.Text className='profile-item'>Username:</Card.Text>
-                {Username}
-                <Card.Text className='profile-item'>Password:</Card.Text>*****
-                <Card.Text className='profile-item'>Email:</Card.Text>
-                {Email}
-                <Card.Text className='profile-item'>Birthday:</Card.Text>
-                {Birthday}
-                <Card.Text className='profile-item'>Favorite Movies:</Card.Text>
-                {FavoriteMovies.length === 0 && (
-                  <div>You have no favorite movies.</div>
-                )}
-                <div className='favs-container'>
-                  <ul className='favs-list'>
-                    {FavoriteMovies.length > 0 &&
-                      movies.map(movie => {
-                        if (
-                          movie._id ===
-                          FavoriteMovies.find(
-                            favMovie => favMovie === movie._id
-                          )
-                        ) {
-                          return (
-                            <li className='favorites-item' key={movie._id}>
-                              {movie.Title}
-                              <Button
-                                size='sm'
-                                className='remove-favorite'
-                                onClick={e =>
-                                  this.handleRemoveFavorite(e, movie._id)
-                                }
-                              >
-                                Remove
-                              </Button>
-                            </li>
-                          )
-                        }
-                      })}
-                  </ul>
-                </div>
-                <div className='button-container'>
-                  <Link to={`/`}>
-                    <Button className='back-button' block>
-                      Back
+      <Jumbotron fluid>
+        <Container className='profile-view'>
+          <Tabs
+            defaultActiveKey='profile'
+            transition={false}
+            className='profile-tabs'
+          >
+            <Tab className='tab-item' eventKey='profile' title='Profile'>
+              <Card className='profile-card'>
+                <h1 className='profile-title'>{Username}'s Profile</h1>
+                <Card.Body>
+                  <Card.Text className='profile-item'>Username:</Card.Text>
+                  {Username}
+                  <Card.Text className='profile-item'>Password:</Card.Text>*****
+                  <Card.Text className='profile-item'>Email:</Card.Text>
+                  {Email}
+                  <Card.Text className='profile-item'>Birthday:</Card.Text>
+                  {Birthday}
+                  <Card.Text className='profile-item'>
+                    Favorite Movies:
+                  </Card.Text>
+                  {FavoriteMovies.length === 0 && (
+                    <div>You have no favorite movies.</div>
+                  )}
+                  <div className='favs-container'>
+                    <ul className='favs-list'>
+                      {FavoriteMovies.length > 0 &&
+                        movies.map(movie => {
+                          if (
+                            movie._id ===
+                            FavoriteMovies.find(
+                              favMovie => favMovie === movie._id
+                            )
+                          ) {
+                            return (
+                              <li className='favorites-item' key={movie._id}>
+                                {movie.Title}
+                                <Button
+                                  size='sm'
+                                  className='remove-favorite'
+                                  onClick={e =>
+                                    this.handleRemoveFavorite(e, movie._id)
+                                  }
+                                >
+                                  Remove
+                                </Button>
+                              </li>
+                            )
+                          }
+                        })}
+                    </ul>
+                  </div>
+                  <div className='button-container'>
+                    <Link to={`/`}>
+                      <Button className='back-button' block>
+                        Back
+                      </Button>
+                    </Link>
+                    <Button
+                      className='delete-user'
+                      block
+                      onClick={e => this.handleDeregister(e)}
+                    >
+                      Delete Profile
                     </Button>
-                  </Link>
-                  <Button
-                    className='delete-user'
-                    block
-                    onClick={e => this.handleDeregister(e)}
+                  </div>
+                </Card.Body>
+              </Card>
+            </Tab>
+            <Tab className='tab-item' eventKey='update' title='Update'>
+              <Card className='update-card'>
+                <h1 className='profile-title'>Update Profile</h1>
+                <Card.Body>
+                  <Form
+                    noValidate
+                    validated={validated}
+                    className='update-form'
+                    onSubmit={e =>
+                      this.handleUpdate(
+                        e,
+                        this.Username,
+                        this.Password,
+                        this.Email,
+                        this.Birthday
+                      )
+                    }
                   >
-                    Delete Profile
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Tab>
-          <Tab className='tab-item' eventKey='update' title='Update'>
-            <Card className='update-card'>
-              <h1 className='profile-title'>Update Profile</h1>
-              <Card.Body>
-                <Form
-                  noValidate
-                  validated={validated}
-                  className='update-form'
-                  onSubmit={e =>
-                    this.handleUpdate(
-                      e,
-                      this.Username,
-                      this.Password,
-                      this.Email,
-                      this.Birthday
-                    )
-                  }
-                >
-                  <Form.Group controlId='formBasicUsername'>
-                    <Form.Label className='form-label'>Username:</Form.Label>
-                    <Form.Control
-                      type='text'
-                      placeholder='Change Username'
-                      defaultValue={Username}
-                      onChange={e => this.setUsername(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId='formBasicPassword'>
-                    <Form.Label className='form-label'>Password</Form.Label>
-                    <Form.Control
-                      type='password'
-                      placeholder='Enter Password'
-                      defaultValue=''
-                      onChange={e => this.setPassword(e.target.value)}
-                      required
-                    />
-                  </Form.Group>
-                  <Form.Group controlId='formBasicEmail'>
-                    <Form.Label className='form-label'>Email</Form.Label>
-                    <Form.Control
-                      type='email'
-                      placeholder='Change Email'
-                      defaultValue={Email}
-                      onChange={e => this.setEmail(e.target.value)}
-                    />
-                    <Form.Control.Feedback type='invalid'>
-                      A password is required
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                  <Form.Group controlId='formBasicBirthday'>
-                    <Form.Label className='form-label'>Birthday</Form.Label>
-                    <Form.Control
-                      type='date'
-                      placeholder='Change Birthday'
-                      defaultValue={Birthday}
-                      onChange={e => this.setBirthday(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Button className='update' type='submit' size='sm'>
-                    Update
-                  </Button>
-                </Form>
-              </Card.Body>
-            </Card>
-          </Tab>
-        </Tabs>
-      </Container>
+                    <Form.Group controlId='formBasicUsername'>
+                      <Form.Label className='form-label'>Username:</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Change Username'
+                        defaultValue={Username}
+                        onChange={e => this.setUsername(e.target.value)}
+                      />
+                    </Form.Group>
+                    <Form.Group controlId='formBasicPassword'>
+                      <Form.Label className='form-label'>Password</Form.Label>
+                      <Form.Control
+                        type='password'
+                        placeholder='Enter Password'
+                        defaultValue=''
+                        onChange={e => this.setPassword(e.target.value)}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group controlId='formBasicEmail'>
+                      <Form.Label className='form-label'>Email</Form.Label>
+                      <Form.Control
+                        type='email'
+                        placeholder='Change Email'
+                        defaultValue={Email}
+                        onChange={e => this.setEmail(e.target.value)}
+                      />
+                      <Form.Control.Feedback type='invalid'>
+                        A password is required
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group controlId='formBasicBirthday'>
+                      <Form.Label className='form-label'>Birthday</Form.Label>
+                      <Form.Control
+                        type='date'
+                        placeholder='Change Birthday'
+                        defaultValue={Birthday}
+                        onChange={e => this.setBirthday(e.target.value)}
+                      />
+                    </Form.Group>
+                    <Button className='update' type='submit' size='sm'>
+                      Update
+                    </Button>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Tab>
+          </Tabs>
+        </Container>
+      </Jumbotron>
     )
   }
 }

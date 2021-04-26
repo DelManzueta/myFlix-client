@@ -1,48 +1,23 @@
-import PropTypes from 'prop-types'
 import React from 'react'
-import { Carousel } from 'react-bootstrap'
+import PropTypes from 'prop-types'
+import {Carousel} from 'react-bootstrap'
+import './carousel.scss'
 
 export class CarouselView extends React.Component {
   render () {
-    const { movie } = this.props
 
+    const{movie} = this.props;
     return (
       <Carousel fade>
         <Carousel.Item>
           <img
             className='well-lock'
-            src='https://dummyimage.com/2160x350/dd2a33'
+            src={movie.ImagePath}
             alt='First slide'
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className='well-lock'
-            src='https://dummyimage.com/2160x350/CA3C25'
-            alt='Second slide'
-          />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className='well-lock'
-            src='https://dummyimage.com/2160x350/7FB069'
-            alt='Third slide'
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <h3>{movie.Title}</h3>
+            <p>{movie.Description}</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

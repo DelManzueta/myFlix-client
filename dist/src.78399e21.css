@@ -1,14 +1,205 @@
-.movie-card-container {
-  width: 100vw;
-  max-width: 1170px;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800;900&family=Poppins:wght@200;400;700&display=swap");
+:root {
+  /** main **/
+  --white: #e5e7e6;
+  --black: #0c0f0a;
+  /* rgba(12,15,10,1.0) */
+  --primary: #b7094c;
+
+  /** accents **/
+  --yellow: #edae49;
+  --blue: #3b60e4;
+  --accent: #fc4d7d;
+  --dk-accent: #892b64;
+  /** rgba(137,43,100,1.0) **/
+
+  --ff-primary: "Montserrat", sans-serif;
+  --ff-secondary: "Poppins", sans-serif;
 }
 
-.movie-card {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.login-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  background-color: rgba(137, 43, 100, 0.75);
+  max-width: 50vw;
+}
+
+.login-intro {
+  display: flex;
+  font-family: var(--ff-secondary);
+  text-align: center;
+}
+
+.login-title {
+  font-family: var(--ff-primary);
+  color: var(--black);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  letter-spacing: 0.225rem;
+  margin-top: 10vh;
+}
+
+.myflix-title {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--white);
+  text-shadow: 1px 4px 11px rgba(12, 15, 10, 0.4);
+  text-shadow: -1px -4px 11px rgba(137, 43, 100, 0.2);
+  letter-spacing: -0.25rem;
+  text-transform: none;
+}
+
+.login-intro p {
+  text-align: center;
+}
+
+.login-form {
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.form-field {
+  border-radius: 1rem;
+  border: 2px solid var(--white);
+  background: transparent !important;
+  width: inherit;
+  min-width: 50%;
+  padding: 1.5rem 0;
+  align-items: center;
+  align-content: center;
   margin: 3rem auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  background-color: red;
+}
+
+::placeholder {
+  color: var(--black);
+  font-size: 1.42rem;
+  text-align: center;
+  font-family: var(--ff-secondary);
+  padding: 2rem 0;
+}
+
+.new-to {
+  color: var(--accent);
+}
+
+.here-link {
+  font-family: var(--ff-secondary);
+  font-weight: 700;
+}
+
+.under-form p {
+  padding-top: 5vh;
+  font-size: 1.05rem;
+  color: var(--white);
+}
+.card-container {
+  width: 35rem;
+  margin: 0 auto;
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: solid 2px yellow;
+}
+
+.card-main {
+  background-color: transparent;
+  border: solid 2px red;
+  padding: 10rem;
+}
+
+.card-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  border: solid 2px pink;
+}
+
+.card-body {
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  border: solid 2px purple;
+}
+
+.card-title {
+  font-family: var(--ff-primary);
+  font-size: 2rem;
+  font-weight: 600;
+  border: 2px solid #ff71ec;
+}
+
+.card-footer {
+  padding: 5vh;
+  background-color: transparent !important;
+  border: 2px solid black;
+  align-items: center;
+  flex-grow: unset;
+}
+
+.card-img {
+  border-radius: 2rem 0;
+  height: auto;
+  -webkit-filter: grayscale(1);
+  -webkit-transition: all 0.7s ease-in-out;
+}
+
+.card-img:hover {
+  border-radius: 0 2rem;
+  filter: none;
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
+}
+.nav-logo {
+  font-family: var(--ff-primary);
+  font-weight: 800;
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.nav-logo:hover {
+  color: var(--yellow);
+}
+.registration-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  margin-top: 20vh;
+  width: 100vw;
+  overflow: visible;
+}
+
+.here-link {
+  font-family: var(--ff-secondary);
+  font-weight: 700;
+}
+.carousel-item {
+  background-color: blue;
+  min-width: 100%;
+  overflow: visible;
+}
+body,
+html {
+  background: linear-gradient(to right top, #892b64, #81336c, #793b73, #704178, #67477b, #604f84, #57578b, #4f5f91, #416c9d, #2f79a6, #1885ab, #0091ad);
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */
