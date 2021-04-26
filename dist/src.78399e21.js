@@ -54243,15 +54243,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         className: "card-img",
         variant: "top",
         src: movie.ImagePath
-      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, {
-        className: "card-body"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, {
-        className: "card-title"
-      }, movie.Title), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, {
-        className: "card-desc"
-      }, movie.Description)), /*#__PURE__*/_react.default.createElement("div", {
-        className: "card-footer"
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
       }, "Open")))));
     }
@@ -54393,6 +54385,8 @@ exports.Navigation = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
@@ -54444,7 +54438,34 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var accessToken = localStorage.getItem('token');
-      var user = localStorage.getItem('user');
+      console.log(accessToken);
+
+      if (accessToken !== null) {
+        this.getUser(accessToken);
+      }
+    }
+  }, {
+    key: "getUser",
+    value: function getUser(token) {
+      var _this2 = this;
+
+      var username = localStorage.getItem('user');
+
+      _axios.default.get("https://myflixdbs-z.herokuapp.com/users/".concat(username), {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        _this2.setState({
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }, {
     key: "onLoggedIn",
@@ -54464,8 +54485,9 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
+      var Username = this.state.Username;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
         bg: "transparent",
         expand: "lg"
@@ -54482,15 +54504,16 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
         as: _reactRouterDom.Link,
         to: "/"
-      }, "Home"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+      }, "Home")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, null, "Signed in as:", ' ', /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         as: _reactRouterDom.Link,
         to: "/users/{user}"
-      }, "Profile"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+      }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        className: "nav-btn",
         size: "sm",
         onClick: function onClick() {
-          return _this2.onLoggedOut();
+          return _this3.onLoggedOut();
         }
-      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out")))));
+      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out"))));
     }
   }]);
 
@@ -54498,7 +54521,7 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.Navigation = Navigation;
-},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./navigation.scss":"components/Navigation/navigation.scss"}],"components/MovieView/movie-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./navigation.scss":"components/Navigation/navigation.scss"}],"components/MovieView/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55680,7 +55703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1038" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1040" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

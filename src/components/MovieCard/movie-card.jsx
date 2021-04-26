@@ -17,13 +17,11 @@ export class MovieCard extends React.Component {
               variant='top'
               src={movie.ImagePath}
             />
-            <Card.Body className='card-body'>
-              <Card.Title className='card-title'>{movie.Title}</Card.Title>
-              <Card.Text className='card-desc'>{movie.Description}</Card.Text>
-            </Card.Body>
-            <div className='card-footer'>
+            <Card.Body>
+              <Card.Title >{movie.Title}</Card.Title>
+              <Card.Text >{movie.Description}</Card.Text>
               <Link to={`/movies/${movie._id}`}>Open</Link>
-            </div>
+            </Card.Body>
           </div>
         </Card>
       </div>
