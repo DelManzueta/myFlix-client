@@ -2,7 +2,7 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "myFlix-Client",
-  "main": "index.js",
+  "main": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html --open"
   },
