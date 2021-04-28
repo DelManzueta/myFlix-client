@@ -54,8 +54,7 @@
   font-size: 6rem;
   font-weight: 800;
   color: var(--white);
-  text-shadow: 1px 4px 11px rgba(12, 15, 10, 0.4);
-  text-shadow: -1px -4px 11px rgba(137, 43, 100, 0.2);
+  text-shadow: 2px 18px 29px rgba(0, 0, 0, 0.99);
   letter-spacing: -0.25rem;
   text-transform: none;
 }
@@ -162,14 +161,14 @@
   font-family: var(--ff-secondary);
   font-weight: 700;
 }
-.main-view {
-  background: pink;
+.main-view::after {
   width: 100vw;
   height: 100vh;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
 
 .user-view {
-  background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
 
 .registration-container {
@@ -192,7 +191,7 @@
 }
 
 .log-container {
-  background-color: yellowgreen;
+  background: linear-gradient(45deg, #190f0a, rgba(0, 0, 0, 0.75)), url(/login-bg.ed91c00a.jpg);
   background-size: cover;
   width: 100vw;
   height: 100vh;

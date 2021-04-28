@@ -1,10 +1,11 @@
-.main-view {
-    background: pink;
+@import "../../css/global.css";
+.main-view::after {
     width: 100vw;
     height: 100vh;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
 .user-view {
-    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
 
 .registration-container {
@@ -15,8 +16,6 @@
     background-color: red !important;
 }
 
-
-
 .view-container {
     background-color: red;
     background-size: cover;
@@ -25,13 +24,12 @@
 }
 
 .movie-poster {
-    width: 10vw
+    width: 10vw;
 }
 
 .log-container {
-    background-color: yellowgreen;
+    background: linear-gradient(45deg,rgba(25,15,10,1), rgba(0, 0, 0, 0.75)), url(../../img/login-bg.jpg);
     background-size: cover;
     width: 100vw;
     height: 100vh;
-}
- 
+} 
