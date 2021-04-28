@@ -51,6 +51,7 @@ export function LoginView (props) {
   }
 
   return (
+    <div className="log-container">
     <Container className='login-container' fluid='true'>
       <div className='login-intro'>
         <h1 className='login-title'>
@@ -114,5 +115,6 @@ export function LoginView (props) {
         </p>
       </section>
     </Container>
+    </div>
   )
 }

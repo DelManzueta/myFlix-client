@@ -54114,7 +54114,9 @@ function LoginView(props) {
     setLogin(null);
   };
 
-  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "log-container"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
     className: "login-container",
     fluid: "true"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -54169,7 +54171,7 @@ function LoginView(props) {
   }, "New to myFlix ?"), " Register your account", ' ', /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     className: "new-to",
     to: "/register"
-  }, "Here"))));
+  }, "Here")))));
 }
 },{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/LoginView/login-view.scss"}],"components/MovieCard/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -54489,7 +54491,6 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 
       var Username = this.state.Username;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
-        bg: "transparent",
         expand: "lg"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
@@ -54616,9 +54617,11 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
       var movie = this.props.movie;
       if (!movie) return null;
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "view-container"
+      }, /*#__PURE__*/_react.default.createElement(_navigation.Navigation, null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
         className: "movie-view-container"
-      }, /*#__PURE__*/_react.default.createElement(_navigation.Navigation, null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-view"
       }, /*#__PURE__*/_react.default.createElement("img", {
         className: "movie-poster",
@@ -54664,7 +54667,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.addToFavoriteMovies(movie._id);
         }
-      }, "Add to Favorites")))));
+      }, "Add to Favorites"))));
     }
   }]);
 
@@ -55703,7 +55706,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1040" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "19114" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

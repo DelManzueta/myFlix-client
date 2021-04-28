@@ -48,10 +48,9 @@ export class MovieView extends React.Component {
     if (!movie) return null
 
     return (
+      <div className="view-container">
+        <Navigation /> 
       <Container className='movie-view-container'>
-        <Navigation />
-        <Row>
-          <Col>
             <div className='movie-view'>
               <img className='movie-poster' src={movie.ImagePath} />
               <div className='movie-title'>
@@ -86,10 +85,8 @@ export class MovieView extends React.Component {
               >
                 Add to Favorites
               </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+            </div> 
+      </Container></div>
     )
   }
 }
