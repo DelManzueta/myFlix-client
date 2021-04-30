@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800;900&family=Poppins:wght@200;400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap');
 :root {
   /** main **/
   --white: #e5e7e6;
   --black: #0c0f0a;
-  /* rgba(12,15,10,1.0) */
+  /*rgba(12,15,10,1.0) * /
   --primary: #b7094c;
 
   /** accents **/
@@ -13,99 +14,72 @@
   --dk-accent: #892b64;
   /** rgba(137,43,100,1.0) **/
 
+
+  --primary: #b7094c;
   --ff-primary: "Montserrat", sans-serif;
   --ff-secondary: "Poppins", sans-serif;
 }
 
-* {
+*, *:before, *:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
+  position: relative;
+  }
 
 
 .login-container {
-  margin: 0 auto;
+  background-image: linear-gradient(45deg, #892b64, rgba(0, 0, 0, 0.75)), url(/login-bg.ed91c00a.jpg);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  animation: moveBg 40s ease 1s 2 alternate none;
+}
+
+@keyframes moveBg {
+  100% {
+    background-position: bottom right;
+  }
+}
+.login-body {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   align-items: center;
   align-content: center;
-  max-width: 50vw;
-}
-
-.login-intro {
-  display: flex;
-  font-family: var(--ff-secondary);
-  text-align: center;
-}
-
-.login-title {
-  font-family: var(--ff-primary);
-  color: var(--black);
-  font-size: 1.5rem;
-  text-transform: capitalize;
-  letter-spacing: 0.225rem;
-  margin-top: 10vh;
-}
-
-.myflix-title {
-  font-size: 6rem;
-  font-weight: 800;
-  color: var(--white);
-  text-shadow: 2px 18px 29px rgba(0, 0, 0, 0.99);
-  letter-spacing: -0.25rem;
-  text-transform: none;
-}
-
-.login-intro p {
-  text-align: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: hidden;
+  min-width: 30vw;
 }
 
 .login-form {
-  color: var(--white);
-  text-transform: uppercase;
+  margin-top: 15vh;
+  min-width: 25vw;
+  padding: 5vh 2vw;
 }
 
-.form-field {
-  border-radius: 1rem;
-  border: 2px solid var(--white);
-  background: transparent !important;
+.login-logo {
   width: inherit;
-  min-width: 50%;
-  padding: 1.5rem 0;
-  align-items: center;
-  align-content: center;
-  margin: 3rem auto;
+  font-size: 8rem;
+  font-kerning: normal;
+  font-weight: 800;
+  font-family: var(--ff-primary);
+  background-image: -webkit-linear-gradient(45deg, var(--white), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
 }
 
 ::placeholder {
-  color: var(--black);
-  font-size: 1.42rem;
-  text-align: center;
-  font-family: var(--ff-secondary);
-  padding: 2rem 0;
-}
-
-.new-to {
-  color: var(--accent);
-}
-
-.here-link {
-  font-family: var(--ff-secondary);
-  font-weight: 700;
-}
-
-.under-form p {
-  padding-top: 5vh;
-  font-size: 1.05rem;
-  color: var(--white);
+  color: var(--primary);
+  padding: 1vw;
 }
 .card-container {
-  width: 35rem;
+  width: 25vw;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content(3, 1fr);
   justify-content: space-between;
   padding: 2rem;
 }
@@ -188,13 +162,6 @@
 
 .movie-poster {
   width: 10vw;
-}
-
-.log-container {
-  background: linear-gradient(45deg, #190f0a, rgba(0, 0, 0, 0.75)), url(/login-bg.ed91c00a.jpg);
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
 }
 .carousel-item {
   background-color: blue;

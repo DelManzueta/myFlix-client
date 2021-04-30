@@ -1,78 +1,51 @@
 @import "../../css/global.css";
 
-  
+ 
 .login-container {
-    margin: 0 auto; 
+    background-image: linear-gradient(45deg, rgba(137, 43, 100, 1), rgba(0, 0, 0, 0.75)), url(../../img/login-bg.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;  
+    animation: moveBg 40s ease 1s 2 alternate none;
+}
+@keyframes moveBg {
+	100% {
+	  background-position: bottom right;
+	}
+}
+
+.login-body {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center; 
-    align-content: center; 
-    max-width: 50vw;
-}
-.login-intro {
-    display: flex;
-    font-family: var(--ff-secondary);
-    text-align: center; 
-}
-
-.login-title {
-    font-family: var(--ff-primary);
-    color: var(--black);
-    font-size: 1.5rem;
-    text-transform: capitalize;
-    letter-spacing: 0.225rem;
-    margin-top: 10vh;
-}
-
-.myflix-title {
-    font-size: 6rem;
-    font-weight: 800;
-    color: var(--white);
-    text-shadow: 2px 18px 29px rgba(0,0,0,0.99);
-    letter-spacing: -0.25rem;
-    text-transform: none;
-}
-
-.login-intro p {
-    text-align: center;
-}
-
-.login-form {  
- color: var(--white);
- text-transform: uppercase; 
-}
-
-.form-field {
-    border-radius: 1rem; 
-    border: 2px solid var(--white);
-    background: transparent !important;
-    width: inherit;
-    min-width: 50%;
-    padding: 1.5rem 0;
     align-items: center;
     align-content: center;
-    margin: 3rem auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    min-width: 30vw;
+    
 }
 
-::placeholder{
-    color: var(--black);
-    font-size: 1.42rem;
-    text-align: center; 
-    font-family: var(--ff-secondary);
-    padding: 2rem 0;
-} 
-.new-to {
-    color: var(--accent);
+.login-form {
+    margin-top: 15vh;
+    min-width: 25vw;
+    padding: 5vh 2vw;
 }
 
-.here-link {
-    font-family: var(--ff-secondary);
-    font-weight: 700;
+.login-logo {
+    width: inherit;
+    font-size: 8rem;
+    font-kerning: normal;
+    font-weight: 800;
+    font-family: var(--ff-primary);
+    background-image: -webkit-linear-gradient(45deg, var(--white), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
 }
 
-.under-form p {
-    padding-top: 5vh;
-    font-size: 1.05rem;
-    color: var(--white);
+::placeholder {
+    color: var(--primary);
+    padding: 1vw;
 }

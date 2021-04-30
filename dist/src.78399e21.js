@@ -54018,7 +54018,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../css/global.css":"css/global.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/LoginView/login-view.jsx":[function(require,module,exports) {
+},{"../../css/global.css":"css/global.css","./../../img/login-bg.jpg":[["login-bg.ed91c00a.jpg","img/login-bg.jpg"],"img/login-bg.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/LoginView/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54114,26 +54114,22 @@ function LoginView(props) {
     setLogin(null);
   };
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "log-container"
-  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
+  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
     className: "login-container",
     fluid: "true"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "login-intro"
-  }, /*#__PURE__*/_react.default.createElement("h1", {
-    className: "login-title"
-  }, "Log into your", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", {
-    className: "myflix-title"
-  }, "myFlix"))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
+    className: "login-body"
+  }, /*#__PURE__*/_react.default.createElement("section", {
+    className: "login-form"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "login-logo"
+  }, "myFlix"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
     noValidate: true,
     validated: validated,
-    onSubmit: handleSubmit,
-    className: "login-form"
+    onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formUsername"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
-    className: "form-field",
     type: "text",
     placeholder: "Username",
     pattern: "[a-zA-Z0-9]{6,}",
@@ -54147,7 +54143,6 @@ function LoginView(props) {
   }, "Username must be at least 6 alphanumeric characters long.")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formPassword"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
-    className: "form-field",
     type: "password",
     placeholder: "Password",
     pattern: "[a-zA-Z0-9]{8,}",
@@ -54158,20 +54153,14 @@ function LoginView(props) {
     }
   }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control.Feedback, {
     type: "invalid"
-  }, "A password of at least 8 alphanumeric characters is required."), !login ? null : /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Text, {
-    className: "invalid-text"
-  }, "Invalid Username and/or Password")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-    className: "submit-login",
+  }, "A password of at least 8 alphanumeric characters is required."), !login ? null : /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Text, null, "Invalid Username and/or Password")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
     type: "submit",
     block: true
   }, "Login")), /*#__PURE__*/_react.default.createElement("section", {
     className: "under-form"
-  }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("span", {
-    className: "new-to"
-  }, "New to myFlix ?"), " Register your account", ' ', /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    className: "new-to",
+  }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("span", null, "New to myFlix ?"), " Register your account", ' ', /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
-  }, "Here")))));
+  }, "Here"))))));
 }
 },{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/LoginView/login-view.scss"}],"components/MovieCard/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -55189,7 +55178,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../css/global.css":"css/global.css","./../../img/login-bg.jpg":[["login-bg.ed91c00a.jpg","img/login-bg.jpg"],"img/login-bg.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Carousel/carousel.scss":[function(require,module,exports) {
+},{"../../css/global.css":"css/global.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Carousel/carousel.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -55706,7 +55695,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5561" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1036" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

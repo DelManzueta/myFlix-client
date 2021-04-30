@@ -1,19 +1,13 @@
 @import "../../css/global.css";
 
 .card-container {
-  width: 35rem;
+  width: 25vw;
   margin: 0 auto; 
-  display: flex;  
+  display: grid;  
+  grid-template-columns: max-content(3, 1fr);
   justify-content: space-between;  
  padding: 2rem;
 }
-
-// .card-main {
-//   background-color: var(--accent);
-//   justify-content: space-between;
-//   border-radius: 2rem; 
-// }
- 
  
 
 .card-body {
