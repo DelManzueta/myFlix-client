@@ -1,5 +1,30 @@
+
+@media only screen and (max-width: 768px) {
+    
+    .registration-page{
+        overflow: hidden;
+    }
+    .reg-container{
+        display: flex;
+    flex-direction:row; 
+    }
+    .reg-intro {
+        padding-bottom: 2rem;
+    }
+    .reg-intro h1{
+        font-size: 1.5rem !important;
+    }
+    .registration-form {
+        display:flex; 
+        flex-wrap: wrap; 
+        font-size: 1rem !important; 
+         
+    } 
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800;900&family=Poppins:wght@200;400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap');
+
 :root {
   /** main **/
   --white: #e5e7e6;
@@ -59,6 +84,14 @@
   padding: 5vh 2vw;
 }
 
+.login-form h5 {
+  font-family: var(--ff-secondary);
+  color: var(--white);
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
 .login-logo {
   width: inherit;
   font-size: 8rem;
@@ -71,9 +104,88 @@
   filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
 }
 
-::placeholder {
-  color: var(--primary);
-  padding: 1vw;
+.under-form {
+  color: var(--white);
+  font-family: var(--ff-secondary);
+  padding-top: 2rem;
+  align-items: baseline;
+}
+
+.under-form a {
+  color: #ff0000;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: 0.2s all ease-in-out;
+  text-decoration: none;
+}
+
+.under-form a:hover {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.login-btn {
+  width: 13.75rem;
+  height: 3.125rem;
+  outline: none;
+  cursor: pointer;
+  z-index: 0;
+  border-radius: 10px;
+  margin: 0 auto;
+  border: 0;
+  font-family: var(--ff-primary);
+  color: var(--black);
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.login-btn:before {
+  content: "";
+  background: linear-gradient(45deg, var(--white), var(--accent), var(--primary), var(--blue), var(--dk-accent), var(--white), var(--yellow));
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+  border: 0;
+}
+
+.login-btn:hover:before {
+  opacity: 1;
+  color: var(-black);
+}
+
+.login-btn:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ff0000;
+  color: var(-black);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  border: 0;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 .card-container {
   width: 25vw;
@@ -126,14 +238,117 @@
 .nav-btn {
   margin: 0 2rem;
 }
-.registration-container {
-  display: flex;
-  flex-wrap: wrap;
+
+.short-nav {
+  margin: 0 auto;
+}
+.registration-page {
+  background-image: linear-gradient(45deg, #892b64, rgba(0, 0, 0, 0.75)), url(/login-bg.ed91c00a.jpg);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  animation: moveBg 40s ease 1s 2 alternate none;
+  padding: 10vh 0;
 }
 
-.here-link {
+@keyframes moveBg {
+  100% {
+    background-position: bottom right;
+  }
+}
+.reg-container {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.reg-intro {
+  font-family: var(--ff-primary);
+  color: var(--white);
+}
+
+.reg-intro h1 {
+  font-size: 3rem;
+  font-kerning: normal;
+  font-weight: 800;
+  font-family: var(--ff-primary);
+  background-image: -webkit-linear-gradient(45deg, var(--white), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0.5rem 0 1rem #0c0f0a);
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 50vw;
+  color: var(--white);
+  font-size: 1.25rem;
   font-family: var(--ff-secondary);
-  font-weight: 700;
+  text-align: left;
+  flex-wrap: nowrap;
+}
+
+.form-group {
+  width: inherit;
+  max-width: 50%;
+}
+
+.form-control {
+  font-family: var(--ff-primary);
+}
+
+.login-btn:before {
+  content: "";
+  background: linear-gradient(45deg, var(--white), var(--accent), var(--primary), var(--blue), var(--dk-accent), var(--white), var(--yellow));
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+  border: 0;
+}
+
+.login-btn:hover:before {
+  opacity: 1;
+  color: var(-black);
+}
+
+.login-btn:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ff0000;
+  color: var(-black);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  border: 0;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 .main-view::after {
   width: 100vw;
@@ -143,10 +358,6 @@
 
 .user-view {
   background-image: linear-gradient(to right, #434343 0%, black 100%);
-}
-
-.registration-container {
-  background: red;
 }
 
 .other-view {

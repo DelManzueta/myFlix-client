@@ -1,18 +1,17 @@
 @import "../../css/global.css";
 
- 
 .login-container {
     background-image: linear-gradient(45deg, rgba(137, 43, 100, 1), rgba(0, 0, 0, 0.75)), url(../../img/login-bg.jpg);
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    text-align: center;  
+    text-align: center;
     animation: moveBg 40s ease 1s 2 alternate none;
 }
 @keyframes moveBg {
-	100% {
-	  background-position: bottom right;
-	}
+    100% {
+        background-position: bottom right;
+    }
 }
 
 .login-body {
@@ -24,13 +23,20 @@
     justify-content: space-evenly;
     overflow: hidden;
     min-width: 30vw;
-    
 }
 
 .login-form {
     margin-top: 15vh;
     min-width: 25vw;
     padding: 5vh 2vw;
+}
+
+.login-form h5 {
+    font-family: var(--ff-secondary);
+    color: var(--white);
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 1px;
 }
 
 .login-logo {
@@ -45,7 +51,96 @@
     filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
 }
 
-::placeholder {
-    color: var(--primary);
-    padding: 1vw;
+.under-form {
+    color: var(--white);
+    font-family: var(--ff-secondary);
+    padding-top: 2rem;
+    align-items: baseline;
+}
+
+.under-form a {
+    color: #ff0000;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: 0.2s all ease-in-out;
+    text-decoration: none;
+}
+
+.under-form a:hover {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.login-btn {
+    width: 13.75rem;
+    height: 3.125rem;
+    outline: none;
+    cursor: pointer;
+    z-index: 0;
+    border-radius: 10px;
+    margin: 0 auto;
+    border: 0;
+    font-family: var(--ff-primary);
+    color:var(--black);
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.login-btn:before {
+    content: "";
+    background: linear-gradient(
+        45deg,
+        var(--white),
+        var(--accent),
+        var(--primary),
+        var(--blue),
+        var(--dk-accent),
+        var(--white),
+        var(--yellow)
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    border: 0;
+    
+}
+
+.login-btn:hover:before {
+    opacity: 1;
+    color: var(-black);
+}
+
+.login-btn:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff0000;
+    color: var(-black);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    border: 0;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }
