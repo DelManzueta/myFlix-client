@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './login-view.scss'
-import Particles  from 'react-particles-js'
+import Particles from 'react-particles-js'
 
 export function LoginView (props) {
   const [username, setUsername] = useState('')
@@ -59,7 +59,6 @@ export function LoginView (props) {
           <h5>Sign In:</h5>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId='formUsername'>
-              
               <Form.Control
                 type='text'
                 placeholder='Username'
@@ -72,8 +71,7 @@ export function LoginView (props) {
                 Username must be at least 6 alphanumeric characters long.
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId='formPassword'>
-              {/* <Form.Label>Password:</Form.Label> */}
+            <Form.Group controlId='formPassword'> 
               <Form.Control
                 type='password'
                 placeholder='Password'
@@ -89,14 +87,16 @@ export function LoginView (props) {
                 <Form.Text>Invalid Username and/or Password</Form.Text>
               )}
             </Form.Group>
-            <Button className="login-btn" type='submit' block>
+            <Button className='login-btn' type='submit' block>
               Login
             </Button>
           </Form>
           <section className='under-form'>
             <p>
               <span>New to myFlix &#63;</span> Register your account{' '}
-              <Link className='login-here' to={`/register`}>Here</Link>
+              <Link className='login-here' to={`/register`}>
+                Here
+              </Link>
             </p>
           </section>
         </section>

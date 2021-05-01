@@ -1,0 +1,23 @@
+<Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Navbar.Brand className='nav-logo' as={Link} to='/'>
+            myFlix Movies
+          </Navbar.Brand>
+          <Navbar.Text className='nav-txt'>
+            <h5>
+              Signed in as:
+              <Link className='usr-link' as={Link} to={`/users/{user}`}>
+                <h4>{Username}</h4>
+              </Link>
+            </h5>
+          </Navbar.Text>
+          <Nav className='mr-auto'>
+          </Nav>
+            <Button
+              className='nav-btn'
+              size='sm'
+              onClick={() => this.onLoggedOut()}
+            >
+              <b>Log Out</b>
+            </Button>
+        </Navbar.Collapse>

@@ -45,7 +45,7 @@
     font-kerning: normal;
     font-weight: 800;
     font-family: var(--ff-primary);
-    background-image: -webkit-linear-gradient(45deg, var(--white), var(--accent));
+    background-image: -webkit-linear-gradient(45deg,var(--accent), var(--white) );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
@@ -96,7 +96,7 @@
         var(--blue),
         var(--dk-accent),
         var(--white),
-        var(--yellow)
+        var(--yellow)f
     );
     position: absolute;
     top: -2px;
@@ -143,4 +143,9 @@
     100% {
         background-position: 0 0;
     }
+}
+
+
+::placeholder {
+    background-color: transparent !important;
 }

@@ -1,23 +1,7 @@
 
 @media only screen and (max-width: 768px) {
     
-    .registration-page{
-        overflow: hidden;
+    .reg-box {
+        padding-top: 5vh !important;
     }
-    .reg-container{
-        display: flex;
-    flex-direction:row; 
-    }
-    .reg-intro {
-        padding-bottom: 2rem;
-    }
-    .reg-intro h1{
-        font-size: 1.5rem !important;
-    }
-    .registration-form {
-        display:flex; 
-        flex-wrap: wrap; 
-        font-size: 1rem !important; 
-         
-    } 
 }

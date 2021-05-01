@@ -1,6 +1,6 @@
-import React from 'react'
 import axios from 'axios'
-import { Button, Nav, Navbar } from 'react-bootstrap'
+import React from 'react'
+import { Button, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './navigation.scss'
 
@@ -56,26 +56,29 @@ export class Navigation extends React.Component {
     const { Username } = this.state
 
     return (
-      <Navbar expand='lg'>
+      <Navbar bg='primary' sticky='top' expand='lg'>
+        <Navbar.Brand href='#home'>myFlix Movies</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
-          <Navbar.Brand className='nav-logo' as={Link} to='/'>
-            myFlix Movies
-          </Navbar.Brand>
           <Nav className='mr-auto'>
-            <Nav.Link as={Link} to='/'>
-              Home
-            </Nav.Link> 
+            <Navbar.Text>
+              Signed in as:
+              <Link className='usr-link' as={Link} to={`/users/{user}`}>
+                {Username}
+              </Link>
+            </Navbar.Text>
+            <Button
+              className='nav-btn'
+              size='sm'
+              onClick={() => this.onLoggedOut()}
+            >
+              <b>Log Out</b>
+            </Button>
           </Nav>
-          <Navbar.Text>
-            Signed in as:{' '}
-            <Link as={Link} to={`/users/{user}`}>
-              {Username}
-            </Link>
-          </Navbar.Text>
-          <Button className='nav-btn' size='sm' onClick={() => this.onLoggedOut()}>
-            <b>Log Out</b>
-          </Button>
+          <Form inline>
+            <FormControl type='text' placeholder='Search' className='mr-sm-2' />
+            <Button variant='outline-success'>Search</Button>
+          </Form>
         </Navbar.Collapse>
       </Navbar>
     )

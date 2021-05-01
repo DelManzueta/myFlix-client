@@ -67927,7 +67927,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../css/global.css":"css/global.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Navigation/navigation.jsx":[function(require,module,exports) {
+},{"../../css/global.css":"css/global.css","../../css/responsive.css":"css/responsive.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Navigation/navigation.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -67935,9 +67935,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Navigation = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
 var _axios = _interopRequireDefault(require("axios"));
+
+var _react = _interopRequireDefault(require("react"));
 
 var _reactBootstrap = require("react-bootstrap");
 
@@ -68041,21 +68041,19 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 
       var Username = this.state.Username;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
+        bg: "primary",
+        sticky: "top",
         expand: "lg"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+        href: "#home"
+      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
       }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
         id: "basic-navbar-nav"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
-        className: "nav-logo",
-        as: _reactRouterDom.Link,
-        to: "/"
-      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
-        as: _reactRouterDom.Link,
-        to: "/"
-      }, "Home")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, null, "Signed in as:", ' ', /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, null, "Signed in as:", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        className: "usr-link",
         as: _reactRouterDom.Link,
         to: "/users/{user}"
       }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
@@ -68064,7 +68062,15 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
-      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out"))));
+      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out"))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
+        inline: true
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
+        type: "text",
+        placeholder: "Search",
+        className: "mr-sm-2"
+      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "outline-success"
+      }, "Search"))));
     }
   }]);
 
@@ -68072,7 +68078,7 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.Navigation = Navigation;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./navigation.scss":"components/Navigation/navigation.scss"}],"components/MovieView/movie-view.jsx":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./navigation.scss":"components/Navigation/navigation.scss"}],"components/MovieView/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -68808,13 +68814,15 @@ function RegistrationView(props) {
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "registration-page"
+    className: "reg-page"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
-    className: "reg-container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "reg-intro"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Register a new account")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
-    className: "registration-form"
+    className: "reg-box"
+  }, /*#__PURE__*/_react.default.createElement("section", {
+    className: "reg-title"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Register a new ", /*#__PURE__*/_react.default.createElement("span", {
+    className: "reg-logo"
+  }, "myFlix"), " account")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
+    className: "reg-form"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicUsername"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Username"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
@@ -68851,11 +68859,13 @@ function RegistrationView(props) {
     onChange: function onChange(e) {
       return createPassword(e.target.value);
     }
-  })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-    className: "submit-user",
+  }))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+    className: "reg-btn",
     type: "submit",
     onClick: handleSubmit
-  }, "Register")), /*#__PURE__*/_react.default.createElement(_shortNav.ShortNav, null)));
+  }, "Register"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Text, {
+    className: "text-muted"
+  }, "Your information is always kept private and never sold to social marketing companies"), /*#__PURE__*/_react.default.createElement(_shortNav.ShortNav, null)));
 }
 },{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./registration.scss":"components/RegistrationView/registration.scss","../Navigation/short-nav":"components/Navigation/short-nav.jsx"}],"components/MainView/main-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -69374,7 +69384,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "30177" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "24600" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
