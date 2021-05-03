@@ -14,7 +14,7 @@ import { Navigation } from '../Navigation/navigation'
 import { ProfileView } from '../ProfileView/profile-view'
 import { RegistrationView } from '../RegistrationView/registration'
 import './main-view.scss'
-import {CarouselView} from '../Carousel/carousel'
+import { CarouselView } from '../Carousel/carousel'
 
 export class MainView extends React.Component {
   constructor (props) {
@@ -83,7 +83,7 @@ export class MainView extends React.Component {
           <Route
             path='/movies/:movieId'
             render={({ match }) => (
-              <MovieView 
+              <MovieView
                 movie={movies.find(m => m._id === match.params.movieId)}
               />
             )}

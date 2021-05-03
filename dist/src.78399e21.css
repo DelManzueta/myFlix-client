@@ -6,8 +6,8 @@
     }
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800;900&family=Poppins:wght@200;400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
 
 :root {
   /** main **/
@@ -23,19 +23,26 @@
   --dk-accent: #892b64;
   /** rgba(137,43,100,1.0) **/
 
-
   --primary: #b7094c;
   --ff-primary: "Montserrat", sans-serif;
-  --ff-secondary: "Poppins", sans-serif;
+  --ff-secondary: "Source Sans Pro", sans-serif;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   position: relative;
-  }
+}
 
+body {
+  background-color: inherit !important;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
 
 .login-container {
   background-image: linear-gradient(45deg, #892b64, rgba(0, 0, 0, 0.75)), url(/login-bg.ed91c00a.jpg);
@@ -85,7 +92,7 @@
   background-image: -webkit-linear-gradient(45deg, var(--accent), var(--white));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
+  filter: drop-shadow(-0.063rem 0.813rem 0.5rem rgba(12, 15, 10, 0.5));
 }
 
 .under-form {
@@ -105,7 +112,7 @@
 
 .under-form a:hover {
   text-decoration: none;
-  color: var(--black);
+  color: var(--accent);
 }
 
 .login-btn {
@@ -121,6 +128,9 @@
   color: var(--black);
   font-weight: 600;
   font-size: 1.125rem;
+  -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10, 15, 10, 0.35);
+  -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10, 15, 10, 0.35);
+  box-shadow: -0.063rem 0.813rem 0.5rem rgba(10, 15, 10, 0.35);
 }
 
 .login-btn:before {
@@ -171,27 +181,52 @@
     background-position: 0 0;
   }
 }
-::placeholder {
-  background-color: transparent !important;
+.login-placeholder {
+  box-shadow: inset 5px 5px 10px #8d8d8d, inset -5px -5px 10px #ffffff;
 }
 .card-container {
-  width: 50vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2px;
-  align-items: end;
+  width: 25rem;
+  display: inline-flex;
+  margin: 5rem auto;
+  align-items: stretch;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-grow: 0;
+  border-radius: 2rem 2rem 0 0;
+  background: linear-gradient(145deg, #932e6b, #7b275a, rgba(15, 15, 15, 0.05));
+  box-shadow: 33px 33px 66px #5f1e45, -33px -33px 66px #b33883;
+}
+
+.card-main {
+  background-color: var(--black);
+  border-radius: 2rem 2rem 0 0;
 }
 
 .card-body {
-  border: 2px dotted red;
   height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: stretch;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-self: baseline;
 }
 
 .card-title {
   font-family: var(--ff-primary);
   font-size: 2rem;
+  color: var(--white);
   font-weight: 600;
-  border: 2px solid #ff71ec;
+}
+
+.card-text {
+  font-family: var(--ff-secondary);
+  color: var(--white);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 400;
 }
 
 .card-footer {
@@ -199,7 +234,7 @@
 }
 
 .card-img {
-  border-radius: 2rem;
+  border-radius: 2rem 2rem 0 0;
   height: auto;
   -webkit-filter: grayscale(1);
   -webkit-transition: all 0.7s ease-in-out;
@@ -209,6 +244,29 @@
   filter: none;
   -webkit-filter: grayscale(0);
   -webkit-transform: scale(1.01);
+}
+.movie-view-container {
+  background-color: inherit !important;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-view {
+  border: 2px solid yellow;
+}
+
+.movie-view img {
+  width: 15vw;
+  margin: 0 5rem;
+}
+.nav-brand {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: var(--ff-primary);
+}
+
+.nav-bg {
+  background-color: var(--primary);
 }
 .reg-page {
   background-image: linear-gradient(45deg, white, rgba(255, 255, 255, 0.75)), url(/login-bg.ed91c00a.jpg);
@@ -256,6 +314,7 @@
   background-image: -webkit-linear-gradient(45deg, var(--accent), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(-0.063rem 0.75rem 0.5rem rgba(52, 53, 52, 0.15));
 }
 
 .reg-btn {
@@ -270,38 +329,30 @@
   background-color: var(--primary);
   transition-property: width;
   transition-duration: 0.5s;
-  margin: 0 auto;
+  margin: 2rem auto;
   align-content: center;
   align-items: center;
+}
+
+.reg-label {
+  -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10, 15, 10, 0.15);
+  -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10, 15, 10, 0.15);
+  box-shadow: -0.063rem 0.813rem 0.5rem rgba(10, 15, 10, 0.15);
 }
 
 .reg-btn:hover {
   width: 15rem;
   background-color: #ff0000;
 }
-.main-view::after {
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(to right, #434343 0%, black 100%);
-}
 
-.user-view {
-  background-image: linear-gradient(to right, #434343 0%, black 100%);
+.text-muted {
+  padding: 2rem 0;
 }
-
-.other-view {
-  background-color: red !important;
-}
-
-.view-container {
-  background-color: red;
+.main-view {
+  background-color: var(--primary);
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
-}
-
-.movie-poster {
-  width: 10vw;
+  width: 100%;
+  height: 100%;
 }
 .carousel-item {
   background-color: blue;

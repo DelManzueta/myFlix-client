@@ -53710,7 +53710,9 @@ exports.setMovies = setMovies;
 exports.setFilter = setFilter;
 exports.setUser = setUser;
 exports.setMovie = setMovie;
-exports.SET_MOVIE = exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
+exports.setGenre = setGenre;
+exports.setDirector = setDirector;
+exports.SET_DIRECTOR = exports.SET_GENRE = exports.SET_MOVIE = exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
 var SET_MOVIES = 'SET_MOVIES';
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = 'SET_FILTER';
@@ -53719,6 +53721,10 @@ var SET_USER = 'SET_USER';
 exports.SET_USER = SET_USER;
 var SET_MOVIE = 'SET_MOVIE';
 exports.SET_MOVIE = SET_MOVIE;
+var SET_GENRE = 'SET_GENRE';
+exports.SET_GENRE = SET_GENRE;
+var SET_DIRECTOR = 'SET_DIRECTOR';
+exports.SET_DIRECTOR = SET_DIRECTOR;
 
 function setMovies(value) {
   return {
@@ -53744,6 +53750,20 @@ function setUser(value) {
 function setMovie(value) {
   return {
     type: SET_MOVIE,
+    value: value
+  };
+}
+
+function setGenre(value) {
+  return {
+    type: SET_GENRE,
+    value: value
+  };
+}
+
+function setDirector(value) {
+  return {
+    type: SET_DIRECTOR,
     value: value
   };
 }
@@ -67659,7 +67679,7 @@ function LoginView(props) {
         props.onLoggedIn(data);
       }
     }).catch(function (e) {
-      console.log('no such user');
+      console.log('User does not exit');
     });
   };
 
@@ -67689,6 +67709,7 @@ function LoginView(props) {
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formUsername"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    className: "login-placeholder",
     type: "text",
     placeholder: "Username",
     pattern: "[a-zA-Z0-9]{6,}",
@@ -67702,6 +67723,7 @@ function LoginView(props) {
   }, "Username must be at least 6 alphanumeric characters long.")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formPassword"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    className: "login-placeholder",
     type: "password",
     placeholder: "Password",
     pattern: "[a-zA-Z0-9]{8,}",
@@ -67789,15 +67811,15 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         className: "card-container"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
         className: "card-main"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "card-item"
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/movies/".concat(movie._id)
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Img, {
         className: "card-img",
         variant: "top",
         src: movie.ImagePath
-      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
-      }, "Open")))));
+      }, "Details"))));
     }
   }]);
 
@@ -67897,9 +67919,7 @@ function MoviesList(props) {
   });
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
     className: "movies-list"
-  }, /*#__PURE__*/_react.default.createElement(_visibilityFilterInput.default, {
-    visibilityFilter: visibilityFilter
-  }), filteredMovies.map(function (m) {
+  }, filteredMovies.map(function (m) {
     return /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
       key: m._id,
       movie: m
@@ -67922,7 +67942,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Navigation/navigation.scss":[function(require,module,exports) {
+},{"../../css/global.css":"css/global.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Navigation/navigation.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -68041,36 +68061,30 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 
       var Username = this.state.Username;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
-        bg: "primary",
+        className: "nav-shadow nav-bg",
         sticky: "top",
         expand: "lg"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
-        href: "#home"
-      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+        className: "nav-brand",
+        as: _reactRouterDom.Link,
+        to: "/users/{user}"
+      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, null, "Signed in as:", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        className: "usr-link",
+        as: _reactRouterDom.Link,
+        to: "/users/{user}"
+      }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
       }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
         id: "basic-navbar-nav"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, null, "Signed in as:", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        className: "usr-link",
-        as: _reactRouterDom.Link,
-        to: "/users/{user}"
-      }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         className: "nav-btn",
         size: "sm",
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
-      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out"))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form, {
-        inline: true
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
-        type: "text",
-        placeholder: "Search",
-        className: "mr-sm-2"
-      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-        variant: "outline-success"
-      }, "Search"))));
+      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out")))));
     }
   }]);
 
@@ -68218,7 +68232,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/genres/".concat(movie.Genre.Name)
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         className: "button-genre"
-      }, "Genre")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+      }, movie.Genre.Name)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         className: "button-favorite",
         onClick: function onClick() {
           return _this3.addToFavoriteMovies(movie._id);
@@ -68826,6 +68840,7 @@ function RegistrationView(props) {
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicUsername"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Username"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    className: "reg-label",
     type: "text",
     placeholder: "Create Username",
     value: username,
@@ -68835,6 +68850,7 @@ function RegistrationView(props) {
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicEmail"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Email Address"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    className: "reg-label",
     type: "email",
     placeholder: "Email Address",
     value: email,
@@ -68844,6 +68860,7 @@ function RegistrationView(props) {
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicDob"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Birthday"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    className: "reg-label",
     type: "date",
     placeholder: "mm/dd/yyyy",
     value: birthday,
@@ -68853,6 +68870,7 @@ function RegistrationView(props) {
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicPassword"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Password"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    className: "reg-label",
     type: "password",
     placeholder: "Create Password",
     value: password,
@@ -69279,11 +69297,25 @@ function movie() {
   }
 }
 
+function genre() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_GENRE:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
   movies: movies,
   user: user,
-  movie: movie
+  movie: movie,
+  genre: genre
 });
 var _default = moviesApp;
 exports.default = _default;
@@ -69384,7 +69416,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "24600" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1027" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

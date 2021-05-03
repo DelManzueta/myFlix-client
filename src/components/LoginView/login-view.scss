@@ -45,10 +45,10 @@
     font-kerning: normal;
     font-weight: 800;
     font-family: var(--ff-primary);
-    background-image: -webkit-linear-gradient(45deg,var(--accent), var(--white) );
+    background-image: -webkit-linear-gradient(45deg, var(--accent), var(--white));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0.5rem 0 1rem rgba(12, 15, 10, 0.5));
+    filter: drop-shadow(-0.063rem 0.813rem 0.5rem rgba(12, 15, 10, 0.5));
 }
 
 .under-form {
@@ -68,7 +68,7 @@
 
 .under-form a:hover {
     text-decoration: none;
-    color: var(--black);
+    color: var(--accent);
 }
 
 .login-btn {
@@ -81,9 +81,12 @@
     margin: 0 auto;
     border: 0;
     font-family: var(--ff-primary);
-    color:var(--black);
+    color: var(--black);
     font-weight: 600;
     font-size: 1.125rem;
+    -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
+    -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
+    box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
 }
 
 .login-btn:before {
@@ -96,7 +99,7 @@
         var(--blue),
         var(--dk-accent),
         var(--white),
-        var(--yellow)f
+        var(--yellow) f
     );
     position: absolute;
     top: -2px;
@@ -111,7 +114,6 @@
     transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
     border: 0;
-    
 }
 
 .login-btn:hover:before {
@@ -145,7 +147,6 @@
     }
 }
 
-
-::placeholder {
-    background-color: transparent !important;
+.login-placeholder {
+    box-shadow: inset 5px 5px 10px #8d8d8d, inset -5px -5px 10px #ffffff;
 }

@@ -37,7 +37,7 @@ export function LoginView (props) {
         }
       })
       .catch(e => {
-        console.log('no such user')
+        console.log('User does not exit')
       })
   }
 
@@ -60,6 +60,7 @@ export function LoginView (props) {
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId='formUsername'>
               <Form.Control
+                className='login-placeholder'
                 type='text'
                 placeholder='Username'
                 pattern='[a-zA-Z0-9]{6,}'
@@ -73,6 +74,7 @@ export function LoginView (props) {
             </Form.Group>
             <Form.Group controlId='formPassword'> 
               <Form.Control
+               className='login-placeholder'
                 type='password'
                 placeholder='Password'
                 pattern='[a-zA-Z0-9]{8,}'

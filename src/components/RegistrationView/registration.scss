@@ -46,6 +46,7 @@
     background-image: -webkit-linear-gradient(45deg,  var(--accent), var(--primary) );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; 
+    filter: drop-shadow(-0.063rem 0.75rem 0.5rem rgba(52, 53, 52, 0.15));
 }
  
 
@@ -61,13 +62,23 @@
     background-color: var(--primary);
     transition-property: width;
     transition-duration: .5s;
-    margin: 0 auto;
+    margin: 2rem auto; 
     align-content: center;
     align-items: center;
+    
+}
+
+.reg-label {
+    -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.15);
+    -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.15);
+    box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.15);
 }
 
 .reg-btn:hover {
     width: 15rem;
-    background-color: #ff0000;
+    background-color: #ff0000; 
 }
- 
+
+.text-muted {
+    padding: 2rem 0;
+}

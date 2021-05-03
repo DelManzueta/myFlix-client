@@ -54,19 +54,20 @@ export class Navigation extends React.Component {
   }
   render () {
     const { Username } = this.state
-
     return (
-      <Navbar bg='primary' sticky='top' expand='lg'>
-        <Navbar.Brand href='#home'>myFlix Movies</Navbar.Brand>
+      <Navbar className='nav-shadow nav-bg' sticky='top' expand='lg'>
+        <Navbar.Brand className='nav-brand' as={Link} to={`/users/{user}`}>
+          myFlix Movies
+        </Navbar.Brand>
+        <Navbar.Text>
+          Signed in as:
+          <Link className='usr-link' as={Link} to={`/users/{user}`}>
+            {Username}
+          </Link>
+        </Navbar.Text>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Navbar.Text>
-              Signed in as:
-              <Link className='usr-link' as={Link} to={`/users/{user}`}>
-                {Username}
-              </Link>
-            </Navbar.Text>
             <Button
               className='nav-btn'
               size='sm'
@@ -75,10 +76,7 @@ export class Navigation extends React.Component {
               <b>Log Out</b>
             </Button>
           </Nav>
-          <Form inline>
-            <FormControl type='text' placeholder='Search' className='mr-sm-2' />
-            <Button variant='outline-success'>Search</Button>
-          </Form>
+          
         </Navbar.Collapse>
       </Navbar>
     )

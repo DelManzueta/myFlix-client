@@ -44,6 +44,7 @@ export function RegistrationView (props) {
           <Form.Group controlId='formBasicUsername'>
             <Form.Label>Username</Form.Label>
             <Form.Control
+            className='reg-label'
               type='text'
               placeholder='Create Username'
               value={username}
@@ -54,6 +55,7 @@ export function RegistrationView (props) {
           <Form.Group controlId='formBasicEmail'>
             <Form.Label>Email Address</Form.Label>
             <Form.Control
+            className='reg-label'
               type='email'
               placeholder='Email Address'
               value={email}
@@ -63,6 +65,7 @@ export function RegistrationView (props) {
           <Form.Group controlId='formBasicDob'>
             <Form.Label>Birthday</Form.Label>
             <Form.Control
+            className='reg-label'
               type='date'
               placeholder='mm/dd/yyyy'
               value={birthday}
@@ -72,6 +75,7 @@ export function RegistrationView (props) {
           <Form.Group controlId='formBasicPassword'>
             <Form.Label>Password</Form.Label>
             <Form.Control
+            className='reg-label'
               type='password'
               placeholder='Create Password'
               value={password}

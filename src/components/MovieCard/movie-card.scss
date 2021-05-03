@@ -1,39 +1,62 @@
 @import "../../css/global.css";
 
 .card-container {
-  width: 50vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2px;
-  align-items: end;
+  
+  width: 25rem;
+  display: inline-flex;
+  margin: 5rem auto;
+  align-items: stretch;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-grow: 0;
+  border-radius: 2rem 2rem 0 0;
+  background: linear-gradient(145deg, #932e6b, #7b275a, rgba(15,15,15,.05));
+  box-shadow: 33px 33px 66px #5f1e45, -33px -33px 66px #b33883;
 }
- 
 
-.card-body {
-  border: 2px dotted red; 
+.card-main {
+  background-color: var(--black);
+  border-radius: 2rem 2rem 0 0;
+}
+
+.card-body { 
   height: inherit;
-}
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  align-content: stretch;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-self: baseline;
+} 
 .card-title {
   font-family: var(--ff-primary);
   font-size: 2rem;
-  font-weight: 600;
-  border: 2px solid rgb(255, 113, 236)
+  color: var(--white);
+  font-weight: 600; 
 }
 
-.card-footer { 
-  background-color: transparent !important; 
-
+.card-text {
+  font-family: var(--ff-secondary);
+  color: var(--white);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 400;
 }
 
-.card-img { 
-  border-radius: 2rem;
+.card-footer {
+  background-color: transparent !important;
+}
+
+.card-img {
+  border-radius: 2rem 2rem 0 0;
   height: auto;
   -webkit-filter: grayscale(1);
   -webkit-transition: all 0.7s ease-in-out;
 }
 
-.card-img:hover { 
+.card-img:hover {
   filter: none;
   -webkit-filter: grayscale(0);
   -webkit-transform: scale(1.01);

@@ -1,0 +1,16 @@
+ @import '../../css/global.css';
+ 
+
+ .movie-view-container {
+     background-color: inherit !important;
+     width: 100%;
+     height: 100%;
+ }
+ .movie-view {  
+      border: 2px solid yellow;  
+ } 
+
+ .movie-view img {
+     width: 15vw;
+     margin: 0 5rem;
+ }

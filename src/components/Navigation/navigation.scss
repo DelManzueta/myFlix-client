@@ -1,3 +1,12 @@
 @import "../../css/global.css";
 @import "../../css/responsive.css";
 
+.nav-brand {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--ff-primary);
+} 
+
+.nav-bg {
+    background-color: var(--primary); 
+}
