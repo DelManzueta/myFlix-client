@@ -67817,9 +67817,10 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         className: "card-img",
         variant: "top",
         src: movie.ImagePath
-      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        className: "card-detail",
         to: "/movies/".concat(movie._id)
-      }, "Details"))));
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title)))));
     }
   }]);
 
@@ -68067,24 +68068,23 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
         className: "nav-brand",
         as: _reactRouterDom.Link,
-        to: "/users/{user}"
-      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, null, "Signed in as:", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
+        className: "justify-content-end"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "nav-links"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, {
+        className: "usr-group"
+      }, "Account:", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         className: "usr-link",
         as: _reactRouterDom.Link,
         to: "/users/{user}"
-      }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
-        "aria-controls": "basic-navbar-nav"
-      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
-        id: "basic-navbar-nav"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
-        className: "mr-auto"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-        className: "nav-btn",
-        size: "sm",
+      }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, {
+        className: "log-out",
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
-      }, /*#__PURE__*/_react.default.createElement("b", null, "Log Out")))));
+      }, "Sign Out"))));
     }
   }]);
 
@@ -68890,88 +68890,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../css/global.css":"css/global.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Carousel/carousel.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Carousel/carousel.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CarouselView = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _reactBootstrap = require("react-bootstrap");
-
-require("./carousel.scss");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var CarouselView = /*#__PURE__*/function (_React$Component) {
-  _inherits(CarouselView, _React$Component);
-
-  var _super = _createSuper(CarouselView);
-
-  function CarouselView() {
-    _classCallCheck(this, CarouselView);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(CarouselView, [{
-    key: "render",
-    value: function render() {
-      var movie = this.props.movie;
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Carousel, {
-        fade: true
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Carousel.Item, null, /*#__PURE__*/_react.default.createElement("img", {
-        className: "well-lock",
-        src: movie.ImagePath,
-        alt: "First slide"
-      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Carousel.Caption, null, /*#__PURE__*/_react.default.createElement("h3", null, movie.Title), /*#__PURE__*/_react.default.createElement("p", null, movie.Description))));
-    }
-  }]);
-
-  return CarouselView;
-}(_react.default.Component);
-
-exports.CarouselView = CarouselView;
-CarouselView.propTypes = {
-  movie: _propTypes.default.shape({
-    Title: _propTypes.default.string.isRequired,
-    Description: _propTypes.default.string.isRequired,
-    ImagePath: _propTypes.default.string.isRequired
-  }).isRequired
-};
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./carousel.scss":"components/Carousel/carousel.scss"}],"components/MainView/main-view.jsx":[function(require,module,exports) {
+},{"../../css/global.css":"css/global.css","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MainView/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69010,8 +68929,6 @@ var _profileView = require("../ProfileView/profile-view");
 var _registration = require("../RegistrationView/registration");
 
 require("./main-view.scss");
-
-var _carousel = require("../Carousel/carousel");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69228,7 +69145,7 @@ Image.propTypes = {
   style: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array]),
   source: _propTypes.default.any.isRequired
 };
-},{"axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js","../DirectorView/director-view":"components/DirectorView/director-view.jsx","../GenreView/genre-view":"components/GenreView/genre-view.jsx","../LoginView/login-view":"components/LoginView/login-view.jsx","../MoviesList/movies-list":"components/MoviesList/movies-list.jsx","../MovieView/movie-view":"components/MovieView/movie-view.jsx","../Navigation/navigation":"components/Navigation/navigation.jsx","../ProfileView/profile-view":"components/ProfileView/profile-view.jsx","../RegistrationView/registration":"components/RegistrationView/registration.jsx","./main-view.scss":"components/MainView/main-view.scss","../Carousel/carousel":"components/Carousel/carousel.jsx"}],"index.scss":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js","../DirectorView/director-view":"components/DirectorView/director-view.jsx","../GenreView/genre-view":"components/GenreView/genre-view.jsx","../LoginView/login-view":"components/LoginView/login-view.jsx","../MoviesList/movies-list":"components/MoviesList/movies-list.jsx","../MovieView/movie-view":"components/MovieView/movie-view.jsx","../Navigation/navigation":"components/Navigation/navigation.jsx","../ProfileView/profile-view":"components/ProfileView/profile-view.jsx","../RegistrationView/registration":"components/RegistrationView/registration.jsx","./main-view.scss":"components/MainView/main-view.scss"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -69416,7 +69333,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1027" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4621" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

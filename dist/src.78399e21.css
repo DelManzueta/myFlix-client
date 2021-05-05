@@ -1,13 +1,21 @@
-
 @media only screen and (max-width: 768px) {
-    
-    .reg-box {
-        padding-top: 5vh !important;
-    }
+  .reg-box {
+    padding-top: 5vh !important;
+  }
+  .nav-brand {
+    font-size: 2.5rem !important;
+    letter-spacing: 0 !important;
+    margin: 0 !important;
+  }
+  .nav-links {
+    flex-direction: row !important;
+    padding: 0 !important;
+  }
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
 
 :root {
   /** main **/
@@ -25,7 +33,8 @@
 
   --primary: #b7094c;
   --ff-primary: "Montserrat", sans-serif;
-  --ff-secondary: "Source Sans Pro", sans-serif;
+  --ff-secondary: "Roboto", sans-serif;
+  --ff-tri: "Oswald", sans-serif;
 }
 
 *,
@@ -189,12 +198,12 @@ body {
   display: inline-flex;
   margin: 5rem auto;
   align-items: stretch;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   flex-grow: 0;
   border-radius: 2rem 2rem 0 0;
   background: linear-gradient(145deg, #932e6b, #7b275a, rgba(15, 15, 15, 0.05));
-  box-shadow: 33px 33px 66px #5f1e45, -33px -33px 66px #b33883;
+  box-shadow: 22px 22px 44px #5f1e45, -22px -22px 44px #b33883;
 }
 
 .card-main {
@@ -204,6 +213,7 @@ body {
 
 .card-body {
   height: inherit;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -216,9 +226,21 @@ body {
 
 .card-title {
   font-family: var(--ff-primary);
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--white);
-  font-weight: 600;
+}
+
+.card-title:hover {
+  text-decoration: none;
+  color: var(--accent);
+  transition: all 500ms ease;
+  font-size: 1.85rem;
+}
+
+.card-detail:hover {
+  text-decoration: none;
+  color: var(--accent);
+  transition: all 500ms ease;
 }
 
 .card-text {
@@ -245,6 +267,14 @@ body {
   -webkit-filter: grayscale(0);
   -webkit-transform: scale(1.01);
 }
+
+.card-detail {
+  font-size: 1.2rem;
+}
+.row {
+  width: 90vw;
+  margin: 0 auto;
+}
 .movie-view-container {
   background-color: inherit !important;
   width: 100%;
@@ -260,13 +290,62 @@ body {
   margin: 0 5rem;
 }
 .nav-brand {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  margin: 0.5rem 5rem;
   font-weight: 800;
   font-family: var(--ff-primary);
+  text-align: center;
+  letter-spacing: -0.125rem;
+  color: var(--white) !important;
+  filter: drop-shadow(-0.063rem 0.813rem 0.5rem rgba(12, 15, 10, 0.5));
 }
 
 .nav-bg {
   background-color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  align-items: flex-end;
+  margin: 0 5rem;
+  justify-content: space-evenly;
+}
+
+.usr-link {
+  color: var(--white) !important;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: var(--ff-tri);
+}
+
+.usr-link:hover {
+  text-decoration: none;
+}
+
+.usr-group {
+  transition: 0.2s width;
+  padding: 5px 0;
+  transition: all 500ms ease;
+  border-bottom: 2px solid transparent;
+}
+
+.usr-group:hover {
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+}
+
+.log-out {
+  cursor: pointer;
+  color: var(--accent) !important;
+  font-family: var(--ff-primary);
+  transition: all 500ms ease;
+}
+
+.log-out:hover {
+  color: var(--white) !important;
 }
 .reg-page {
   background-image: linear-gradient(45deg, white, rgba(255, 255, 255, 0.75)), url(/login-bg.ed91c00a.jpg);
@@ -353,11 +432,6 @@ body {
   background-size: cover;
   width: 100%;
   height: 100%;
-}
-.carousel-item {
-  background-color: blue;
-  min-width: 100%;
-  overflow: visible;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

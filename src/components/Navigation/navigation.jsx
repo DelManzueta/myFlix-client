@@ -56,27 +56,22 @@ export class Navigation extends React.Component {
     const { Username } = this.state
     return (
       <Navbar className='nav-shadow nav-bg' sticky='top' expand='lg'>
-        <Navbar.Brand className='nav-brand' as={Link} to={`/users/{user}`}>
+        <Navbar.Brand className='nav-brand' as={Link} to={`/`}>
           myFlix Movies
         </Navbar.Brand>
-        <Navbar.Text>
-          Signed in as:
-          <Link className='usr-link' as={Link} to={`/users/{user}`}>
-            {Username}
-          </Link>
-        </Navbar.Text>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='mr-auto'>
-            <Button
-              className='nav-btn'
-              size='sm'
-              onClick={() => this.onLoggedOut()}
-            >
-              <b>Log Out</b>
-            </Button>
-          </Nav>
-          
+        <Navbar.Toggle />
+        <Navbar.Collapse className='justify-content-end'>
+          <div className='nav-links'>
+            <Navbar.Text className='usr-group'>
+              Account:
+              <Link className='usr-link' as={Link} to={`/users/{user}`}>
+                {Username}
+              </Link>
+            </Navbar.Text>
+            <Navbar.Text className='log-out' onClick={() => this.onLoggedOut()}>
+              Sign Out
+            </Navbar.Text>
+          </div>
         </Navbar.Collapse>
       </Navbar>
     )

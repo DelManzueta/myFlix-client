@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './movie-card.scss'
 
@@ -19,9 +19,9 @@ export class MovieCard extends React.Component {
             />
           </Link>
           <Card.Body>
-            <Card.Title>{movie.Title}</Card.Title>
-            <Card.Text>{movie.Description}</Card.Text>
-            <Link to={`/movies/${movie._id}`}>Details</Link>
+          <Link className="card-detail" to={`/movies/${movie._id}`}><Card.Title>{movie.Title}</Card.Title></Link>
+            {/* <Card.Text>{movie.Description}</Card.Text> */}
+            {/* <Link className="card-detail" to={`/movies/${movie._id}`}><span className="card-detail">Details</span></Link> */}
           </Card.Body>
         </Card>
       </div>
