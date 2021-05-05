@@ -32,6 +32,11 @@
   flex-grow: 1;
   align-self: baseline; 
 } 
+
+.card-body p {
+  color: var(--accent)
+}
+
 .card-title {
   font-family: var(--ff-primary);
   font-size: 1.75rem;

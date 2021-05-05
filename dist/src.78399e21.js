@@ -67818,9 +67818,13 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         variant: "top",
         src: movie.ImagePath
       })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/genres/".concat(movie.Genre.Name)
+      }, /*#__PURE__*/_react.default.createElement("p", null, movie.Genre.Name)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         className: "card-detail",
         to: "/movies/".concat(movie._id)
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title)))));
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title)), /*#__PURE__*/_react.default.createElement("p", null, "Director:\xA0", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/Directors/".concat(movie.Director.Name)
+      }, "\xA0", movie.Director.Name)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null))));
     }
   }]);
 
@@ -67832,8 +67836,18 @@ MovieCard.propTypes = {
   movie: _propTypes.default.shape({
     Title: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
-    ImagePath: _propTypes.default.string.isRequired
-  }).isRequired
+    ImagePath: _propTypes.default.string.isRequired,
+    Genre: _propTypes.default.shape({
+      Name: _propTypes.default.string.isRequired,
+      Description: _propTypes.default.string.isRequired
+    })
+  }),
+  Director: _propTypes.default.shape({
+    Name: _propTypes.default.string.isRequired,
+    Bio: _propTypes.default.string.isRequired,
+    Birth: _propTypes.default.date,
+    Death: _propTypes.default.date
+  })
 };
 },{"prop-types":"../node_modules/prop-types/index.js","react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-card.scss":"components/MovieCard/movie-card.scss"}],"components/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
 "use strict";
@@ -69333,7 +69347,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1055" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
