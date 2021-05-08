@@ -67822,9 +67822,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react.default.createElement("p", null, movie.Genre.Name)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         className: "card-detail",
         to: "/movies/".concat(movie._id)
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title)), /*#__PURE__*/_react.default.createElement("p", null, "Director:\xA0", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title)), /*#__PURE__*/_react.default.createElement("p", null, "Directed By"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/Directors/".concat(movie.Director.Name)
-      }, "\xA0", movie.Director.Name)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null))));
+      }, "\xA0", movie.Director.Name)))));
     }
   }]);
 
@@ -68076,29 +68076,32 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
 
       var Username = this.state.Username;
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
-        className: "nav-shadow nav-bg",
-        sticky: "top",
-        expand: "lg"
+        collapseOnSelect: true,
+        expand: "lg",
+        variant: "dark",
+        sticky: "top"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
         className: "nav-brand",
         as: _reactRouterDom.Link,
         to: "/"
-      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
-        className: "justify-content-end"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "nav-links"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, {
-        className: "usr-group"
-      }, "Account:", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        className: "usr-link",
+      }, "myFlix Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+        "aria-controls": "responsive-navbar-nav"
+      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
+        id: "responsive-navbar-nav"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
+        className: "mr-auto"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.NavDropdown, {
+        title: "Account",
+        id: "basic-nav-dropdown"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.NavDropdown.Item, {
         as: _reactRouterDom.Link,
         to: "/users/{user}"
-      }, Username)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Text, {
+      }, "Profile"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.NavDropdown.Divider, null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.NavDropdown.Item, {
         className: "log-out",
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
-      }, "Sign Out"))));
+      }, "Sign Out")))));
     }
   }]);
 
@@ -69347,7 +69350,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1055" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "22394" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { Button, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
+import { NavDropdown, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './navigation.scss'
 
@@ -52,26 +52,35 @@ export class Navigation extends React.Component {
     localStorage.removeItem('user')
     window.open('/client', '_self')
   }
+   
   render () {
     const { Username } = this.state
     return (
-      <Navbar className='nav-shadow nav-bg' sticky='top' expand='lg'>
+      <Navbar
+        collapseOnSelect
+        expand='lg' 
+        variant='dark'
+        sticky='top' 
+      >
         <Navbar.Brand className='nav-brand' as={Link} to={`/`}>
           myFlix Movies
         </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className='justify-content-end'>
-          <div className='nav-links'>
-            <Navbar.Text className='usr-group'>
-              Account:
-              <Link className='usr-link' as={Link} to={`/users/{user}`}>
-                {Username}
-              </Link>
-            </Navbar.Text>
-            <Navbar.Text className='log-out' onClick={() => this.onLoggedOut()}>
-              Sign Out
-            </Navbar.Text>
-          </div>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
+          <Nav className='mr-auto'>
+            <NavDropdown title='Account' id='basic-nav-dropdown'>
+              <NavDropdown.Item as={Link} to={`/users/{user}`}>
+                Profile
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item
+                className='log-out'
+                onClick={() => this.onLoggedOut()}
+              >
+                Sign Out
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     )

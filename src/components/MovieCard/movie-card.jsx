@@ -25,11 +25,12 @@ export class MovieCard extends React.Component {
             <Link className='card-detail' to={`/movies/${movie._id}`}>
               <Card.Title>{movie.Title}</Card.Title>
             </Link>
-            <p>Director:&nbsp; 
-            <Link to={`/Directors/${movie.Director.Name}`}> 
-             &nbsp;{movie.Director.Name} 
-            </Link></p>
-            <Card.Text></Card.Text>
+            <p>Directed By</p>
+            <Card.Text>
+              <Link to={`/Directors/${movie.Director.Name}`}>
+                &nbsp;{movie.Director.Name}
+              </Link>
+            </Card.Text>
             {/* <Link className="card-detail" to={`/movies/${movie._id}`}><span className="card-detail">Details</span></Link> */}
           </Card.Body>
         </Card>
