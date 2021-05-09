@@ -14,7 +14,6 @@ import { Navigation } from '../Navigation/navigation'
 import { ProfileView } from '../ProfileView/profile-view'
 import { RegistrationView } from '../RegistrationView/registration'
 import './main-view.scss'
-import {CarouselView} from '../Carousel/carousel'
 
 export class MainView extends React.Component {
   constructor (props) {

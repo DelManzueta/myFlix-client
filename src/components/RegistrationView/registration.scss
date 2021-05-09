@@ -1,17 +1,84 @@
-.registration-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-    margin-top: 20vh;
+@import "../../css/global.css";
+@import "../../css/responsive.css";
+
+.reg-page {
+    background-image: linear-gradient(45deg, rgba(255,255,255, 1), rgba(255,255,255, 0.75)), url(../../img/login-bg.jpg);
+    background-size: cover;
     width: 100vw;
-    overflow: visible;
+    height: 100vh; 
+    align-items: center;
+    align-content: center;
+    animation: moveBg 40s ease 1s 2 alternate none; 
+}
+@keyframes moveBg {
+    100% {
+        background-position: bottom right;
+    }
 }
 
-
-.here-link {
+.reg-box {
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction:column;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;  
+    padding-top: 15vh;
     font-family: var(--ff-secondary);
-    font-weight: 700;
+    
 } 
+.reg-box h1 {
+    letter-spacing: -0.125rem;
+}
+.reg-form { 
+    width: 60%;
+    position: relative; 
+    align-items: center;
+    align-content: center;
+}
+
+.reg-logo {
+    font-size: 5rem;
+    letter-spacing: -0.125rem;
+    font-kerning: normal;
+    font-weight: 800;
+    font-family: var(--ff-primary);
+    background-image: -webkit-linear-gradient(45deg,  var(--accent), var(--primary) );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    filter: drop-shadow(-0.063rem 0.75rem 0.5rem rgba(52, 53, 52, 0.15));
+}
+ 
+
+.reg-btn { 
+    width: 13.75rem;
+    height: 3.125rem; 
+    border-radius: 10px; 
+    border: 0;
+    font-family: var(--ff-primary);
+    color:var(--white);
+    font-weight: 600;
+    font-size: 1.125rem;
+    background-color: var(--primary);
+    transition-property: width;
+    transition-duration: .5s;
+    margin: 2rem auto; 
+    align-content: center;
+    align-items: center;
+    
+}
+
+.reg-label {
+    -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.15);
+    -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.15);
+    box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.15);
+}
+
+.reg-btn:hover {
+    width: 15rem;
+    background-color: #ff0000; 
+}
+
+.text-muted {
+    padding: 2rem 0;
+}

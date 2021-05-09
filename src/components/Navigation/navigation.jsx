@@ -1,6 +1,6 @@
-import React from 'react'
 import axios from 'axios'
-import { Button, Nav, Navbar } from 'react-bootstrap'
+import React from 'react'
+import { NavDropdown, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './navigation.scss'
 
@@ -52,30 +52,35 @@ export class Navigation extends React.Component {
     localStorage.removeItem('user')
     window.open('/client', '_self')
   }
+   
   render () {
     const { Username } = this.state
-
     return (
-      <Navbar bg='transparent' expand='lg'>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Navbar.Brand className='nav-logo' as={Link} to='/'>
-            myFlix Movies
-          </Navbar.Brand>
+      <Navbar
+        collapseOnSelect
+        expand='lg' 
+        variant='dark'
+        sticky='top' 
+      >
+        <Navbar.Brand className='nav-brand' as={Link} to={`/`}>
+          myFlix Movies
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='mr-auto'>
-            <Nav.Link as={Link} to='/'>
-              Home
-            </Nav.Link> 
+            <NavDropdown title='Account' id='basic-nav-dropdown'>
+              <NavDropdown.Item as={Link} to={`/users/{user}`}>
+                Profile
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item
+                className='log-out'
+                onClick={() => this.onLoggedOut()}
+              >
+                Sign Out
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
-          <Navbar.Text>
-            Signed in as:{' '}
-            <Link as={Link} to={`/users/{user}`}>
-              {Username}
-            </Link>
-          </Navbar.Text>
-          <Button className='nav-btn' size='sm' onClick={() => this.onLoggedOut()}>
-            <b>Log Out</b>
-          </Button>
         </Navbar.Collapse>
       </Navbar>
     )

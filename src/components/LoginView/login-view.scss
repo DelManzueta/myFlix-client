@@ -1,80 +1,152 @@
 @import "../../css/global.css";
 
- 
 .login-container {
-    margin: 0 auto; 
+    background-image: linear-gradient(45deg, rgba(137, 43, 100, 1), rgba(0, 0, 0, 0.75)), url(../../img/login-bg.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    animation: moveBg 40s ease 1s 2 alternate none;
+}
+@keyframes moveBg {
+    100% {
+        background-position: bottom right;
+    }
+}
+
+.login-body {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center; 
-    align-content: center;
-    background-color: rgba(137, 43, 100, 0.75);
-    max-width: 50vw;
-}
-.login-intro {
-    display: flex;
-    font-family: var(--ff-secondary);
-    text-align: center; 
-}
-
-.login-title {
-    font-family: var(--ff-primary);
-    color: var(--black);
-    font-size: 1.5rem;
-    text-transform: capitalize;
-    letter-spacing: 0.225rem;
-    margin-top: 10vh;
-}
-
-.myflix-title {
-    font-size: 6rem;
-    font-weight: 800;
-    color: var(--white);
-    text-shadow: 1px 4px 11px rgba(12, 15, 10, 0.4);
-    text-shadow: -1px -4px 11px rgba(137, 43, 100, 0.2);
-    letter-spacing: -0.25rem;
-    text-transform: none;
-}
-
-.login-intro p {
-    text-align: center;
-}
-
-.login-form {  
- color: var(--white);
- text-transform: uppercase; 
-}
-
-.form-field {
-    border-radius: 1rem; 
-    border: 2px solid var(--white);
-    background: transparent !important;
-    width: inherit;
-    min-width: 50%;
-    padding: 1.5rem 0;
     align-items: center;
     align-content: center;
-    margin: 3rem auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    min-width: 30vw;
 }
 
-::placeholder{
-    color: var(--black);
-    font-size: 1.42rem;
-    text-align: center; 
+.login-form {
+    margin-top: 15vh;
+    min-width: 25vw;
+    padding: 5vh 2vw;
+}
+
+.login-form h5 {
     font-family: var(--ff-secondary);
-    padding: 2rem 0;
-} 
-.new-to {
+    color: var(--white);
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.login-logo {
+    width: inherit;
+    font-size: 8rem;
+    font-kerning: normal;
+    font-weight: 800;
+    font-family: var(--ff-primary);
+    background-image: -webkit-linear-gradient(45deg, var(--accent), var(--white));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(-0.063rem 0.813rem 0.5rem rgba(12, 15, 10, 0.5));
+}
+
+.under-form {
+    color: var(--white);
+    font-family: var(--ff-secondary);
+    padding-top: 2rem;
+    align-items: baseline;
+}
+
+.under-form a {
+    color: #ff0000;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: 0.2s all ease-in-out;
+    text-decoration: none;
+}
+
+.under-form a:hover {
+    text-decoration: none;
     color: var(--accent);
 }
 
-.here-link {
-    font-family: var(--ff-secondary);
-    font-weight: 700;
+.login-btn {
+    width: 13.75rem;
+    height: 3.125rem;
+    outline: none;
+    cursor: pointer;
+    z-index: 0;
+    border-radius: 10px;
+    margin: 0 auto;
+    border: 0;
+    font-family: var(--ff-primary);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1.125rem;
+    -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
+    -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
+    box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
 }
 
-.under-form p {
-    padding-top: 5vh;
-    font-size: 1.05rem;
-    color: var(--white);
+.login-btn:before {
+    content: "";
+    background: linear-gradient(
+        45deg,
+        var(--white),
+        var(--accent),
+        var(--primary),
+        var(--blue),
+        var(--dk-accent),
+        var(--white),
+        var(--yellow) f
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    border: 0;
+}
+
+.login-btn:hover:before {
+    opacity: 1;
+    color: var(-black);
+}
+
+.login-btn:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff0000;
+    color: var(-black);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    border: 0;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.login-placeholder {
+    box-shadow: inset 5px 5px 10px #8d8d8d, inset -5px -5px 10px #ffffff;
 }
