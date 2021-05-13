@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import { Link } from 'react-router-dom'
+import {MovieCard} from '../MovieCard/movie-card'
 import './carousel.scss'
 
 export class CarouselView extends React.Component {
@@ -9,11 +11,13 @@ export class CarouselView extends React.Component {
     return (
       <Carousel>
         <Carousel.Item interval={1000}>
-          <img
-            className='d-block w-100'
-            src='holder.js/800x400?text=First slide&bg=373940'
-            alt='First slide'
-          />
+          <Link to={`/movies/${movie._id}`}>
+            <Card.Img
+              className='card-img'
+              variant='top'
+              src={movie.ImagePath}
+            />
+          </Link>
           <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

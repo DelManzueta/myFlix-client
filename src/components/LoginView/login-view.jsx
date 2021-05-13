@@ -95,7 +95,7 @@ export function LoginView (props) {
           </Form>
           <section className='under-form'>
             <p>
-              <span>New to myFlix &#63;</span> Register your account{' '}
+              <span>New to myFlix &#63;</span> Register a new account{' '}
               <Link className='login-here' to={`/register`}>
                 Here
               </Link>

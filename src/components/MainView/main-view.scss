@@ -1,8 +1,8 @@
 @import "../../css/global.css";
- 
- 
+
 .main-view {
-    background-color: var(--primary);
+    background: rgb(229, 231, 230);
+    background: linear-gradient(225deg, rgba(229, 231, 230, 1) 0%, rgba(212, 216, 214, 1) 100%);
     background-size: cover;
     width: 100%;
     height: 100%;

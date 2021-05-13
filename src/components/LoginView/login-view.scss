@@ -1,7 +1,8 @@
 @import "../../css/global.css";
 
 .login-container {
-    background-image: linear-gradient(45deg, rgba(137, 43, 100, 1), rgba(0, 0, 0, 0.75)), url(../../img/login-bg.jpg);
+    background-image: linear-gradient(225deg, rgba(229, 231, 230, 0.5) 0%, rgba(212, 216, 214, 1)),
+        url(../../img/login-bg.jpg);
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -33,33 +34,33 @@
 
 .login-form h5 {
     font-family: var(--ff-secondary);
-    color: var(--white);
+    color: var(--black);
     text-transform: uppercase;
     text-align: left;
     letter-spacing: 1px;
 }
 
-.login-logo {
-    width: inherit;
-    font-size: 8rem;
-    font-kerning: normal;
+.login-logo { 
+    font-size: 9rem; 
     font-weight: 800;
     font-family: var(--ff-primary);
-    background-image: -webkit-linear-gradient(45deg, var(--accent), var(--white));
+    letter-spacing: -5px;
+    background-image: -webkit-linear-gradient(95deg, var(--accent), var(--primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(-0.063rem 0.813rem 0.5rem rgba(12, 15, 10, 0.5));
+    background-size: cover; 
+    filter: drop-shadow(-0.063rem 0.75rem 0.5rem rgba(52, 53, 52, 0.75));
 }
 
 .under-form {
-    color: var(--white);
+    color: var(--black);
     font-family: var(--ff-secondary);
     padding-top: 2rem;
     align-items: baseline;
 }
 
 .under-form a {
-    color: #ff0000;
+    color: var(--dk-accent);
     font-size: 1.1rem;
     font-weight: 500;
     transition: 0.2s all ease-in-out;
@@ -68,83 +69,34 @@
 
 .under-form a:hover {
     text-decoration: none;
-    color: var(--accent);
+    color: var(--primary);
 }
 
 .login-btn {
     width: 13.75rem;
     height: 3.125rem;
-    outline: none;
-    cursor: pointer;
-    z-index: 0;
     border-radius: 10px;
-    margin: 0 auto;
     border: 0;
     font-family: var(--ff-primary);
-    color: var(--black);
+    color: var(--white);
     font-weight: 600;
     font-size: 1.125rem;
-    -webkit-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
-    -moz-box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
-    box-shadow: -0.063rem 0.813rem 0.5rem rgba(10,15,10,0.35);
+    background-color: var(--primary);
+    transition-property: width;
+    transition-duration: 0.5s;
+    margin: 2rem auto;
+    align-content: center;
+    align-items: center;
+    transition: 0.5s all ease-in-out;
 }
 
-.login-btn:before {
-    content: "";
-    background: linear-gradient(
-        45deg,
-        var(--white),
-        var(--accent),
-        var(--primary),
-        var(--blue),
-        var(--dk-accent),
-        var(--white),
-        var(--yellow) f
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-    border: 0;
-}
-
-.login-btn:hover:before {
-    opacity: 1;
-    color: var(-black);
-}
-
-.login-btn:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #ff0000;
-    color: var(-black);
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-    border: 0;
-}
-
-@keyframes glowing {
-    0% {
-        background-position: 0 0;
-    }
-    50% {
-        background-position: 400% 0;
-    }
-    100% {
-        background-position: 0 0;
-    }
+.login-btn:hover {
+    width: 15rem;
+    background-color: var(--primary);
+    transition: 0.2s all ease-in;
+    -webkit-box-shadow: 0px 7px 12px 3px rgba(50, 50, 50, 0.37);
+    -moz-box-shadow: 0px 7px 12px 3px rgba(50, 50, 50, 0.37);
+    box-shadow: 0px 7px 12px 3px rgba(50, 50, 50, 0.37);
 }
 
 .login-placeholder {

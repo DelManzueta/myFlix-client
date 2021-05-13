@@ -9,6 +9,7 @@ import { DirectorView } from '../DirectorView/director-view'
 import { GenreView } from '../GenreView/genre-view'
 import { LoginView } from '../LoginView/login-view'
 import MoviesList from '../MoviesList/movies-list'
+import {CarouselView} from '../Carousel/carousel'
 import { MovieView } from '../MovieView/movie-view'
 import { Navigation } from '../Navigation/navigation'
 import { ProfileView } from '../ProfileView/profile-view'
@@ -73,7 +74,9 @@ export class MainView extends React.Component {
               return (
                 <div className='user-view'>
                   <Navigation />
+                  <section> 
                   <MoviesList movies={movies} />
+                  </section>
                 </div>
               )
             }}
